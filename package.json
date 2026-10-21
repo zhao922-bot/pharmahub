@@ -1,0 +1,54 @@
+{
+  "name": "pharmahub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "药枢 PharmaHub —— 中文药物作用机制学习伴侣",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint app components lib --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "check:zh": "node --experimental-strip-types scripts/check-traditional.mjs",
+    "check:cards": "node scripts/check-card-counts.mjs && node scripts/check-content.mjs && node scripts/check-card-ids.mjs && node --experimental-strip-types --import ./scripts/ts-alias-hook.mjs scripts/check-compares.mjs",
+    "test": "node --test --experimental-strip-types --import ./scripts/ts-alias-hook.mjs scripts/search.test.mjs scripts/sm2.test.mjs scripts/quiz.test.mjs scripts/review-quiz.test.mjs scripts/csv.test.mjs scripts/serialize.test.mjs scripts/heatmap.test.mjs scripts/compare.test.mjs scripts/compare-quiz.test.mjs scripts/verification.test.mjs scripts/card-expansion.test.mjs scripts/answer-validation.test.mjs scripts/content-rigor.test.mjs",
+    "icons": "node scripts/gen-icons.mjs",
+    "verify": "node scripts/verify.mjs",
+    "verify:pwa": "node scripts/verify.mjs verify-pwa",
+    "verify:lan": "node scripts/verify.mjs verify-lan",
+    "verify:offline": "node scripts/verify.mjs verify-offline"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "better-sqlite3": "^13.0.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.427.0",
+    "next": "^15.5.28",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^20.14.12",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.5.28",
+    "postcss": "^8.5.31",
+    "puppeteer-core": "^25.14.0",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss": "8.5.31",
+      "postcss-selector-parser": "7.1.7"
+    }
+  }
+}

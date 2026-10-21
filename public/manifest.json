@@ -1,0 +1,54 @@
+{
+  "name": "药枢 PharmaHub · 药物作用机制学习伴侣",
+  "short_name": "药枢",
+  "description": "从机制出发的药理学学习工具：63 张药物卡片、分步机制图、同类药对比、间隔重复复习与测验。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8fafc",
+  "theme_color": "#1e3a5f",
+  "categories": ["education", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "今日复习",
+      "short_name": "复习",
+      "url": "/",
+      "description": "查看今日到期的复习任务"
+    },
+    {
+      "name": "卡片库",
+      "short_name": "卡片",
+      "url": "/cards",
+      "description": "浏览全部药物卡片"
+    },
+    {
+      "name": "同类药对比",
+      "short_name": "对比",
+      "url": "/compare",
+      "description": "横向对比同类药物差异"
+    }
+  ]
+}

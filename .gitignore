@@ -1,0 +1,41 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# 本地学习数据、数据库备份与导出文件
+/data/
+
+# 环境变量
+.env*
+!.env.example
+
+# 日志与系统文件
+*.log
+npm-debug.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+
+# 启动脚本运行时产物（scripts/server-start.ps1 写入）
+logs/
+server.pid
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# 编辑器
+.vscode/
+.idea/
+
+# 开发期视觉走查截图（scripts/shoot.mjs 输出）
+.preview/
+
+# 本地教材原文和检索缓存
+/.refs/
+
+# Python 辅助脚本缓存
+__pycache__/
+*.py[cod]
