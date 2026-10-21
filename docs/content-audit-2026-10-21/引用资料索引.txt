@@ -1,0 +1,853 @@
+药枢内容核查：引用资料索引
+生成日期：2026-10-21
+资料用于支持条目所列的具体结论；不代表全文逐句复核、所有地区批准状态或完整诊疗方案。
+
+1. 酒石酸美托洛尔说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c0e147a8-36a6-1e61-e053-2a95a90afd62
+范围：4、5.1、12.1～12.3 节：β1 阻断、心率与收缩、CYP2D6 代谢及突然停药风险。
+用于：美托洛尔、常用降压药：美托洛尔 vs 氨氯地平、抗心绞痛药：硝酸甘油 vs 美托洛尔、心脏用药：地高辛 vs 美托洛尔
+
+2. 氨氯地平说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e9a6c82-9f25-4c71-b09a-929bd5d7b1cf
+范围：临床药理与不良反应章节：钙通道、血管舒张、心脏电生理及水肿等风险。
+用于：氨氯地平、常用降压药：美托洛尔 vs 氨氯地平
+
+3. 氯沙坦说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a959c71b-d658-4871-b303-073234b9fa84
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：氯沙坦、ACEI vs ARB：干咳从哪来
+
+4. 氢氯噻嗪说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31a3d1cb-0f52-4818-965d-7584374bb23e
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：氢氯噻嗪
+
+5. 氢氯噻嗪成分说明 · emc
+https://www.medicines.org.uk/emc/product/100496/smpc
+范围：缬沙坦/氢氯噻嗪复方的 4.4、5.1 节：仅引用氢氯噻嗪的远曲小管、NCC 及尿钙作用。
+用于：氢氯噻嗪、袢利尿药 vs 噻嗪类：排钙方向不同
+
+6. 阿托伐他汀 LIPITOR 说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a60cc18b-0631-4cf0-b021-9f52224ece65
+范围：1、5.1～5.3、7、12.1、12.2 节：调脂用途、HMG-CoA 还原酶、LDL 及肌肉与肝脏风险。
+用于：阿托伐他汀、心血管防治：阿托伐他汀 vs 阿司匹林
+
+7. 呋塞米说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=48d8f490-e9d1-4c95-ab2f-414d3f4a9df4
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：呋塞米
+
+8. KDIGO · AKI 指南（2012 正式版）
+https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf
+范围：3.4.1–3.4.2：利尿剂不用于预防或治疗 AKI 本身，容量超负荷除外；非 2026 征求意见稿
+用于：呋塞米
+
+9. 呋塞米说明书 · emc
+https://www.medicines.org.uk/emc/product/12129/smpc
+范围：4.4、4.8、5.1 节：电解质风险、作用部位、NKCC2 与钙镁排泄。
+用于：呋塞米、袢利尿药 vs 噻嗪类：排钙方向不同
+
+10. 硝酸甘油舌下片 NITROSTAT 说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f7059ff7-bf74-48b4-811d-6eb1c26bfd8b
+范围：1、4.1、5.2、12.1～12.3 节：舌下剂型、NO—cGMP、前负荷、心率及合用禁忌。
+用于：硝酸甘油、抗心绞痛药：硝酸甘油 vs 美托洛尔
+
+11. 地高辛口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=dfac7f13-28be-423d-9389-9089da29da17
+范围：2、5.2、5.3、8.6、12.1～12.3 节：钠钾泵、正性肌力、传导、肾排泄及毒性监测。
+用于：地高辛、心脏用药：地高辛 vs 美托洛尔
+
+12. 卡托普利说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1395ba5b-2fc9-41ff-9c43-e0740d781dee
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：卡托普利、ACEI vs ARB：干咳从哪来
+
+13. 华法林说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cdbbc317-35d3-42ba-94f0-c83891358529
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：华法林、抗凝 vs 抗血小板
+
+14. CHEST · 围手术期抗栓指南（2022）
+https://www.chestnet.org/guidelines-and-topic-collections/guidelines/pulmonary-vascular/perioperative-management-of-antithrombotic-therapy
+范围：关键建议：中断 VKA 时的桥接评估
+用于：华法林、抗凝 vs 抗血小板
+
+15. 氯吡格雷说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ab32a331-2cea-453b-bba1-5451d38edd73
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：氯吡格雷、抗凝 vs 抗血小板
+
+16. DailyMed：Spironolactone 片说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=c1c5fdab-3ff7-414b-8e25-beed8311b8ad
+范围：第 1、5、6、12.1 节：适应症、高钾与内分泌不良反应、醛固酮拮抗机制。
+用于：螺内酯
+
+17. DailyMed：ELIQUIS（apixaban）说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a454cd24-0c6d-46e8-b1e4-197388606175
+范围：第 1、5、6、7、12.1～12.2 节：抗凝用途、出血和相互作用、Xa 抑制及监测局限。
+用于：阿哌沙班
+
+18. DailyMed：ZETIA（ezetimibe）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=174e45e0-45bb-48b7-9e60-8f6cfc1d22bb
+范围：第 1、5、6、12.1 节：降脂用途、肝酶与肌病风险、NPC1L1 机制。
+用于：依折麦布
+
+19. DailyMed：Diltiazem hydrochloride 缓释片说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=73b3607a-99d0-44d8-92ef-0074684c9d7d
+范围：第 1、4～6、12.1～12.2 节：缓释片用途、传导与心衰风险、钙通道机制。
+用于：地尔硫䓬
+
+20. DailyMed：Amiodarone hydrochloride 片说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f4532f12-3b7a-42ab-9a6c-36fd2a3f192c
+范围：黑框警告及第 1、5、7、12.1～12.3 节：口服片适应症、多通道作用与重要器官毒性。
+用于：胺碘酮
+
+21. emc：Adenosine 注射液产品说明书
+https://www.medicines.org.uk/emc/product/4766/smpc
+范围：第 4.1～4.4、4.8、5.1～5.2 节：阵发性室上速、监护要求、房室结作用及短效特点。
+用于：腺苷
+
+22. DailyMed：Heparin sodium 注射液说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=07438e10-1589-4683-9f26-e5494d076cf0
+范围：第 1、4～6、12.1 节：静脉血栓与体外循环抗凝、HIT、出血、抗凝血酶机制及无直接纤溶作用。
+用于：普通肝素
+
+23. emc：Bisoprolol 片产品说明书
+https://www.medicines.org.uk/emc/product/3090/smpc
+范围：第 4.1～4.4、4.8、5.1 节：高血压、稳定型心绞痛与稳定慢性心衰，β1 阻断及用药风险。
+用于：比索洛尔
+
+24. DailyMed：ENTRESTO（沙库巴曲缬沙坦）说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=000dc81d-ab91-450c-8eae-8eb74e72296f
+范围：第 1、2.1、4～7、12.1～12.2 节：成人心衰范围、LBQ657 与 AT1 双通路、ACEI 间隔及胎儿毒性。
+用于：沙库巴曲缬沙坦
+
+25. DailyMed：XARELTO（利伐沙班）说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=10db92f9-2300-4a80-836b-673e1ae91610
+范围：黑框警告与第 1、4～7、12.1 节：非瓣膜性房颤、静脉血栓、直接 Xa 抑制、出血及停药风险。
+用于：利伐沙班
+
+26. emc：Rosuvastatin 片产品说明书
+https://www.medicines.org.uk/emc/product/8863/smpc
+范围：第 4.1～4.5、4.8、5.1 节：降脂与心血管预防范围、合成和受体机制、肌肉及肝脏风险。
+用于：瑞舒伐他汀
+
+27. emc：Ticagrelor 片产品说明书
+https://www.medicines.org.uk/emc/product/101008/smpc
+范围：第 4.1～4.5、4.8、5.1 节：ACS 与既往心梗的不同方案、直接可逆 P2Y12 拮抗、出血和呼吸困难。
+用于：替格瑞洛
+
+28. emc：Clexane（依诺肝素钠）注射剂说明书
+https://www.medicines.org.uk/emc/product/1695/smpc
+范围：第 4.1～4.5、4.8、5.1 节：静脉血栓与 ACS、抗凝血酶介导的 Xa/Ⅱa 抑制、出血和 HIT。
+用于：依诺肝素
+
+29. 阿莫西林说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c395111-c9c1-483e-a542-58b935ede689
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：阿莫西林
+
+30. 头孢曲松说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8351aa37-552d-471d-b293-c564dcb6ec29
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：头孢曲松
+
+31. 阿奇霉素说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cd01f37d-4392-4d2b-e053-2995a90a721f
+范围：5、12.1、12.3、12.4 节：QT 与肝脏风险、胆汁排泄、50S / 23S rRNA 和靶位修饰。
+用于：阿奇霉素、常用抗菌药：细胞壁、核糖体与 DNA、核糖体抗菌药：庆大霉素 vs 阿奇霉素
+
+32. 左氧氟沙星口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=067e260c-dc47-4957-a9ff-5a79f17b4ca0
+范围：黑框警告、1、5、12.1、12.4 节：氟喹诺酮、拓扑异构酶、耐药与重要用药限制。
+用于：左氧氟沙星、常用抗菌药：细胞壁、核糖体与 DNA、影响细菌 DNA：甲硝唑 vs 左氧氟沙星
+
+33. 甲硝唑口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=f7e5dacd-0bc4-4ac4-e053-6394a90a457a&type=display
+范围：微生物学、适应症、警告：硝基还原、机制局限、耐药、厌氧菌与原虫、神经系统风险。
+用于：甲硝唑、影响细菌 DNA：甲硝唑 vs 左氧氟沙星
+
+34. 青霉素 G说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e0ced9d8-b9ea-466e-bf2c-10e9cc636f3f
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：青霉素 G
+
+35. CDC · 梅毒治疗指南
+https://www.cdc.gov/std/treatment-guidelines/syphilis.htm
+范围：吉海反应与青霉素过敏的区分
+用于：青霉素 G
+
+36. 庆大霉素说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=449c9a41-d61e-49fd-b5e3-d76f74b92acf
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：庆大霉素
+
+37. 万古霉素说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=06dcfd36-942f-4752-86ad-4c5a6fc3e48f
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：万古霉素
+
+38. DailyMed：Doxycycline hyclate 胶囊说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fbc1924f-d647-465a-b8b2-25de332c5896
+范围：微生物学、适应症、警告及不良反应章节：30S 机制、敏感病原体、牙齿与食管等风险。
+用于：多西环素
+
+39. DailyMed：Linezolid 片说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3e0d868d-f419-47e8-a3bc-41ececac468b
+范围：第 1、5、7、12.4 节：革兰阳性菌适应症、骨髓及神经毒性、血清素相互作用和翻译起始机制。
+用于：利奈唑胺
+
+40. DailyMed：Clindamycin hydrochloride 胶囊说明书
+https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b43dc396-17ef-a523-e053-2a95a90ac872
+范围：黑框警告、临床药理中的微生物学、适应症、警告与不良反应：50S 机制、感染范围及结肠炎风险。
+用于：克林霉素
+
+41. DailyMed：BACTRIM（sulfamethoxazole / trimethoprim）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f59d0c04-9c66-4d53-a0e1-cb55570deb62
+范围：临床药理中的微生物学、适应症、禁忌、警告、注意事项与不良反应：双重叶酸阻断及肺孢子菌用途。
+用于：复方磺胺甲噁唑
+
+42. emc：Co-Trimoxazole 80/400mg Tablets 产品特性概要
+https://www.medicines.org.uk/emc/product/11465/smpc
+范围：第 5.1 节：连续叶酸代谢阻断、二氢蝶酸合成酶与二氢叶酸还原酶作用位点。
+用于：复方磺胺甲噁唑
+
+43. FDA：AUGMENTIN 阿莫西林／克拉维酸钾说明书（2026）
+https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/050564s061lbl.pdf
+范围：第 1～2、4～6、12.2、12.4 节：制剂适用范围、肝胆与过敏风险、β-内酰胺酶和 PBP 双重作用。
+用于：阿莫西林克拉维酸钾
+
+44. emc：Zinnat（头孢呋辛酯）片说明书
+https://www.medicines.org.uk/emc/product/3811/smpc
+范围：第 4.1～4.4、4.8、5.1～5.2 节：前药活化与 PBP、感染范围、肾功能及片剂与混悬剂非等效。
+用于：头孢呋辛酯
+
+45. DailyMed：MACROBID（呋喃妥因）胶囊说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=28bc9ec9-b8db-4ece-a14a-8bcf618cbf7e
+范围：临床药理/微生物学、适应症、禁忌、警告及不良反应：多靶点机制、单纯性膀胱炎范围及肺肝神经风险。
+用于：呋喃妥因
+
+46. 环磷酰胺说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5bad5bfc-12c0-46a2-8355-1028f108ecbf
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：环磷酰胺、烷化剂 vs 抗代谢药
+
+47. 甲氨蝶呤说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aafd97c1-3a0a-42b2-845a-a9db9bb7d876
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：甲氨蝶呤、烷化剂 vs 抗代谢药
+
+48. 亚叶酸钙注射剂说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=79d023ab-7d77-48c1-8f47-ea322fd58c2b
+范围：叶酸拮抗药解救与氟尿嘧啶联用用途的区分
+用于：甲氨蝶呤、烷化剂 vs 抗代谢药
+
+49. 曲妥珠单抗 HERCEPTIN 静脉制剂说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=492dbdb2-077e-4064-bff3-372d6af0a7a2
+范围：1、2.1、2.2、5、11、12.1 节：HER2 检测、抗体与胞外结合、ADCC 及心肺风险。
+用于：曲妥珠单抗、靶向抗肿瘤药：曲妥珠单抗 vs 吉非替尼
+
+50. 伊马替尼说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c0611fc0-b217-4988-acd4-b8c629ce489b
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：伊马替尼
+
+51. 顺铂注射液说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a440f077-46f6-4688-a209-65bce38d1c92
+范围：5.1～5.6、12.1、12.3 节：DNA 交联、化学取代及肾、耳、神经和骨髓毒性。
+用于：顺铂、常用化疗药：顺铂 vs 氟尿嘧啶
+
+52. 氟尿嘧啶注射液说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8eff167f-203a-4a81-b2fc-d8773bc3555e
+范围：黑框警告、2.1、5.1～5.8、12.1、12.5 节：DPD / DPYD、活性代谢物、核酸作用及严重毒性。
+用于：氟尿嘧啶、常用化疗药：顺铂 vs 氟尿嘧啶
+
+53. 吉非替尼口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1a3c0ce7-06a1-4e04-9106-14ddb2a866a5
+范围：1、2.1、5、6、12.1 节：EGFR 突变、适用癌种、可逆激酶抑制及肺、肝等风险。
+用于：吉非替尼、靶向抗肿瘤药：曲妥珠单抗 vs 吉非替尼
+
+54. 地西泮 VALIUM 口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=260e2041-2bb3-482f-850e-b5d47a7bdbe6
+范围：1、5、6、7、12.1～12.3 节：GABA-A 位点、焦虑与肌痉挛用途、嗜睡、依赖及相互作用。
+用于：地西泮、抗惊厥机制：地西泮 vs 苯妥英、精神神经用药：氟西汀 vs 地西泮
+
+55. 氟西汀口服胶囊说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ab1eec9d-f755-81a2-e053-2a95a90acb3c
+范围：1、5.1、5.2、5.4、6、7.7、12.1～12.3 节：SSRI、适应症、嗜睡、精神与血清素风险及地西泮相互作用。
+用于：氟西汀、精神神经用药：氟西汀 vs 地西泮
+
+56. 氯丙嗪说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=41b86f9d-d7e2-4296-8d88-e8257c7cbed2
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：氯丙嗪
+
+57. 氯丙嗪口服片说明书 · emc
+https://www.medicines.org.uk/emc/product/3475/smpc
+范围：4.1、4.4、4.8、5.1 节：吩噻嗪类、精神病性障碍与躁狂用途、心律及其他受体相关风险。
+用于：氯丙嗪、精神科用药：舍曲林 vs 氯丙嗪
+
+58. 氯丙嗪药物词条 · 美国国家癌症研究所 NCI
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/chlorpromazine
+范围：药理机制：阻断脑内突触后多巴胺受体与抗精神病作用。
+用于：氯丙嗪、精神科用药：舍曲林 vs 氯丙嗪
+
+59. 吗啡口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3c847554-3b4b-4d24-a145-2ef7e9b83699
+范围：1、5、9、12.1～12.3 节：镇痛用途、中枢与胃肠作用、依赖及葡萄糖醛酸结合代谢。
+用于：吗啡、阿片受体药物：吗啡 vs 洛哌丁胺
+
+60. 卡比多巴 / 左旋多巴口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dd2215a9-ee0f-443a-a2e3-3d0578c8cd8f
+范围：临床药理、适应症、注意事项与不良反应：区分两种成分、血脑屏障、运动症状、受体拮抗及体位性低血压。
+用于：左旋多巴、多巴胺通路：左旋多巴 vs 氟哌啶醇
+
+61. 苯妥英钠说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=86dd27d1-9cee-48ae-b55d-e2d2f7dbc593&type=display
+范围：DILANTIN 的 5、7、12.1、12.3 节：机制、酶诱导、饱和代谢及风险。
+用于：苯妥英钠、抗癫痫药：苯妥英钠 vs 丙戊酸钠
+
+62. 丙戊酸钠说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ec41025a-ed7d-48c8-9005-08e3a9417f30
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：丙戊酸钠
+
+63. 氟哌啶醇口服片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=325d169d-310d-4ada-e063-6294a90afbdd
+范围：药理、适应症、警告与不良反应；不外推到其他剂型
+用于：氟哌啶醇
+
+64. 氟哌啶醇 HALDOL 口服溶液说明书 · emc
+https://www.medicines.org.uk/emc/product/15252/smpc
+范围：4.1、4.3～4.5、4.8、5.1 节：丁酰苯、D2 拮抗、治疗用途、帕金森病禁忌及运动与心律风险。
+用于：氟哌啶醇、多巴胺通路：左旋多巴 vs 氟哌啶醇
+
+65. 舍曲林说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=91b4c802-9c6b-49bb-b5a7-661e1917ef34
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：舍曲林
+
+66. DailyMed：NEURONTIN（gabapentin）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97935fd9-1d4a-43b6-a5d9-de994591187b
+范围：第 1、2.3、5、6、12.1 节：美国制剂适应症、肾功能调整、呼吸抑制及机制的不确定性。
+用于：加巴喷丁
+
+67. emc：Gabapentin Tablets 600 mg 产品特性概要
+https://www.medicines.org.uk/emc/product/101986/smpc
+范围：第 5.1 节：α2δ 与递质释放的临床前证据；人体治疗效应的机制尚未明确。
+用于：加巴喷丁
+
+68. DailyMed：ARICEPT（donepezil）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=98e451e1-e4d7-4439-a675-c5457ba20975
+范围：第 1、5～6、12.1 节：症状治疗范围、胆碱酯酶抑制及心率、胃肠道、体重风险。
+用于：多奈哌齐
+
+69. emc：Tegretol 卡马西平片说明书
+https://www.medicines.org.uk/emc/product/7846/smpc
+范围：第 4.1～4.6、4.8、5.1 节：发作类型、三叉神经痛、HLA 风险、血液及电解质不良反应与机制不确定性。
+用于：卡马西平
+
+70. DailyMed：NAMENDA 美金刚片说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b9f27baf-aa2a-443a-9ef5-e002d23407ba
+范围：第 1～2、5～7、8.6、12.1 节：中重度阿尔茨海默型痴呆、肾功能、NMDA 作用假说及无病程改变证据。
+用于：美金刚
+
+71. DailyMed：KEPPRA（左乙拉西坦）口服制剂说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3ca9df05-a506-4ec8-a4fe-320f1219ab21
+范围：第 1、2.5、5、6、12.1 节：发作类型与年龄范围、SV2A 证据及机制未明、行为异常和肾功能调整。
+用于：左乙拉西坦
+
+72. DailyMed：CYMBALTA（度洛西汀）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2f7d4d67-10c1-4bf4-a7f2-c185fbad64ba
+范围：黑框警告与第 1、4～6、12.1～12.2 节：抑郁、焦虑、糖尿病神经痛、SNRI 机制及关键风险。
+用于：度洛西汀
+
+73. DailyMed：LYRICA（普瑞巴林）口服制剂说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=d4734e7d-5079-455e-8ff5-8f4539c998a9
+范围：第 1、2.7、5～6、12.1 节：神经痛与发作范围、α2δ 证据及未明机制、呼吸抑制和停药风险。
+用于：普瑞巴林
+
+74. emc：Escitalopram 片产品说明书
+https://www.medicines.org.uk/emc/product/15007/smpc
+范围：第 4.1～4.5、4.8、5.1 节：成人抑郁与焦虑相关适应症、SSRI 机制、QT 与停药风险。
+用于：艾司西酞普兰
+
+75. 二甲双胍说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=104b5f5b-cc83-450d-82ec-1fd20c4f7119
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：二甲双胍
+
+76. 胰岛素说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=81199e55-ade9-46de-a5a3-c0415acee403
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：胰岛素
+
+77. 格列本脲说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a56f100f-0f42-4188-81ab-04644b824040
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：格列本脲
+
+78. 左甲状腺素钠说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b8c20f76-3ee6-4b29-b77f-ed4ad1baaed9
+范围：1、2.4、5、6、12.1～12.3 节：激素替代、核内受体、T4 转化、监测及过度替代风险。
+用于：左甲状腺素钠、甲状腺用药：补充激素 vs 抑制合成
+
+79. 地塞米松说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=11f10a47-1c42-40e4-89d8-bb000fef497c
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：地塞米松
+
+80. 地塞米松口服片说明书 · emc
+https://www.medicines.org.uk/emc/product/15864/smpc
+范围：4.4、4.5、4.8、5.1 节：转录调控、感染表现、肾上腺轴、停药及胃肠道风险。
+用于：地塞米松、抗炎药：地塞米松 vs 布洛芬
+
+81. 地塞米松药物词典 · 美国国家癌症研究所（NCI）
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/dexamethasone
+范围：药物定义：合成皮质激素、核类固醇受体及炎症信号调节。
+用于：地塞米松、抗炎药：地塞米松 vs 布洛芬
+
+82. 丙硫氧嘧啶说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b0c23a2c-b250-4c0d-9b2a-c1483faa2ca0
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：丙硫氧嘧啶、丙硫氧嘧啶 vs 甲巯咪唑
+
+83. ATA · 甲亢及甲状腺毒症指南（2016）
+https://doi.org/10.1089/thy.2016.0229
+范围：抗甲状腺药选择；甲状腺危象治疗表 7；血液与肝脏风险
+用于：丙硫氧嘧啶、甲巯咪唑、丙硫氧嘧啶 vs 甲巯咪唑
+
+84. 甲巯咪唑说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=acae35a6-dea2-3fa9-e053-2a95a90a3a4d&type=display
+范围：临床药理、警告与实验室监测：不使既有激素失活、甲减、粒细胞缺乏及肝损伤。
+用于：甲巯咪唑、丙硫氧嘧啶 vs 甲巯咪唑、甲状腺用药：补充激素 vs 抑制合成
+
+85. DailyMed：JARDIANCE（empagliflozin）说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=334f1b3d-5670-6685-e063-6294a90a7e47
+范围：第 1、2.4、5、12.1 节：糖尿病、心衰与肾病用途，酮症酸中毒等风险及 SGLT2 机制。
+用于：恩格列净
+
+86. DailyMed：JANUVIA（sitagliptin）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f85a48d0-0407-4c50-b0fa-7673a160bf01
+范围：第 1、2.2、5、12.1 节：成人 2 型糖尿病、肾功能调整与重要风险、DPP-4 机制。
+用于：西格列汀
+
+87. DailyMed：OZEMPIC（semaglutide 皮下注射剂）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=42bdd912-2393-44c4-b7e0-47672ca28991
+范围：黑框警告及第 1、5、12.1～12.2 节：本制剂用途、重要风险、GLP-1 机制；肾脏获益机制尚未确立。
+用于：司美格鲁肽
+
+88. DailyMed：Acarbose 片说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=067c0adc-7322-489d-9baa-1d061b37be36
+范围：临床药理、适应症、禁忌、注意事项与不良反应：消化酶抑制、胃肠道风险及葡萄糖与蔗糖的区别。
+用于：阿卡波糖
+
+89. DailyMed：Pioglitazone 片说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a0846e3e-68b2-fd55-e053-2995a90a673e
+范围：黑框警告及第 1、4～6、12.1 节：PPARγ 机制、心衰禁忌及骨折等风险。
+用于：吡格列酮
+
+90. DailyMed：Alendronate sodium 片说明书
+https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ffdd2496-d253-419b-85a6-8c615f7545f1
+范围：第 1、2.6、4～5、12.1～12.2 节：骨质疏松、服药方式、食管与骨骼风险、骨吸收机制。
+用于：阿仑膦酸钠
+
+91. DailyMed：Repaglinide 片说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb995e92-295e-4638-a064-978211f5afe1
+范围：第 1～2、4～7、8.6～8.7、12.1 节：2 型糖尿病、餐次和低血糖、相互作用、钾钙通道机制。
+用于：瑞格列奈
+
+92. emc：Forxiga（达格列净）说明书
+https://www.medicines.org.uk/emc/product/7607/smpc
+范围：第 4.1～4.5、4.8、5.1 节：糖尿病、心衰和 CKD、SGLT2 与管球反馈、酮症酸中毒及容量风险。
+用于：达格列净
+
+93. emc：Prednisolone 口服片说明书
+https://www.medicines.org.uk/emc/product/14314/smpc
+范围：第 4.1～4.4、4.8、5.1 节：全身激素适用情境、感染及代谢风险、肾上腺轴抑制和减停药评估。
+用于：泼尼松龙
+
+94. 美国国家癌症研究所 NCI：Prednisolone 药物词典
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/prednisolone
+范围：药物定义：受体相关基因表达调节及促炎细胞因子抑制；用于机制说明，不扩展口服制剂的适应症。
+用于：泼尼松龙
+
+95. 奥美拉唑口服延迟释放胶囊说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5aba19da-663f-4901-94e2-f438dba4841f
+范围：1、5.1、5.3、11、12.1、12.3 节：酸相关疾病、肾炎、包衣与吸收、胃壁细胞质子泵。
+用于：奥美拉唑、消化系统用药：美沙拉嗪 vs 奥美拉唑
+
+96. 雷尼替丁说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=92e1e60c-be24-4b20-8a2a-a39d03cc3cf3
+范围：历史标签的 H2 药理与用途；当前监管变化另见 FDA 2025 公告
+用于：雷尼替丁
+
+97. FDA · 重新配方雷尼替丁片批准公告（2025-11-24）
+https://www.fda.gov/drugs/drug-safety-and-availability/fda-approves-reformulated-ranitidine-following-comprehensive-safety-review
+范围：新产品批准与 NDMA、储存要求；不代表其他地区或旧产品批准状态
+用于：雷尼替丁
+
+98. 多潘立酮说明书 · emc
+https://www.medicines.org.uk/emc/product/3188/smpc
+范围：4.3、4.4、5.1 节：胃肠动力、血脑屏障、催乳素及 QT 间期风险。
+用于：多潘立酮、止吐药：多潘立酮 vs 昂丹司琼
+
+99. 昂丹司琼说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f08f56de-8678-4da9-8cae-013a5c393453
+范围：5.2、5.4、12.1、12.2 节：5-HT3、非促胃肠动力作用、催乳素与心律风险。
+用于：昂丹司琼、止吐药：多潘立酮 vs 昂丹司琼
+
+100. 硫糖铝说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a4f722e7-2885-4f27-8358-9c662439600a
+范围：临床药理、注意事项与不良反应：局部保护、少量吸收、结合相互作用、肾功能与铝蓄积。
+用于：硫糖铝、胃病用药：抑酸 vs 黏膜保护
+
+101. 洛哌丁胺胶囊说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=26a50243-ab72-849b-e063-6394a90a60a9
+范围：临床药理、禁忌、注意事项和过量章节：肠壁受体、CYP 代谢、P-糖蛋白、补液及心脏和中枢毒性。
+用于：洛哌丁胺、阿片受体药物：吗啡 vs 洛哌丁胺
+
+102. 美沙拉嗪 LIALDA 口服延迟释放片说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3098a080-be86-4265-9818-7fc4beab77b7
+范围：1、5.1、5.2、11、12.1、12.3 节：成人溃疡性结肠炎、肾脏风险、急性不耐受、释放系统与机制局限。
+用于：美沙拉嗪、消化系统用药：美沙拉嗪 vs 奥美拉唑
+
+103. emc：Duphalac（lactulose）产品特性概要
+https://www.medicines.org.uk/emc/product/5525/smpc
+范围：第 4.1、4.3～4.4、4.8、5.1～5.2 节：便秘与肝性脑病用途、腹泻及电解质风险、结肠产酸机制。
+用于：乳果糖
+
+104. DailyMed：Famotidine 片说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=54d93bf1-8f9a-981b-e063-6394a90a0fde&version=1
+范围：第 1、2.2、5～6、8.6、12.1 节：片剂范围、肾功能调整、中枢与 QT 风险、H2 阻断机制。
+用于：法莫替丁
+
+105. DailyMed：Metoclopramide 片说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c143e210-4ce7-44e5-b1e2-bf0e6bfde485
+范围：黑框警告、第 1～2、4～6、11、12.1～12.2 节：成人口服用途、迟发性运动障碍、D2 拮抗与尚未完全明确的促动力机制。
+用于：甲氧氯普胺
+
+106. emc：Dulcolax Adult 比沙可啶肠溶片说明书
+https://www.medicines.org.uk/emc/product/361/smpc
+范围：第 4.1～4.4、4.8、5.1～5.2 节：成人短期便秘、局部水解活化、泻药过用及肠梗阻等禁忌。
+用于：比沙可啶
+
+107. emc：Movicol 聚乙二醇 3350 含电解质口服溶液用粉说明书
+https://www.medicines.org.uk/emc/product/1025/smpc
+范围：第 4.1～4.4、4.8、5.1～5.2 节：慢性便秘与粪便嵌塞、渗透作用、制剂范围和禁忌。
+用于：聚乙二醇电解质
+
+108. emc：Ursodeoxycholic acid 250 mg 胶囊说明书
+https://www.medicines.org.uk/emc/product/14374/smpc
+范围：第 4.1～4.4、4.8、5.1 节：PBC 与胆固醇结石筛选条件、胆汁成分机制、监测和禁忌。
+用于：熊去氧胆酸
+
+109. emc：Pantoprazole 20 mg 肠溶片说明书
+https://www.medicines.org.uk/emc/product/450/smpc
+范围：第 4.1～4.5、4.8、5.1 节：20 mg 制剂用途、酸活化与质子泵机制、长期用药和肾脏风险。
+用于：泮托拉唑
+
+110. 阿司匹林说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c994d693-a505-4794-8803-4b91098b6517
+范围：解热镇痛制剂的用途及安全警示；低剂量抗血小板作用另见 emc
+用于：阿司匹林、抗凝 vs 抗血小板
+
+111. 阿司匹林低剂量肠溶片说明书 · emc
+https://www.medicines.org.uk/emc/product/2614/smpc
+范围：4.1、4.3～4.5、4.8、5.1 节：二级预防、不可逆乙酰化、血栓素、血小板聚集及出血风险。
+用于：阿司匹林、抗凝 vs 抗血小板、心血管防治：阿托伐他汀 vs 阿司匹林
+
+112. 布洛芬说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=138edf0b-d7da-44b6-b010-d311a37087fe
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：布洛芬
+
+113. 对乙酰氨基酚片说明书 · emc
+https://www.medicines.org.uk/emc/product/100828/smpc
+范围：4.1 适应症、4.4–4.8 风险与不良反应、5.1 药效学
+用于：对乙酰氨基酚
+
+114. 塞来昔布说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2d6675e4-5859-4be2-8037-a20ce9f707aa
+范围：CELEBREX 的警示、5、12.1、12.2 节：COX-2 选择性、血小板作用与风险。
+用于：塞来昔布、解热镇痛药：COX 选择性与抗炎作用
+
+115. 吲哚美辛口服胶囊说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=16238287-d4b0-4afa-8483-1f4ae250a625
+范围：1、5.1、5.2、5.6、12.1 节：NSAID、COX-1 / COX-2 与胃肠、心血管、肾脏风险。
+用于：吲哚美辛、非甾体抗炎药：吲哚美辛 vs 塞来昔布
+
+116. DailyMed：Colchicine 片说明书
+https://www.dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=5e5d9488-d9d0-4b37-b535-941d66c3430d&type=display
+范围：第 1、4、5、7、12.1 节：痛风及家族性地中海热用途、微管机制、血液与肌肉毒性及相互作用。
+用于：秋水仙碱
+
+117. emc：Colchicine 片产品特性概要
+https://www.medicines.org.uk/emc/product/14362/smpc
+范围：第 4.4、5.1 节：治疗窗窄；对尿酸代谢无影响。用途与禁忌仍按上方所引片剂说明书描述。
+用于：秋水仙碱
+
+118. DailyMed：Allopurinol 片说明书
+https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bdbf5ad4-86f2-4e9c-a51a-fb0c7220c480
+范围：第 1、2、5、8.6、12.1、12.5 节：降尿酸范围、起始发作、皮肤反应、肾功能与 HLA-B*58:01。
+用于：别嘌醇
+
+119. DailyMed：Febuxostat 片说明书
+https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=41a95424-046e-413b-a121-cd7335e67135
+范围：黑框警告与第 1、4～7、12.1～12.2 节：美国标签适用条件、XO 抑制、心血管与肝脏风险及相互作用。
+用于：非布司他
+
+120. emc：Diclomax SR（双氯芬酸钠口服缓释制剂）说明书
+https://www.medicines.org.uk/emc/product/346/smpc
+范围：第 4.1～4.6、4.8、5.1 节：系统制剂用途、COX 抑制、胃肠与心血管禁忌、肾肝及妊娠风险。
+用于：双氯芬酸
+
+121. 沙丁胺醇（albuterol）VENTOLIN HFA 说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=2ed73618-be3a-4331-9509-6401258f791f
+范围：2、5.1～5.8、12.1、17 节及使用说明：吸入剂型、β2—cAMP、症状恶化、炎症控制与不良反应。
+用于：沙丁胺醇、哮喘缓解药 vs 控制药、支气管舒张药：氨茶碱 vs 沙丁胺醇
+
+122. GINA · 2026 哮喘策略概要
+https://ginasthma.org/2026-gina-summary-guide/
+范围：含 ICS 的治疗原则；SABA、ICS 单方与 ICS/福莫特罗的角色
+用于：沙丁胺醇、布地奈德、哮喘缓解药 vs 控制药
+
+123. 布地奈德 PULMICORT FLEXHALER 吸入粉雾剂说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ae1105cd-69fc-4c15-937f-c535304341c2
+范围：药理、适应症、警告与不良反应；不外推到其他剂型
+用于：布地奈德、哮喘缓解药 vs 控制药
+
+124. 氨茶碱注射液说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=52bbc6cd-4baf-7859-e063-6394a90ac87d
+范围：成分、临床药理、警告和注意事项：茶碱复合物、机制的不确定性、浓度监测及心律与惊厥风险。
+用于：氨茶碱、支气管舒张药：氨茶碱 vs 沙丁胺醇
+
+125. GINA · 哮喘策略报告（2026）
+https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf
+范围：哮喘急性加重中的氨茶碱/茶碱：不推荐
+用于：氨茶碱
+
+126. DailyMed：Montelukast 片说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=52c650cf-3081-7b2c-e063-6394a90a797f
+范围：黑框警告及第 1、5、6、12.1 节：CysLT1 机制、15 岁及以上片剂用途、非急救及神经精神风险。
+用于：孟鲁司特
+
+127. DailyMed：SPIRIVA RESPIMAT（tiotropium）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7b656b14-fcaa-2741-f6f0-e0be48971c02
+范围：第 1、5、6、12.1 节：本吸入制剂的 COPD/哮喘用途、非急救定位、抗胆碱能风险及 M3 机制。
+用于：噻托溴铵
+
+128. emc：Acetylcysteine 口服溶液用散说明书
+https://www.medicines.org.uk/emc/product/13029/smpc
+范围：第 4.1～4.5、4.8、5.1 节：黏液溶解用途、支气管痉挛和分泌物潴留；所引 200 mg 散用于成人及 12 岁以上青少年。
+用于：乙酰半胱氨酸
+
+129. DailyMed：Acetylcysteine 溶液说明书（黏液溶解机制）
+https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=8165ad85-98e7-438f-9567-5cfda88d0ebf&type=display
+范围：临床药理：巯基与黏液二硫键的关系；该来源仅补充机制，不外推制剂用法。
+用于：乙酰半胱氨酸
+
+130. emc：Symbicort Turbohaler 200/6 干粉吸入剂说明书
+https://www.medicines.org.uk/emc/product/1327/smpc
+范围：第 4.1～4.4、4.8、5.1 节：哮喘方案与 COPD 条件、抗炎及 β2 舒张机制、局部与全身风险。
+用于：布地奈德福莫特罗
+
+131. emc：Atrovent（异丙托溴铵）雾化吸入液说明书
+https://www.medicines.org.uk/emc/product/3818/smpc
+范围：第 4.1～4.4、4.8、5.1 节：COPD 与哮喘联用范围、局部抗胆碱机制、眼部和尿潴留风险。
+用于：异丙托溴铵
+
+132. 氯雷他定 10 mg 片说明书 · emc
+https://www.medicines.org.uk/emc/product/14580/smpc
+范围：4.1 适应症、4.4–4.8 风险与不良反应、5.1 药效学
+用于：氯雷他定、第一代 vs 第二代抗组胺药
+
+133. 氯苯那敏 4 mg 片说明书 · emc
+https://www.medicines.org.uk/emc/product/14298/smpc
+范围：4.1 适应症、4.4–4.8 风险与不良反应、5.1 药效学
+用于：氯苯那敏、第一代 vs 第二代抗组胺药
+
+134. DailyMed：EPIPEN（epinephrine）自动注射器说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=311af6d9-20c0-4b87-b236-4185bfa49988
+范围：第 1、5～6、12.1～12.2、17 节：严重过敏急救、α/β 作用、不良反应及后续急救要求。
+用于：肾上腺素
+
+135. emc：Cetirizine hydrochloride 片说明书
+https://www.medicines.org.uk/emc/product/12956/smpc
+范围：第 4.1～4.4、4.7～4.8、5.1 节：鼻炎与荨麻疹、H1 作用、嗜睡和肾功能；所引 10 mg 片适用于成人及 6 岁以上儿童。
+用于：西替利嗪
+
+136. 阿昔洛韦说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8d4c9317-7475-42ec-a0b0-d43929114369
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：阿昔洛韦、抗病毒药的两条靶点思路
+
+137. 奥司他韦说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b015d73a-f3b6-4258-8972-6fc4a043aed8
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：奥司他韦、抗病毒药的两条靶点思路
+
+138. CDC · 流感抗病毒治疗（2026 更新）
+https://www.cdc.gov/flu/hcp/antivirals/summary-clinicians.html
+范围：住院、重症及进展性流感；超过 48 小时的治疗获益
+用于：奥司他韦、抗病毒药的两条靶点思路
+
+139. DailyMed：BARACLUDE（entecavir）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=046e61c9-9298-4b2e-b76e-b26b81fecd20
+范围：黑框警告及第 1、2.4、5、6、12.3～12.4 节：慢乙肝用途、三磷酸活化与复制抑制、停药和 HIV 共感染风险。
+用于：恩替卡韦
+
+140. DailyMed：VIREAD（TDF）说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=33fd6418-fbdc-42ca-a50d-ce2a476a5418
+范围：第 1、2.1、5～6、12.4 节：HIV 联合治疗与慢性乙肝、活化和 DNA 链终止、肾骨风险及停药后加重。
+用于：富马酸替诺福韦二吡呋酯
+
+141. 氟康唑说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=98ac5455-d26c-4780-a5a3-bf8d85917626
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：氟康唑、唑类 vs 多烯类抗真菌药
+
+142. 两性霉素 B说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a96a734f-d1c4-4d42-93c2-7c336da7f7b9
+范围：药理、适应症、警告与不良反应（剂型与适用范围见正文）
+用于：两性霉素 B、唑类 vs 多烯类抗真菌药
+
+143. DailyMed：Terbinafine 口服片说明书
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=5de4c245-7086-453b-b90a-7a1242ec2c0b&version=9
+范围：第 1、4～7、12.4 节：口服甲真菌病用途、角鲨烯环氧化酶机制及肝脏、味嗅觉风险。
+用于：特比萘芬
+
+144. emc：Clotrimazole 1% 皮肤用乳膏说明书
+https://www.medicines.org.uk/emc/product/102509/smpc
+范围：第 4.1～4.4、4.8、5.1～5.2 节：皮肤外用范围、麦角固醇机制、浓度相关效应及局部不良反应。
+用于：克霉唑
+
+145. DailyMed：Nystatin 口服混悬液说明书
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9954118e-abe6-4388-98c9-4473d39b2e28
+范围：临床药理、适应症、注意事项及不良反应：膜甾醇结合、吸收很少、口腔念珠菌范围及局部风险。
+用于：制霉菌素
+
+146. 格列本脲与二甲双胍成分说明 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5ef9ba4-1d9f-4a97-a3a9-633b894bd062
+范围：复方说明书 5、12.1 节：分别引用两种成分的作用与风险；Glyburide 即格列本脲。
+用于：降糖药：改善代谢、促分泌与外源补充
+
+147. 人胰岛素说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=b519bd83-038c-4ec5-a231-a51ec5cc291f
+范围：HUMULIN R 的 5.3、5.6、12.1 节：引用胰岛素共同机制及低血糖、低钾风险，不泛化制剂时程。
+用于：降糖药：改善代谢、促分泌与外源补充
+
+148. 布洛芬与对乙酰氨基酚机制说明 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b32651c4-7fa0-415b-91eb-854aa1c28f2a
+范围：COMBOGESIC 复方说明书 12.1 节：分别引用两种成分的机制。
+用于：解热镇痛药：COX 选择性与抗炎作用
+
+149. 布洛芬说明书 · emc
+https://www.medicines.org.uk/emc/product/6713/smpc
+范围：4.4、4.5、5.1 节：抗炎、血小板影响及胃肠道、肾脏和心血管风险。
+用于：解热镇痛药：COX 选择性与抗炎作用
+
+150. 对乙酰氨基酚说明书 · emc
+https://www.medicines.org.uk/emc/product/3233/smpc
+范围：4.4、4.9、5.1、5.2 节：抗炎与血小板作用、机制不确定性及肝毒性。
+用于：解热镇痛药：COX 选择性与抗炎作用
+
+151. 丙戊酸钠说明书 · emc
+https://www.medicines.org.uk/emc/product/519/smpc
+范围：Epilim 的 4.4、4.5、5.1 节：安全性、代谢相互作用与 GABA 相关机制。
+用于：抗癫痫药：苯妥英钠 vs 丙戊酸钠
+
+152. 丙戊酸活性成分的药理说明 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=ec41025a-ed7d-48c8-9005-08e3a9417f30
+范围：7.2、12.1～12.3 节：丙戊酸根的代谢抑制与浓度相关蛋白结合；不外推不同制剂的吸收时程。
+用于：抗癫痫药：苯妥英钠 vs 丙戊酸钠
+
+153. 失神发作的药物治疗 · NICE NG217
+https://www.nice.org.uk/guidance/ng217/chapter/treating-epileptic-seizures-in-children-young-people-and-adults
+范围：5.3 节：丙戊酸的适用性与安全限制，以及苯妥英可能加重失神发作的提醒。
+用于：抗癫痫药：苯妥英钠 vs 丙戊酸钠
+
+154. 阿莫西林说明书 · emc
+https://www.medicines.org.uk/emc/product/10638/smpc
+范围：4.4、5.1 节：过敏与腹泻风险、PBPs、肽聚糖合成及耐药机制。
+用于：常用抗菌药：细胞壁、核糖体与 DNA
+
+155. 奥美拉唑说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=859de60d-dc1a-41d6-9aac-44dff3be3d31
+范围：5.7、5.9、12.1～12.3 节：质子泵与泌酸、吸收、氯吡格雷相互作用及低镁风险。
+用于：胃病用药：抑酸 vs 黏膜保护
+
+156. 多潘立酮靶点说明 · 美国国家癌症研究所
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/domperidone
+范围：药物词典：D2 受体拮抗与胃肠道作用。
+用于：止吐药：多潘立酮 vs 昂丹司琼
+
+157. 青霉素 G（苄青霉素钠）说明书 · emc
+https://www.medicines.org.uk/emc/product/13988/smpc
+范围：4.4、5.1 节：过敏风险、PBPs、细胞壁合成和 β-内酰胺酶等耐药途径。
+用于：细胞壁抗菌药：青霉素 G vs 万古霉素
+
+158. 万古霉素静脉制剂说明书 · emc
+https://www.medicines.org.uk/emc/product/8759/smpc
+范围：4.4、5.1 节：肾毒性与输注反应、前体末端结合、van 基因相关耐药。
+用于：细胞壁抗菌药：青霉素 G vs 万古霉素
+
+159. 洛哌丁胺胶囊说明书 · emc
+https://www.medicines.org.uk/emc/product/14352/smpc
+范围：4.4、4.5、4.9、5.1 节：治疗剂量下有限的血脑屏障穿透、相互作用与过量风险。
+用于：阿片受体药物：吗啡 vs 洛哌丁胺
+
+160. 甲巯咪唑靶点说明 · 美国国家癌症研究所
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/methimazole
+范围：药物词典：TPO 抑制与甲状腺激素合成。
+用于：甲状腺用药：补充激素 vs 抑制合成
+
+161. 庆大霉素输注制剂说明书 · emc
+https://www.medicines.org.uk/emc/product/15154/smpc
+范围：4.2、4.4、5.1、5.2 节：30S、细菌酶介导失活、原形肾排泄及肾、耳毒性监测。
+用于：核糖体抗菌药：庆大霉素 vs 阿奇霉素、注射抗菌药：头孢曲松 vs 庆大霉素
+
+162. 苯妥英钠 DILANTIN 缓释胶囊说明书 · DailyMed
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=db8c69b0-4697-433e-98c7-b0b2d2c52a83
+范围：5.1、5.3、5.8、6、11、12.1、12.3 节：乙内酰脲、钠通道、饱和代谢及停药和毒性风险。
+用于：抗惊厥机制：地西泮 vs 苯妥英
+
+163. 布洛芬口服片说明书 · emc
+https://www.medicines.org.uk/emc/product/100451/smpc
+范围：4.4、4.5、5.1 节：NSAID、前列腺素、感染掩盖及胃肠道、肾脏与心血管风险。
+用于：抗炎药：地塞米松 vs 布洛芬
+
+164. 吉非替尼药物词典 · 美国国家癌症研究所（NCI）
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/gefitinib
+范围：药物定义：在 EGFR 酪氨酸激酶结构域竞争 ATP，抑制自磷酸化与信号传递。
+用于：靶向抗肿瘤药：曲妥珠单抗 vs 吉非替尼
+
+165. 头孢曲松注射 / 输注制剂说明书 · emc
+https://www.medicines.org.uk/emc/product/102127/smpc
+范围：4.2～4.5、5.1、5.2 节：PBP、β-内酰胺酶、尿液与胆汁排泄、含钙制剂限制和重要风险。
+用于：注射抗菌药：头孢曲松 vs 庆大霉素
+
+166. 舍曲林口服片说明书 · emc
+https://www.medicines.org.uk/emc/product/4348/smpc
+范围：4.1、4.4、4.5、4.8、5.1 节：SSRI、用途、5-HT 再摄取、QT 及其他重要风险。
+用于：精神科用药：舍曲林 vs 氯丙嗪
+
+167. 吲哚美辛栓剂说明书 · emc
+https://www.medicines.org.uk/emc/product/2946/smpc
+范围：4.4 节：抑制血小板聚集的药理效应；不外推该制剂剂量及吸收速度。
+用于：非甾体抗炎药：吲哚美辛 vs 塞来昔布
+
+168. 塞来昔布口服胶囊说明书 · emc
+https://www.medicines.org.uk/emc/product/14537/smpc
+范围：4.1、4.4、5.1 节：COX-2 选择性、血小板效应及胃肠、心血管、肾脏风险。
+用于：非甾体抗炎药：吲哚美辛 vs 塞来昔布
+
+169. 伊马替尼口服片说明书 · emc
+https://www.medicines.org.uk/emc/product/13520/smpc
+范围：4.1、4.4、4.8、5.1 节：BCR-ABL、KIT、PDGFR、适应症条件、液体潴留及血液和肝脏监测。
+用于：小分子靶向药：伊马替尼 vs 吉非替尼
+
+170. 吉非替尼口服片说明书 · emc
+https://www.medicines.org.uk/emc/product/10591/smpc
+范围：4.1、4.4、4.8、5.1 节：EGFR、激活突变检测、晚期非小细胞肺癌及肺、肝、皮肤和胃肠风险。
+用于：小分子靶向药：伊马替尼 vs 吉非替尼

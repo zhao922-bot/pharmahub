@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 主色：深蓝；背景：近白，带一点冷调，营造干净的专业感 */
+    --background: 210 40% 99%;
+    --foreground: 215 45% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 45% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 45% 15%;
+
+    --primary: 214 62% 28%;
+    --primary-foreground: 210 40% 99%;
+
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 214 45% 24%;
+
+    --muted: 214 28% 96%;
+    --muted-foreground: 215 16% 45%;
+
+    --accent: 199 78% 94%;
+    --accent-foreground: 214 62% 26%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 90%;
+    --input: 214 25% 90%;
+    --ring: 214 62% 42%;
+
+    --radius: 0.75rem;
+
+    /* 机制图三种语义色：靶点=靛蓝，信号=青绿，效应=琥珀 */
+    --mechanism-target: 231 55% 46%;
+    --mechanism-signal: 174 62% 34%;
+    --mechanism-effect: 32 88% 45%;
+  }
+
+  /*
+   * 深色模式。
+   *
+   * 不是简单地把白色反成黑色：深色下背景用带蓝调的深灰（不是纯黑），
+   * 避免纯黑与白字的极端对比造成眩光；主色相应提亮，保证在深色背景上
+   * 仍然有足够对比度。
+   *
+   * 机制图的三种语义色在深色下也做了提亮处理（见 lib/diagram/theme.ts），
+   * 因为原始靛蓝/青绿在深色背景上会显得过暗。
+   */
+  .dark {
+    --background: 217 32% 9%;
+    --foreground: 210 30% 94%;
+
+    --card: 217 28% 13%;
+    --card-foreground: 210 30% 94%;
+
+    --popover: 217 28% 13%;
+    --popover-foreground: 210 30% 94%;
+
+    --primary: 210 65% 62%;
+    --primary-foreground: 217 32% 9%;
+
+    --secondary: 217 22% 19%;
+    --secondary-foreground: 210 28% 90%;
+
+    --muted: 217 22% 17%;
+    --muted-foreground: 215 16% 66%;
+
+    --accent: 215 30% 20%;
+    --accent-foreground: 210 30% 92%;
+
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 20% 22%;
+    --input: 217 20% 24%;
+    --ring: 210 65% 58%;
+
+    --mechanism-target: 231 68% 70%;
+    --mechanism-signal: 174 55% 55%;
+    --mechanism-effect: 32 82% 62%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 移动端点击高亮去掉，避免出现蓝色方块 */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 尊重用户的减少动效偏好 */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* 详情页正文的排版节奏 */
+  .prose-pharma {
+    @apply text-[15px] leading-7 text-foreground/90;
+  }
+}

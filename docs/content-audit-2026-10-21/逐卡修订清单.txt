@@ -1,0 +1,463 @@
+63 张早期卡片修订清单
+日期：2026-10-21
+每张卡同时更新机制正文、图解、用途、不良反应、记忆提示及参考资料；详见项目页面。
+
+美托洛尔（metoprolol）
+靶点/作用位点：相对选择性阻断 β1 肾上腺素受体
+用途范围：高血压；慢性稳定型心绞痛；所引酒石酸盐制剂用于特定稳定患者的心肌梗死治疗；心衰用途需另核对琥珀酸盐缓释制剂
+记忆提示：β1 阻断使心脏反应减弱；选择性和心衰用途都要看条件。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c0e147a8-36a6-1e61-e053-2a95a90afd62
+
+氨氯地平（amlodipine）
+靶点/作用位点：抑制血管平滑肌 L 型钙通道介导的钙内流
+用途范围：高血压；慢性稳定型心绞痛；血管痉挛性心绞痛
+记忆提示：血管钙内流减少，阻力随之下降；降压平稳不等于急救起效。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e9a6c82-9f25-4c71-b09a-929bd5d7b1cf
+
+氯沙坦（losartan）
+靶点/作用位点：氯沙坦及活性代谢物阻断血管紧张素 II 的 AT1 受体
+用途范围：高血压；伴高血压、蛋白尿等符合说明书条件的 2 型糖尿病肾病
+记忆提示：ARB 堵住 AT1；血管紧张素 II 水平不一定下降。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a959c71b-d658-4871-b303-073234b9fa84
+
+氢氯噻嗪（hydrochlorothiazide）
+靶点/作用位点：抑制远曲小管 Na+/Cl− 同向转运体（NCC）
+用途范围：高血压；心衰、肝硬化或某些肾脏疾病相关水肿的辅助治疗
+记忆提示：噻嗪抑制远曲小管 NCC，降压同时要监测钠、钾和代谢变化。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31a3d1cb-0f52-4818-965d-7584374bb23e
+https://www.medicines.org.uk/emc/product/100496/smpc
+
+阿托伐他汀（atorvastatin）
+靶点/作用位点：竞争性抑制 HMG-CoA 还原酶
+用途范围：原发性高胆固醇血症、混合型血脂异常；符合风险条件人群的心血管事件预防
+记忆提示：抑制合成、增加 LDL 清除；肌毒性不能简单归因于辅酶 Q10 缺乏。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a60cc18b-0631-4cf0-b021-9f52224ece65
+
+呋塞米（furosemide）
+靶点/作用位点：抑制髓袢升支粗段 Na+/K+/2Cl− 同向转运体（NKCC2）
+用途范围：心衰、肝硬化或肾脏疾病相关水肿；伴容量超负荷的肺水肿等情境；急性处理需核对注射制剂与整体方案
+记忆提示：袢利尿排钠排水；尿量上升不等于肾损伤治愈。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=48d8f490-e9d1-4c95-ab2f-414d3f4a9df4
+https://kdigo.org/wp-content/uploads/2016/10/KDIGO-2012-AKI-Guideline-English.pdf
+https://www.medicines.org.uk/emc/product/12129/smpc
+
+硝酸甘油（nitroglycerin）
+靶点/作用位点：经生物转化产生 NO 相关信号，激活可溶性鸟苷酸环化酶
+用途范围：冠心病心绞痛急性发作的缓解（舌下制剂）；诱发活动前短期预防心绞痛（舌下制剂）
+记忆提示：NO—cGMP—舒张静脉—降低前负荷；注意严重低血压的联用禁忌。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f7059ff7-bf74-48b4-811d-6eb1c26bfd8b
+
+地高辛（digoxin）
+靶点/作用位点：抑制细胞膜 Na+/K+-ATP 酶
+用途范围：部分心力衰竭患者的症状治疗；不能据此宣称降低死亡率；成人慢性房颤的静息心室率控制
+记忆提示：抑制钠钾泵增强收缩；控心室率是并行作用，治疗窗窄。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=dfac7f13-28be-423d-9389-9089da29da17
+
+卡托普利（captopril）
+靶点/作用位点：抑制血管紧张素转化酶（ACE，亦称激肽酶 II）
+用途范围：高血压；心力衰竭；特定心肌梗死后左室功能障碍患者及符合条件的糖尿病肾病
+记忆提示：ACE 同时涉及 Ang II 与缓激肽；降压和干咳需分清。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1395ba5b-2fc9-41ff-9c43-e0740d781dee
+
+华法林（warfarin）
+靶点/作用位点：抑制维生素 K 环氧化物还原酶复合体（VKORC1）
+用途范围：静脉血栓栓塞的治疗与预防；符合抗凝指征的房颤及机械心脏瓣膜相关血栓栓塞预防
+记忆提示：华法林影响新生成因子的功能，起效慢、需监测 INR；桥接不是固定动作。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cdbbc317-35d3-42ba-94f0-c83891358529
+https://www.chestnet.org/guidelines-and-topic-collections/guidelines/pulmonary-vascular/perioperative-management-of-antithrombotic-therapy
+
+氯吡格雷（clopidogrel）
+靶点/作用位点：活性代谢物不可逆抑制血小板 ADP 的 P2Y12 受体
+用途范围：急性冠脉综合征等情境的抗血小板治疗；近期心肌梗死、缺血性卒中或确诊外周动脉疾病的事件预防
+记忆提示：前药活化后阻断 P2Y12；抗血小板治疗不能随意停。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ab32a331-2cea-453b-bba1-5451d38edd73
+
+阿莫西林（amoxicillin）
+靶点/作用位点：结合青霉素结合蛋白（PBP），抑制细菌细胞壁合成
+用途范围：敏感细菌所致的耳鼻喉、呼吸道等感染；幽门螺杆菌根除方案中的联合用药；需结合耐药与指南选择方案
+记忆提示：PBP—细胞壁是主线；并非所有呼吸道感染都需要阿莫西林。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c395111-c9c1-483e-a542-58b935ede689
+
+头孢曲松（ceftriaxone）
+靶点/作用位点：结合 PBP，抑制细菌细胞壁肽聚糖合成
+用途范围：敏感细菌所致的肺炎、尿路等感染；敏感病原体所致的细菌性脑膜炎等严重感染
+记忆提示：第三代头孢抑制 PBP；脑膜炎用途和含钙制剂限制都要看具体条件。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8351aa37-552d-471d-b293-c564dcb6ec29
+
+阿奇霉素（azithromycin）
+靶点/作用位点：结合细菌 50S 核糖体的 23S rRNA，抑制蛋白质合成
+用途范围：敏感病原体所致的呼吸道等感染；符合诊疗规范的某些衣原体感染
+记忆提示：阿奇作用于 50S；非典型病原体的细胞结构并不相同。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cd01f37d-4392-4d2b-e053-2995a90a721f
+
+左氧氟沙星（levofloxacin）
+靶点/作用位点：抑制细菌 DNA 回旋酶和拓扑异构酶 IV
+用途范围：经病原体、药敏和风险评估适用的细菌性肺炎等感染；某些复杂性尿路感染等；不能作为所有轻症感染的默认选药
+记忆提示：两类拓扑异构酶是靶点；耐药与严重不良反应都不能忽视。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=067e260c-dc47-4957-a9ff-5a79f17b4ca0
+
+甲硝唑（metronidazole）
+靶点/作用位点：经还原活化形成可损伤微生物 DNA 的中间产物
+用途范围：敏感厌氧菌感染；滴虫病、阿米巴病等符合说明书的原虫感染
+记忆提示：先还原活化，再损伤 DNA；精确机制仍有未明之处。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=f7e5dacd-0bc4-4ac4-e053-6394a90a457a&type=display
+
+青霉素 G（penicillin-g）
+靶点/作用位点：结合 PBP，抑制细菌细胞壁肽聚糖交联
+用途范围：敏感链球菌、肺炎链球菌等所致感染；梅毒等感染；须依据病期选择青霉素 G 的具体制剂和给药途径
+记忆提示：青霉素 G 抑制细胞壁；水溶性盐和长效盐不能混用。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e0ced9d8-b9ea-466e-bf2c-10e9cc636f3f
+https://www.cdc.gov/std/treatment-guidelines/syphilis.htm
+
+庆大霉素（gentamicin）
+靶点/作用位点：结合细菌 30S 核糖体亚基，干扰蛋白质合成
+用途范围：敏感革兰阴性菌等所致严重感染；结合感染部位与药敏选择；特定感染联合方案中的用药，不能凭协同机制自行联用
+记忆提示：30S 读码出错；用药同时看肾功能、听力和暴露。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=449c9a41-d61e-49fd-b5e3-d76f74b92acf
+
+万古霉素（vancomycin）
+靶点/作用位点：结合肽聚糖前体的 D-Ala-D-Ala 末端
+用途范围：敏感 MRSA 等革兰阳性菌所致严重全身感染（静脉制剂）；特定肠腔内感染如艰难梭菌感染（口服方案，须核对对应制剂）
+记忆提示：万古结合前体末端；途径决定作用部位，慢滴也需观察反应。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=06dcfd36-942f-4752-86ad-4c5a6fc3e48f
+
+环磷酰胺（cyclophosphamide）
+靶点/作用位点：活性烷化代谢物损伤 DNA，包括形成交联
+用途范围：淋巴瘤、乳腺癌等恶性肿瘤的特定治疗方案；符合条件的难治性儿童微小病变肾病综合征等，需专科评估
+记忆提示：前药活化后烷化 DNA；磷酰胺氮芥和丙烯醛是分支产物。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5bad5bfc-12c0-46a2-8355-1028f108ecbf
+
+甲氨蝶呤（methotrexate）
+靶点/作用位点：抑制二氢叶酸还原酶（DHFR）等叶酸相关过程
+用途范围：特定白血病、淋巴瘤等抗肿瘤方案；类风湿关节炎、严重银屑病等非肿瘤用途，给药周期须严格核对
+记忆提示：DHFR 阻断影响核酸；亚叶酸是解救环节，按周不能记成每日。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aafd97c1-3a0a-42b2-845a-a9db9bb7d876
+https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=79d023ab-7d77-48c1-8f47-ea322fd58c2b
+
+曲妥珠单抗（trastuzumab）
+靶点/作用位点：结合 HER2 受体胞外结构域，并可介导 ADCC
+用途范围：符合 HER2 检测及治疗条件的乳腺癌；HER2 阳性转移性胃或胃食管结合部腺癌的特定联合方案
+记忆提示：抗体识别 HER2，并可借助 ADCC；不能把作用只记成二聚化阻断。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=492dbdb2-077e-4064-bff3-372d6af0a7a2
+
+伊马替尼（imatinib）
+靶点/作用位点：抑制 BCR-ABL、KIT、PDGFR 等酪氨酸激酶
+用途范围：符合条件的 Ph+（BCR-ABL 阳性）慢性髓性白血病；特定 KIT 阳性不可切除或转移性 GIST 等符合说明书的情境
+记忆提示：伊马替尼看 BCR-ABL、KIT 等分子背景，不能只记一个靶点。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c0611fc0-b217-4988-acd4-b8c629ce489b
+
+顺铂（cisplatin）
+靶点/作用位点：与 DNA 结合形成链内和链间交联
+用途范围：睾丸癌、卵巢癌等特定联合化疗方案；符合说明书条件的晚期膀胱癌等
+记忆提示：铂类形成 DNA 交联；肾、耳和神经是重要风险。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a440f077-46f6-4688-a209-65bce38d1c92
+
+氟尿嘧啶（fluorouracil）
+靶点/作用位点：代谢物抑制胸苷酸合成酶，并可掺入 RNA 或 DNA
+用途范围：结直肠癌等特定抗肿瘤方案（系统制剂）；乳腺癌、胃癌、胰腺癌等符合方案的情境；外用制剂另有用途
+记忆提示：5-FU 既影响胸苷酸，也影响 RNA/DNA；DPD 风险不能漏。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8eff167f-203a-4a81-b2fc-d8773bc3555e
+
+吉非替尼（gefitinib）
+靶点/作用位点：可逆抑制 EGFR 酪氨酸激酶活性
+用途范围：所引说明书限定的 EGFR 外显子 19 缺失或 21 L858R 突变的转移性非小细胞肺癌
+记忆提示：EGFR 敏感突变指导选择；皮疹仍是不良反应，不是疗效证明。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1a3c0ce7-06a1-4e04-9106-14ddb2a866a5
+
+地西泮（diazepam）
+靶点/作用位点：结合 GABA-A 受体的苯二氮䓬位点，正向调节 GABA 作用
+用途范围：焦虑障碍或焦虑症状的短期治疗；骨骼肌痉挛等的辅助治疗；特定癫痫或酒精戒断治疗方案；急救途径须另核对
+记忆提示：增强 GABA，不等于直接代替 GABA；联用中枢抑制剂风险增加。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=260e2041-2bb3-482f-850e-b5d47a7bdbe6
+
+氟西汀（fluoxetine）
+靶点/作用位点：抑制 5-羟色胺转运体（SERT）介导的再摄取
+用途范围：重性抑郁障碍；强迫症、神经性贪食症及惊恐障碍等符合说明书的用途
+记忆提示：SSRI 减少再摄取；分子作用较快，临床改善不一定同步。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ab1eec9d-f755-81a2-e053-2a95a90acb3c
+
+氯丙嗪（chlorpromazine）
+靶点/作用位点：主要拮抗多巴胺 D2 受体，同时影响其他受体
+用途范围：精神分裂症等精神病性障碍；特定躁狂、难治性呃逆等符合说明书的情境
+记忆提示：D2 阻断需分通路理解；不能由受体阻断直接推导 cAMP 必然下降。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=41b86f9d-d7e2-4296-8d88-e8257c7cbed2
+https://www.medicines.org.uk/emc/product/3475/smpc
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/chlorpromazine
+
+吗啡（morphine）
+靶点/作用位点：主要激动 μ 阿片受体
+用途范围：严重到需要阿片类且替代治疗不足的急性或慢性疼痛，按具体制剂评估
+记忆提示：μ 受体激动能镇痛，也能抑制呼吸；疗效与风险同时评估。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3c847554-3b4b-4d24-a145-2ef7e9b83699
+
+左旋多巴（levodopa）
+靶点/作用位点：作为多巴胺前体进入脑内，再经脱羧形成多巴胺
+用途范围：帕金森病等符合说明书的帕金森综合征运动症状
+记忆提示：前体进脑后变成多巴胺；外周脱羧抑制靠复方另一成分。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dd2215a9-ee0f-443a-a2e3-3d0578c8cd8f
+
+苯妥英钠（phenytoin）
+靶点/作用位点：电压依赖性阻断神经元钠通道，限制持续高频放电
+用途范围：强直阵挛发作及部分局灶性发作；神经外科手术相关发作等符合具体制剂说明书的用途
+记忆提示：钠通道限制高频放电；代谢可饱和，制剂不可混用。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=86dd27d1-9cee-48ae-b55d-e2d2f7dbc593&type=display
+
+丙戊酸钠（valproate）
+靶点/作用位点：多环节抗癫痫作用，可能涉及脑内 GABA 增加及离子通道调节
+用途范围：局灶性、失神等符合具体制剂说明书的癫痫发作；躁狂或偏头痛预防等用途须另核对当地批准的具体制剂
+记忆提示：多机制尚未完全明确；肝、胰腺和生殖风险必须记住。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ec41025a-ed7d-48c8-9005-08e3a9417f30
+
+氟哌啶醇（haloperidol）
+靶点/作用位点：主要拮抗中枢多巴胺 D2 受体
+用途范围：精神分裂症等精神病性障碍；特定抽动障碍等用途需按年龄及制剂说明书评估
+记忆提示：D2 阻断较突出，但运动、心律和恶性综合征风险不能忽略。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=325d169d-310d-4ada-e063-6294a90afbdd
+https://www.medicines.org.uk/emc/product/15252/smpc
+
+舍曲林（sertraline）
+靶点/作用位点：抑制 5-羟色胺转运体（SERT）介导的再摄取
+用途范围：抑郁障碍；强迫症、惊恐障碍及创伤后应激障碍等符合说明书的用途
+记忆提示：SSRI 减少再摄取；分子作用较快，临床改善不一定同步。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=91b4c802-9c6b-49bb-b5a7-661e1917ef34
+
+二甲双胍（metformin）
+靶点/作用位点：减少肝糖输出、改善胰岛素敏感性等；完整分子机制未完全明确
+用途范围：2 型糖尿病的血糖控制，结合饮食运动及个体病情选择
+记忆提示：降肝糖、改善利用；不靠强促分泌，分子机制仍未完全阐明。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=104b5f5b-cc83-450d-82ec-1fd20c4f7119
+
+胰岛素（insulin）
+靶点/作用位点：激动胰岛素受体（受体酪氨酸激酶）
+用途范围：1 型糖尿病的胰岛素替代；需要胰岛素治疗的 2 型糖尿病等符合具体制剂条件的情境
+记忆提示：受体信号促摄糖并抑制肝糖；制剂不同，时间曲线不同。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=81199e55-ade9-46de-a5a3-c0415acee403
+
+格列本脲（glibenclamide）
+靶点/作用位点：结合胰岛 β 细胞 KATP 通道的 SUR1 亚基
+用途范围：仍有 β 细胞功能的 2 型糖尿病；需结合低血糖风险选择
+记忆提示：关钾通道会去极化、开钙通道，最后促胰岛素释放。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a56f100f-0f42-4188-81ab-04644b824040
+
+左甲状腺素钠（levothyroxine）
+靶点/作用位点：补充 T4，经转化为 T3 等作用于甲状腺激素核受体
+用途范围：先天或获得性甲状腺功能减退的替代治疗；特定分化型甲状腺癌治疗中的 TSH 抑制，需个体化评估
+记忆提示：补 T4 后转 T3 调基因；剂量过量会造成医源性甲亢。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b8c20f76-3ee6-4b29-b77f-ed4ad1baaed9
+
+地塞米松（dexamethasone）
+靶点/作用位点：结合细胞内糖皮质激素受体，调节基因表达及炎症反应
+用途范围：特定严重炎症、过敏或免疫性疾病的治疗；某些肿瘤相关脑水肿等符合制剂说明书的辅助治疗
+记忆提示：激素调转录、抗炎但不灭菌；减量要看疗程和病情。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=11f10a47-1c42-40e4-89d8-bb000fef497c
+https://www.medicines.org.uk/emc/product/15864/smpc
+https://www.cancer.gov/publications/dictionaries/cancer-drug/def/dexamethasone
+
+丙硫氧嘧啶（propylthiouracil）
+靶点/作用位点：抑制甲状腺过氧化物酶（TPO）相关的激素合成，另抑制外周 T4→T3 转化
+用途范围：甲巯咪唑不耐受且其他治疗不合适的甲亢等特定情境；甲状腺手术或放射性碘治疗前的特定准备方案
+记忆提示：两药抑制新合成；PTU 还影响外周转化，选择差别不止这一点。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b0c23a2c-b250-4c0d-9b2a-c1483faa2ca0
+https://doi.org/10.1089/thy.2016.0229
+
+甲巯咪唑（methimazole）
+靶点/作用位点：抑制甲状腺过氧化物酶（TPO）相关的激素合成
+用途范围：Graves 病等甲状腺功能亢进；甲状腺手术或放射性碘治疗前的特定准备方案
+记忆提示：两药抑制新合成；PTU 还影响外周转化，选择差别不止这一点。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=acae35a6-dea2-3fa9-e053-2a95a90a3a4d&type=display
+https://doi.org/10.1089/thy.2016.0229
+
+奥美拉唑（omeprazole）
+靶点/作用位点：抑制胃壁细胞 H+/K+-ATP 酶（质子泵）
+用途范围：胃食管反流病、胃或十二指肠溃疡等酸相关疾病；幽门螺杆菌根除方案中的抑酸药；病理性高胃酸分泌状态
+记忆提示：酸中活化后抑制质子泵；抑酸不等于根除幽门螺杆菌。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5aba19da-663f-4901-94e2-f438dba4841f
+
+雷尼替丁（ranitidine）
+靶点/作用位点：拮抗胃壁细胞组胺 H2 受体
+用途范围：胃食管反流病、消化性溃疡等历史及相应获批产品的酸相关适应症；实际使用须核对当地产品
+记忆提示：H2 阻断减少胃酸；监管状态要注明产品、地区和日期。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=92e1e60c-be24-4b20-8a2a-a39d03cc3cf3
+https://www.fda.gov/drugs/drug-safety-and-availability/fda-approves-reformulated-ranitidine-following-comprehensive-safety-review
+
+多潘立酮（domperidone）
+靶点/作用位点：主要拮抗外周多巴胺 D2 受体，并作用于血脑屏障外的催吐化学感受区
+用途范围：恶心、呕吐的短期缓解（按所引口服制剂说明书及当地批准范围）
+记忆提示：外周 D2 拮抗可促动力止吐，但口服也有心律风险。
+机制题：不生成顺序题
+参考：https://www.medicines.org.uk/emc/product/3188/smpc
+
+昂丹司琼（ondansetron）
+靶点/作用位点：选择性拮抗 5-HT3 受体
+用途范围：化疗或放疗相关恶心、呕吐的预防；术后恶心、呕吐的预防，按具体制剂使用
+记忆提示：5-HT3 阻断减少呕吐信号；诱因与给药不能强排为固定顺序。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f08f56de-8678-4da9-8cae-013a5c393453
+
+硫糖铝（sucralfate）
+靶点/作用位点：在溃疡表面形成黏附性保护复合物，主要局部作用
+用途范围：活动性十二指肠溃疡的短期治疗；溃疡愈合后的特定维持方案（所引口服片）
+记忆提示：硫糖铝覆盖溃疡面，不是质子泵抑制剂；留意铝与吸附相互作用。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a4f722e7-2885-4f27-8358-9c662439600a
+
+洛哌丁胺（loperamide）
+靶点/作用位点：作用于肠壁 μ 阿片受体，减少推进性蠕动
+用途范围：符合年龄和禁忌要求的急性非特异性腹泻的对症缓解；特定慢性腹泻或回肠造口排出量管理，需医生评估
+记忆提示：慢蠕动能减轻腹泻，不能替代病因判断与补液。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=26a50243-ab72-849b-e063-6394a90a60a9
+
+美沙拉嗪（mesalazine）
+靶点/作用位点：主要在肠黏膜局部抗炎，确切机制尚未完全明确
+用途范围：成人轻中度活动性溃疡性结肠炎的诱导与维持缓解（所引 LIALDA 口服制剂）
+记忆提示：5-ASA 局部抗炎；释放系统不是前药活化。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3098a080-be86-4265-9818-7fc4beab77b7
+
+阿司匹林（aspirin）
+靶点/作用位点：乙酰化环氧化酶；低剂量时不可逆抑制血小板 COX-1
+用途范围：有适应证患者的动脉粥样硬化性心血管事件二级预防；疼痛或发热的对症治疗需核对相应剂型和人群限制
+记忆提示：低剂量抑制血小板 COX-1；肠溶也不能消除出血风险。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c994d693-a505-4794-8803-4b91098b6517
+https://www.medicines.org.uk/emc/product/2614/smpc
+
+布洛芬（ibuprofen）
+靶点/作用位点：抑制环氧化酶 COX-1 与 COX-2
+用途范围：轻中度疼痛、原发性痛经；类风湿关节炎、骨关节炎的症状缓解；退热需核对对应制剂
+记忆提示：COX 受抑可镇痛抗炎；选择性也不能免除胃、肾与心血管风险。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=138edf0b-d7da-44b6-b010-d311a37087fe
+
+对乙酰氨基酚（paracetamol）
+靶点/作用位点：解热镇痛涉及中枢等环节，确切机制尚未完全阐明
+用途范围：轻中度疼痛；发热的对症治疗
+记忆提示：解热镇痛机制未完全解明；复方叠加时最要防总量重复。
+机制题：不生成顺序题
+参考：https://www.medicines.org.uk/emc/product/100828/smpc
+
+塞来昔布（celecoxib）
+靶点/作用位点：临床剂量下选择性抑制 COX-2
+用途范围：骨关节炎、类风湿关节炎等的症状缓解；特定急性疼痛、原发性痛经等符合说明书的用途
+记忆提示：COX 受抑可镇痛抗炎；选择性也不能免除胃、肾与心血管风险。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2d6675e4-5859-4be2-8037-a20ce9f707aa
+
+吲哚美辛（indomethacin）
+靶点/作用位点：抑制环氧化酶 COX-1 与 COX-2
+用途范围：类风湿关节炎、骨关节炎、强直性脊柱炎的症状缓解；急性痛风性关节炎等；早产儿动脉导管用途属于另行核对的注射制剂
+记忆提示：COX 受抑可镇痛抗炎；选择性也不能免除胃、肾与心血管风险。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=16238287-d4b0-4afa-8483-1f4ae250a625
+
+沙丁胺醇（salbutamol）
+靶点/作用位点：相对选择性激动支气管平滑肌 β2 肾上腺素受体
+用途范围：可逆性气道阻塞相关支气管痉挛的缓解或预防（吸入制剂）；运动诱发支气管痉挛的预防
+记忆提示：β2—cAMP—舒张气道；SABA 缓解痉挛不能替代哮喘抗炎治疗。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=2ed73618-be3a-4331-9509-6401258f791f
+https://ginasthma.org/2026-gina-summary-guide/
+
+布地奈德（budesonide）
+靶点/作用位点：激动细胞内糖皮质激素受体，调节气道炎症
+用途范围：哮喘维持治疗（所引吸入单方制剂）
+记忆提示：吸入激素管炎症；单方布地奈德与含福莫特罗复方的角色不同。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ae1105cd-69fc-4c15-937f-c535304341c2
+https://ginasthma.org/2026-gina-summary-guide/
+
+氨茶碱（aminophylline）
+靶点/作用位点：释放茶碱，可能经磷酸二酯酶等多条途径发挥作用
+用途范围：特定可逆性气流受限的辅助治疗；需按具体制剂和现行指南评估，不作为哮喘急性加重的常规选择
+记忆提示：茶碱作用多、治疗窗窄；血药浓度只是风险评估的一部分。
+机制题：不生成顺序题
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=52bbc6cd-4baf-7859-e063-6394a90ac87d
+https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf
+
+氯雷他定（loratadine）
+靶点/作用位点：拮抗组胺 H1 受体，以外周作用为主
+用途范围：过敏性鼻炎相关症状；荨麻疹等过敏相关皮肤症状
+记忆提示：第二代通常少困，但不等于绝不困；驾驶需看个体反应。
+机制题：保留经单独核对的四环节主线
+参考：https://www.medicines.org.uk/emc/product/14580/smpc
+
+氯苯那敏（chlorpheniramine）
+靶点/作用位点：拮抗组胺 H1 受体，并有较明显的中枢及抗胆碱作用
+用途范围：过敏性鼻炎相关症状；荨麻疹等过敏相关皮肤症状
+记忆提示：第一代较易困、抗胆碱作用较突出；不应为了嗜睡而自行助眠。
+机制题：保留经单独核对的四环节主线
+参考：https://www.medicines.org.uk/emc/product/14298/smpc
+
+阿昔洛韦（aciclovir）
+靶点/作用位点：活性三磷酸代谢物抑制疱疹病毒 DNA 聚合酶并终止链延伸
+用途范围：单纯疱疹病毒相关感染的治疗或抑制，按具体制剂；水痘、带状疱疹等符合条件的 VZV 感染
+记忆提示：病毒酶先启动、宿主酶再磷酸化，活性物阻断 DNA 延伸。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8d4c9317-7475-42ec-a0b0-d43929114369
+
+奥司他韦（oseltamivir）
+靶点/作用位点：活性羧酸代谢物抑制甲型和乙型流感病毒神经氨酸酶
+用途范围：甲型和乙型流感的治疗，尽早开始；重症或住院等不以 48 小时作绝对排除线；符合条件的流感暴露后预防，年龄和方案按说明书及指南
+记忆提示：奥司阻释放，越早通常越好；重症超过 48 小时仍需评估治疗。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b015d73a-f3b6-4258-8972-6fc4a043aed8
+https://www.cdc.gov/flu/hcp/antivirals/summary-clinicians.html
+
+氟康唑（fluconazole）
+靶点/作用位点：抑制真菌羊毛甾醇 14α-去甲基化酶，影响麦角固醇合成
+用途范围：敏感念珠菌所致黏膜或特定系统感染；隐球菌感染的特定治疗阶段或方案；需结合病情选择
+记忆提示：氟康唑抑制麦角固醇合成；同为唑类也不能外推抗真菌谱。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=98ac5455-d26c-4780-a5a3-bf8d85917626
+
+两性霉素 B（amphotericin-b）
+靶点/作用位点：结合真菌细胞膜麦角固醇，改变膜通透性
+用途范围：严重侵袭性真菌感染，按病原体及具体制剂选择；隐球菌脑膜炎等特定方案的静脉治疗；所引为脂质体制剂
+记忆提示：结合麦角固醇损膜；脂质体和常规制剂不能按同一剂量互换。
+机制题：保留经单独核对的四环节主线
+参考：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a96a734f-d1c4-4d42-93c2-7c336da7f7b9
