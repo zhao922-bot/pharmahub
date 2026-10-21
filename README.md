@@ -40,7 +40,7 @@
 
 当前保留 123 张药物卡片、36 组同类药对比及配套机制图、测验、解析和参考资料。云端上线验收已通过 252 项测试和 66 项浏览器检查，覆盖手机布局、跨会话记录读取、答题保存及导出；开放访问时另复核了 7 项云端数据测试，并实测匿名登录跳转及导出拒绝。技术与开发说明见 [云端版 README](https://github.com/zhao922-bot/pharmahub/blob/online/README.md)。
 
-网站对其他 ChatGPT 账号开放不改变 GitHub 源码仓库的私有权限。下文的本地启动、SQLite、局域网与离线说明适用于 `main` 本地版；早期阶段记录按对应时间保留。
+GitHub 源码仓库现已公开，可直接查看和克隆；公开范围包含源码、测试与文档，不包含真实学习数据库或账号凭据。公开前检查覆盖两个分支及提交历史，见 [信息泄漏检查记录](docs/publication-safety-check-2026-10-21.md)。下文的本地启动、SQLite、局域网与离线说明适用于 `main` 本地版；早期阶段记录按对应时间保留。
 
 ## 数据安全与药物知识免责声明
 
@@ -203,7 +203,7 @@
 
 ## 本地运行
 
-仓库：[zhao922-bot/pharmahub](https://github.com/zhao922-bot/pharmahub)（私有，需要访问权限）。
+仓库：[zhao922-bot/pharmahub](https://github.com/zhao922-bot/pharmahub)（公开，可直接查看和克隆）。
 
 ```bash
 git clone https://github.com/zhao922-bot/pharmahub.git
