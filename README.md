@@ -2,14 +2,49 @@
 
 中文药物机制学习应用，包含 123 张卡片、36 组常用药对比、机制图、测验、解析与参考资料。基于 Vinext、React 和 Cloudflare D1，通过 Sites 托管。
 
-## 使用与数据
+## 在线使用
 
-- 部署后用自己的 ChatGPT 账号登录；当前站点仅所有者可访问。
-- 收藏、复习进度、测验、错题和导出数据按账号隔离，同一账号可跨设备访问。
-- 每日统计与复习计划统一采用 UTC+8；页面会显示该规则。
-- 云端数据库与原电脑上的 SQLite 数据库独立，初次上线不会导入本地历史。原本地项目及数据保留。
-- 云端版需要联网。页面和个人记录不进入 Service Worker 离线缓存。
-- 内容仅供学习参考；来源、审阅日期和教学简化说明见各卡片和对比详情。
+**正式网址：[药枢 PharmaHub](https://pharmahub.ampleox17.chatgpt.site)** · [ACEI / ARB 对比测验](https://pharmahub.ampleox17.chatgpt.site/quiz?compare=acei-vs-arb)
+
+网站已向其他 ChatGPT 账号开放，可以分享网址给他人使用。手机和其他电脑直接通过浏览器访问，无需安装项目、启动原电脑或连接同一个 Wi-Fi。
+
+1. 打开正式网址，按提示使用自己的 ChatGPT 账号登录。
+2. 阅读卡片与机制图，收藏药物、进行掌握程度自评，完成普通测验或同类药对比测验并查看解析。
+3. 换设备时登录同一账号，打开或刷新页面即可查看云端已保存的记录。
+
+## 账号与学习数据
+
+| 数据 | 保存与访问规则 |
+| --- | --- |
+| 复习进度 | 各账号独立保存自评、SM-2 状态、下次复习日期及复习历史 |
+| 统计与热力图 | 根据当前账号的记录计算今日复习数、连续学习天数和学习热力图 |
+| 收藏 | 各账号拥有自己的药物卡片收藏清单 |
+| 测验与错题 | 各账号独立保存答题记录、正确率、错题本和错题重练记录 |
+| CSV / JSON 导出 | 仅导出当前登录账号的复习、测验、错题与收藏记录 |
+
+药物卡片、机制图、对比内容及参考资料由大家共用，个人学习记录按 ChatGPT 用户 ID 隔离。同一账号在手机和电脑上共用记录；新账号从空白个人记录开始，不继承其他人的进度。不同账号在应用内互不查看、修改或清空对方的数据。
+
+站点的访问范围已开放，应用仍要求登录：未登录访问首页或卡片页会进入 ChatGPT 登录流程，个人导出接口返回 401。服务端从登录身份取得用户 ID，不接受前端指定其他用户的数据归属。个人导出使用 `Cache-Control: no-store`。
+
+- **统计时区**：每日统计与复习计划统一采用 UTC+8，页面显示该规则。
+- **本地历史**：云端 D1 与原电脑上的 SQLite 数据库独立。本地历史尚未迁移，不会自动上传或与云端合并；原本地项目及数据保留。
+- **联网要求**：云端版需要联网，个人页面和学习记录不进入 Service Worker 离线页面缓存。
+- **内容范围**：内容仅供学习参考；来源、核对日期和教学简化说明见各卡片及对比详情。
+
+## 版本与源码
+
+| 分支 | 用途 | 运行与数据 |
+| --- | --- | --- |
+| [main](https://github.com/zhao922-bot/pharmahub/tree/main) | 原本地版 | Next.js + Node.js + 本地 SQLite，无 ChatGPT 账号体系 |
+| [online](https://github.com/zhao922-bot/pharmahub/tree/online) | 当前云端版 | Sites / Vinext / Cloudflare Workers + D1，ChatGPT 登录及账号隔离 |
+
+本 README 对应 `online` 分支。网站向其他 ChatGPT 账号开放不改变 GitHub 源码仓库的私有权限。
+
+## 已完成的验证
+
+云端上线时，252 项测试、类型检查和正式构建通过；66 项浏览器检查覆盖 320/375/1366 px、主要页面、跨会话读取进度、完整对比测验与解析、错题和导出。药物卡片与对比数据源文件和本地版一致。
+
+开放访问时复核了 7 项云端数据测试，覆盖账号隔离、并发复习、收藏、测验/错题操作、事务回滚和 UTC+8 日期边界；线上匿名访问首页及卡片页跳转登录，匿名导出返回 401。初次上线验收记录见 [云端验收报告](docs/cloud-verification-2026-10-21.md)，其中所有者私有访问描述属于开放前的历史状态。
 
 ## 开发与检查
 
@@ -75,8 +110,9 @@ Local tool usage metrics are disabled by default. Set `WRANGLER_SEND_METRICS=tru
 - `scripts/connector-preview/` contains the local connector preview Worker and session helpers
 - the remaining `scripts/` files select execution profiles and run installation, development, and builds; the plugin's helpers orchestrate the Sites lifecycle
 - `dist/` contains generated deployment output; `.vinext/`, `.wrangler/`, and `.sites-runtime/` contain ignored local tool state
-- `db/index.ts` reads the D1 binding from the Cloudflare Worker environment
-- `db/schema.ts` starts intentionally empty
+- `lib/db/context.ts` obtains the signed-in user and a request-scoped D1 session; `lib/db/*-store.ts` scopes every personal record operation to that user
+- `db/index.ts` provides a Drizzle D1 helper; the application repositories use the user-scoped context above
+- `db/schema.ts` defines five user-scoped tables: review state, review history, favorites, quiz attempts, and wrong questions; `drizzle/` contains their migrations
 - `@cloudflare/workers-types` provides Worker types; `cloudflare-env.d.ts` declares optional `DB`/`BUCKET` bindings—update these declarations if binding names change
 - `examples/d1/` contains an optional D1 example surface
 - `drizzle.config.ts` supports local migration generation when needed
