@@ -63,7 +63,7 @@
 | [main](https://github.com/zhao922-bot/pharmahub/tree/main) | 原本地版 | Next.js + Node.js + 本地 SQLite，无 ChatGPT 账号体系 |
 | [online](https://github.com/zhao922-bot/pharmahub/tree/online) | 当前云端版 | Sites / Vinext / Cloudflare Workers + D1，ChatGPT 登录及账号隔离 |
 
-本 README 对应 `online` 分支。网站向其他 ChatGPT 账号开放不改变 GitHub 源码仓库的私有权限。
+本 README 对应 `online` 分支。GitHub 源码仓库现已公开，可直接查看和克隆；个人云端学习记录不包含在仓库中，线上应用继续要求登录并按账号隔离。公开前检查覆盖两个分支及提交历史，见 [信息泄漏检查记录](docs/publication-safety-check-2026-10-21.md)。
 
 ## 已完成的验证
 
