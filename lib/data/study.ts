@@ -38,6 +38,7 @@ export interface StudyProgressRepository {
   getProgress(today: Date): Promise<StudyProgress>;
   getReviewLog(cardId: string): Promise<ReviewLog | null>;
   getReviewLogs(cardIds: string[]): Promise<ReviewLog[]>;
+  getAllReviewLogs(): Promise<ReviewLog[]>;
   getDueCardIds(today: Date): Promise<string[]>;
   /** 记录一次复习，返回更新后的记录 */
   recordReview(
@@ -152,6 +153,14 @@ class SqliteStudyRepository implements StudyProgressRepository {
     const rows = db
       .prepare(`SELECT * FROM review_log WHERE card_id IN (${placeholders})`)
       .all(...cardIds) as ReviewLogRow[];
+    return rows.map(rowToLog);
+  }
+
+  async getAllReviewLogs(): Promise<ReviewLog[]> {
+    const db = getDatabase();
+    const rows = db
+      .prepare("SELECT * FROM review_log ORDER BY last_reviewed_at DESC")
+      .all() as ReviewLogRow[];
     return rows.map(rowToLog);
   }
 

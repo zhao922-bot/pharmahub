@@ -1,5 +1,6 @@
-import type { CategoryId, DrugCard } from "@/lib/types";
+import type { CategoryId, ClinicalTagId, DrugCard } from "@/lib/types";
 import { CATEGORIES, getCategoryName } from "@/lib/data/categories";
+import { CARD_ENRICHMENTS } from "@/lib/data/card-enrichment";
 import { buildSearchIndex, searchCardIndex, type CardSearchIndex } from "@/lib/search";
 import { cardiovascularCards } from "@/lib/data/cards/cardiovascular";
 import { antibacterialCards } from "@/lib/data/cards/antibacterial";
@@ -12,6 +13,8 @@ import { respiratoryCards } from "@/lib/data/cards/respiratory";
 import { antiallergicCards } from "@/lib/data/cards/antiallergic";
 import { antiviralCards } from "@/lib/data/cards/antiviral";
 import { antifungalCards } from "@/lib/data/cards/antifungal";
+import { immunomodulatorCards } from "@/lib/data/cards/immunomodulator";
+import { antidoteCards } from "@/lib/data/cards/antidote";
 
 /**
  * 卡片数据访问层。
@@ -28,7 +31,7 @@ import { antifungalCards } from "@/lib/data/cards/antifungal";
  * 原因：搜索命中可能发生在任何字段上，列表项要能展示「命中的是哪一段」，
  * 就必须拿到那些字段的原文。
  *
- * 123 张卡片全量摘要在客户端保留可搜索文本，
+ * 151 张卡片全量摘要在客户端保留可搜索文本，
  * 换来的是零延迟的本地搜索与命中定位。卡片量级再上一个数量级时应改为
  * URL 参数 + 服务端搜索。
  */
@@ -47,6 +50,7 @@ export interface DrugCardSummary {
   mechanismSteps: { title: string; detail: string }[];
   adverseReactions: string[];
   memoryTip: string;
+  clinicalTags?: ClinicalTagId[];
 }
 
 export interface CardQuery {
@@ -67,7 +71,7 @@ export interface CardRepository {
   getFeatured(limit: number): Promise<DrugCard[]>;
 }
 
-/** 全部种子卡片，顺序按分类顺序 + 分类内定义顺序 */
+/** 全部种子卡片，顺序按分类顺序 + 分类内定义顺序，合并药代特征与代表性相互作用 */
 const ALL_CARDS: readonly DrugCard[] = [
   ...cardiovascularCards,
   ...antibacterialCards,
@@ -80,7 +84,21 @@ const ALL_CARDS: readonly DrugCard[] = [
   ...antiallergicCards,
   ...antiviralCards,
   ...antifungalCards,
-];
+  ...immunomodulatorCards,
+  ...antidoteCards,
+].map((card) => {
+  const enrichment = CARD_ENRICHMENTS[card.id];
+  if (!enrichment) return card;
+  return {
+    ...card,
+    ...(card.clinicalTags ?? enrichment.clinicalTags
+      ? { clinicalTags: card.clinicalTags ?? enrichment.clinicalTags }
+      : {}),
+    ...(card.interactions ?? enrichment.interactions
+      ? { interactions: card.interactions ?? enrichment.interactions }
+      : {}),
+  };
+});
 
 /** 把卡片压成列表摘要 */
 function toSummary(card: DrugCard): DrugCardSummary {
@@ -100,6 +118,7 @@ function toSummary(card: DrugCard): DrugCardSummary {
     })),
     adverseReactions: [...card.adverseReactions],
     memoryTip: card.memoryTip,
+    ...(card.clinicalTags?.length ? { clinicalTags: [...card.clinicalTags] } : {}),
   };
 }
 

@@ -1,12 +1,19 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookmarkCheck } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { cards as cardsCopy } from "@/lib/copy";
+import { cardFilterCopy } from "@/lib/copy-features";
 import type { DrugCardSummary } from "@/lib/data/cards";
 import type { SearchMatch } from "@/lib/search";
 import { splitHighlighted } from "@/lib/search";
+
+export interface DrugCardStatus {
+  favorited?: boolean;
+  due?: boolean;
+  learned?: boolean;
+}
 
 /**
  * 列表项卡片。移动端为整行可点击区域，桌面端保持同样的单列节奏，
@@ -20,11 +27,18 @@ import { splitHighlighted } from "@/lib/search";
 export function DrugCardListItem({
   card,
   match,
+  status,
 }: {
   card: DrugCardSummary;
   /** 搜索命中信息；无关键词时为 undefined */
   match?: SearchMatch | null;
+  /** 学习状态（可选）：用于卡片库显示收藏 / 待复习 / 已掌握徽章 */
+  status?: DrugCardStatus;
 }) {
+  const showDue = Boolean(status?.due);
+  const showMastered = !showDue && Boolean(status?.learned);
+  const showFavorited = Boolean(status?.favorited);
+
   return (
     <Link
       href={`/cards/${card.id}`}
@@ -58,12 +72,38 @@ export function DrugCardListItem({
             </p>
           ) : null}
 
-          <div className="mt-3 flex items-center gap-1 text-xs font-medium text-primary">
-            {cardsCopy.detailCta}
-            <ArrowRight
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-1 text-xs font-medium text-primary">
+              {cardsCopy.detailCta}
+              <ArrowRight
+                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </div>
+
+            {showFavorited || showDue || showMastered ? (
+              <div className="flex flex-wrap items-center gap-1.5">
+                {showDue ? (
+                  <Badge variant="warning" className="px-2 py-0 text-[11px]">
+                    {cardFilterCopy.badges.due}
+                  </Badge>
+                ) : null}
+                {showMastered ? (
+                  <Badge variant="accent" className="px-2 py-0 text-[11px]">
+                    {cardFilterCopy.badges.mastered}
+                  </Badge>
+                ) : null}
+                {showFavorited ? (
+                  <Badge
+                    variant="outline"
+                    className="gap-1 px-2 py-0 text-[11px] text-muted-foreground"
+                  >
+                    <BookmarkCheck className="h-3 w-3 text-primary" aria-hidden="true" />
+                    {cardFilterCopy.badges.favorited}
+                  </Badge>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </CardContent>
       </Card>

@@ -13,7 +13,7 @@ const SUITES = [
   "verify-json-heatmap", "verify-export-filter", "verify-review", "verify-stage3",
   "verify-stage4", "verify-search", "verify-interactions", "verify-offline", "shoot",
   "verify-compare-quiz", "verify-card-expansion",
-  "verify-maintenance",
+  "verify-maintenance", "verify-wave1", "verify-wave2",
 ];
 const args = process.argv.slice(2).filter((arg) => arg !== "--");
 let activeTest = null;

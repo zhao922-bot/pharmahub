@@ -1,4 +1,6 @@
-import type { CategoryId, CompareGroup, DrugCard } from "@/lib/types";
+import type { CaseQuestionSpec, CategoryId, CompareGroup, DrugCard } from "@/lib/types";
+import { CASE_QUESTIONS } from "@/lib/data/cases";
+import { validateCaseAnswer } from "@/lib/quiz/case-generator";
 import { buildQuestion, type QuestionKind, type QuizQuestion } from "@/lib/quiz/generator";
 import { validateCompareAnswer } from "@/lib/quiz/compare-generator";
 
@@ -8,6 +10,7 @@ export function validateQuizAnswer(
   groups: readonly CompareGroup[],
   cards: readonly DrugCard[],
   categoryNames: ReadonlyMap<CategoryId, string>,
+  caseQuestions: readonly CaseQuestionSpec[] = CASE_QUESTIONS,
 ): { question: QuizQuestion; selectedId: string } | null {
   if (!input || typeof input !== "object" || Array.isArray(input)) return null;
   const values = input as Record<string, unknown>;
@@ -17,6 +20,8 @@ export function validateQuizAnswer(
   let question: QuizQuestion | null;
   if (answer.kind === "compare") {
     question = validateCompareAnswer(answer, groups, cards);
+  } else if (answer.kind === "case") {
+    question = validateCaseAnswer(answer, caseQuestions);
   } else {
     if (!["target", "category", "indication", "mechanism-order"].includes(answer.kind) ||
         answer.questionId !== `${answer.cardId}:${answer.kind}`) return null;

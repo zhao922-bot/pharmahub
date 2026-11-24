@@ -24,6 +24,12 @@ export interface QuizStats {
   wrongCount: number;
 }
 
+export interface CardAttemptStat {
+  cardId: string;
+  answered: number;
+  correct: number;
+}
+
 export interface WrongQuestionRecord {
   questionId: string;
   cardId: string;
@@ -44,6 +50,7 @@ export interface QuizRepository {
     now: Date;
   }): Promise<{ isCorrect: boolean }>;
   getStats(today: Date): Promise<QuizStats>;
+  getCardAttemptStats(): Promise<CardAttemptStat[]>;
   getWrongQuestions(): Promise<WrongQuestionRecord[]>;
   /** 答对后标记错题已攻克（不清除记录，只更新状态） */
   markCorrect(questionId: string, now: Date): Promise<void>;
@@ -131,6 +138,25 @@ class SqliteQuizRepository implements QuizRepository {
       correctTotal: total.correct,
       wrongCount: wrong.n,
     };
+  }
+
+  async getCardAttemptStats(): Promise<CardAttemptStat[]> {
+    const db = getDatabase();
+    const rows = db
+      .prepare(
+        `SELECT card_id AS cardId,
+                COUNT(*) AS answered,
+                COALESCE(SUM(is_correct), 0) AS correct
+         FROM quiz_attempt
+         GROUP BY card_id`,
+      )
+      .all() as Array<{ cardId: string; answered: number; correct: number }>;
+
+    return rows.map((row) => ({
+      cardId: row.cardId,
+      answered: row.answered,
+      correct: row.correct,
+    }));
   }
 
   async getWrongQuestions(): Promise<WrongQuestionRecord[]> {

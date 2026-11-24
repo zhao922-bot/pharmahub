@@ -66,10 +66,9 @@ const detailState = await page.evaluate(() => {
   const firstCard = dimensionCards[0];
   return {
     hasTitle: text.includes("第一代 vs 第二代抗组胺药"),
-    hasSummary: text.includes("能不能进脑子"),
+    hasSummary: text.includes("H1 受体") && text.includes("中枢镇静"),
     dimensionCount: dimensionCards.length,
     hasTakeaways: text.includes("关键差异"),
-    hasScenarios: text.includes("选药场景"),
     hasCardsSection: text.includes("涉及的卡片"),
     firstDimensionLabel: firstCard?.querySelector("p")?.textContent?.trim() ?? "",
     firstDimensionRows: firstCard?.querySelectorAll("li").length ?? 0,
@@ -78,7 +77,6 @@ const detailState = await page.evaluate(() => {
 check("详情页有标题与摘要", detailState.hasTitle && detailState.hasSummary);
 check("详情页有对比维度", detailState.dimensionCount >= 2, `${detailState.dimensionCount} 个维度`);
 check("详情页有关键差异", detailState.hasTakeaways);
-check("详情页有选药场景", detailState.hasScenarios);
 check("详情页有涉及卡片", detailState.hasCardsSection);
 check("维度内取值数等于药物数", detailState.firstDimensionRows === 2,
   `${detailState.firstDimensionLabel}: ${detailState.firstDimensionRows} 行`);
@@ -96,6 +94,13 @@ check(
   barColors.every((c) => !c.includes("223, 229, 236")),
   barColors.join(" | "),
 );
+
+// === 4b. 选药场景区块（在含 scenarios 的分组验证）===
+await page.goto(`${BASE}/compare/heparin-vs-enoxaparin`, { waitUntil: "networkidle0" });
+const hasScenarios = await page.evaluate(() =>
+  (document.body.textContent || "").includes("选药场景"),
+);
+check("详情页有选药场景", hasScenarios);
 
 // === 5. 三药对比 ===
 await page.goto(`${BASE}/compare/antithrombotic`, { waitUntil: "networkidle0" });

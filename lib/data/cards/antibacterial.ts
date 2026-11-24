@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 抗菌药物 · 15 张卡片
+ * 抗菌药物 · 18 张卡片
  *
  * 机制主线：细胞壁合成（β-内酰胺类）、核糖体 50S（大环内酯类）、
  * DNA 回旋酶（喹诺酮类）、厌氧菌 DNA（硝基咪唑类）。
@@ -723,6 +723,15 @@ export const antibacterialCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "结合细菌核糖体 30S 亚基",
+        "核糖体蛋白质合成过程受抑",
+        "细菌生长所需蛋白质减少",
+        "抑制敏感细菌生长",
+      ],
+      explanation: "本题选取的上游到下游主线：结合细菌核糖体 30S 亚基 → 核糖体蛋白质合成过程受抑 → 细菌生长所需蛋白质减少 → 抑制敏感细菌生长。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Doxycycline hyclate 胶囊说明书",
@@ -794,6 +803,15 @@ export const antibacterialCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "结合细菌 50S 亚基的 23S rRNA",
+        "阻止功能性 70S 起始复合物形成",
+        "细菌蛋白质翻译起始受阻",
+        "限制敏感革兰阳性菌生长",
+      ],
+      explanation: "本题选取的上游到下游主线：结合细菌 50S 亚基的 23S rRNA → 阻止功能性 70S 起始复合物形成 → 细菌蛋白质翻译起始受阻 → 限制敏感革兰阳性菌生长。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -1094,6 +1112,15 @@ export const antibacterialCards: readonly DrugCard[] = [
         { from: "wall", to: "effect", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "前药经酯酶水解为头孢呋辛",
+        "结合细菌青霉素结合蛋白（PBP）",
+        "干扰细胞壁肽聚糖合成",
+        "敏感细菌细胞壁受损并死亡",
+      ],
+      explanation: "本题选取的上游到下游主线：前药经酯酶水解为头孢呋辛 → 结合细菌青霉素结合蛋白（PBP） → 干扰细胞壁肽聚糖合成 → 敏感细菌细胞壁受损并死亡。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "emc：Zinnat（头孢呋辛酯）片说明书",
@@ -1173,5 +1200,246 @@ export const antibacterialCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-21",
+  },
+  {
+    id: "meropenem",
+    genericName: "美罗培南",
+    brandNames: [],
+    englishName: "Meropenem",
+    category: "antibacterial",
+    target: "结合青霉素结合蛋白（PBP），抑制细菌细胞壁合成（对多数 β-内酰胺酶稳定）",
+    targetQuizDistractorIds: [
+      "metformin",
+      "levothyroxine",
+      "omeprazole",
+    ],
+    indicationQuizDistractorIds: [
+      "metformin",
+      "levothyroxine",
+      "atorvastatin",
+    ],
+    mechanismSteps: [
+      {
+        title: "穿透细菌外膜并结合 PBP",
+        detail: "美罗培南为碳青霉烯类抗生素，可经孔蛋白进入革兰阴性菌周质空间，高亲和力结合多种青霉素结合蛋白（PBP）。",
+      },
+      {
+        title: "阻断肽聚糖交联与细胞壁合成",
+        detail: "抑制细胞壁肽聚糖交联，破坏细胞壁完整性从而杀灭敏感革兰阳性菌、阴性菌及厌氧菌；对多种丝氨酸 β-内酰胺酶稳定，但可被金属 β-内酰胺酶等碳青霉烯酶水解。",
+      },
+      {
+        title: "主要经肾脏清除，肾功能减退须减量",
+        detail: "美罗培南主要经肾脏以原型排出；成人肌酐清除率 ≤50 mL/min 时需按说明书延长给药间隔或减少单次剂量。",
+      },
+      {
+        title: "关注中枢癫痫风险与丙戊酸相互作用",
+        detail: "高暴露、肾功能不全或合并中枢神经系统病变者可诱发癫痫发作；与丙戊酸（或双丙戊酸钠）合用可致丙戊酸血药浓度明显下降并增加突破性发作风险，通常避免联用。",
+      },
+    ],
+    indications: [
+      "敏感菌引起的成人及 3 月龄以上儿童复杂性腹腔感染（静脉制剂）",
+      "敏感菌引起的成人及 3 月龄以上儿童复杂性皮肤及皮肤软组织感染（静脉制剂）",
+      "敏感菌引起的 3 月龄及以上儿童细菌性脑膜炎（静脉制剂）",
+    ],
+    adverseReactions: [
+      "腹泻、恶心、呕吐、皮疹或注射部位炎症",
+      "癫痫发作及其他中枢神经系统不良反应，肾功能减退或既往癫痫史者风险增加",
+      "严重超敏反应（包括过敏性休克及严重皮肤不良反应），需核对 β-内酰胺过敏史",
+      "艰难梭菌相关性腹泻（CDAD）及肝酶一过性升高",
+    ],
+    memoryTip: "「培南广谱耐多酶，肾排减量避丙戊」——警惕肾功能不全时调整剂量及丙戊酸血药浓度骤降。",
+    diagram: {
+      title: "PBP 结合 → 细胞壁合成受阻 → 敏感菌杀灭",
+      nodes: [
+        { id: "drug", label: "美罗培南", role: "drug" },
+        { id: "pbp", label: "细菌 PBP 靶点", role: "target" },
+        { id: "wall", label: "细胞壁合成受阻", role: "signal" },
+        { id: "lysis", label: "细胞壁结构受损", role: "signal" },
+        { id: "effect", label: "敏感菌杀灭", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "pbp", label: "结合抑制", kind: "inhibit" },
+        { from: "pbp", to: "wall", label: "肽聚糖交联 ↓", kind: "flow" },
+        { from: "wall", to: "lysis", label: "完整性丧失", kind: "flow" },
+        { from: "lysis", to: "effect", label: "渗透溶解", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "穿透细菌外膜进入作用部位",
+        "结合青霉素结合蛋白（PBP）",
+        "抑制细胞壁肽聚糖交联合成",
+        "细胞壁缺损致敏感菌溶解死亡",
+      ],
+      explanation: "本题选取的上游到下游主线：穿透细菌外膜进入作用部位 → 结合青霉素结合蛋白（PBP） → 抑制细胞壁肽聚糖交联合成 → 细胞壁缺损致敏感菌溶解死亡。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：Meropenem 静脉注射用粉针剂说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8a2a545e-b336-416a-be73-9e0a7ccf6177",
+        sections: "第 1、2.3、5、7、12 节：适应症、肾功能不全剂量调整、癫痫与丙戊酸相互作用及微生物学机制。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+  },
+  {
+    id: "isoniazid",
+    genericName: "异烟肼",
+    brandNames: [],
+    englishName: "Isoniazid",
+    category: "antibacterial",
+    target: "经结核分枝杆菌 KatG 活化后抑制 InhA，阻断分枝菌酸合成",
+    targetQuizDistractorIds: [
+      "amlodipine",
+      "omeprazole",
+      "allopurinol",
+    ],
+    indicationQuizDistractorIds: [
+      "amlodipine",
+      "omeprazole",
+      "allopurinol",
+    ],
+    mechanismSteps: [
+      {
+        title: "前药经结核分枝杆菌 KatG 酶活化",
+        detail: "异烟肼以无活性前药形式进入菌体，经 katG 基因编码的过氧化氢酶-过氧化物酶转化为活性中间体；katG 突变可使活化受阻并导致耐药。",
+      },
+      {
+        title: "抑制 InhA 并阻断分枝菌酸合成",
+        detail: "活性中间体与辅因子结合后抑制烯酰-酰基载体蛋白还原酶（InhA），阻碍分枝杆菌细胞壁特有成分分枝菌酸的合成，对活跃繁殖的结核分枝杆菌产生杀菌效应。",
+      },
+      {
+        title: "活动性结核须联合其他抗结核药使用",
+        detail: "单药治疗易快速诱导 katG 或 inhA 等耐药突变，因此活动性结核须纳入规范联合方案；用于潜伏感染单药预防前须排除活动性结核。",
+      },
+      {
+        title: "监测严重肝毒性并注意吡哆醇（维生素 B6）补充",
+        detail: "说明书带有严重甚至致死性肝炎的黑框警告，年龄增长与每日饮酒显著增加风险；另可干扰维生素 B6 代谢引起周围神经病变，高风险者常合用维生素 B6 预防。",
+      },
+    ],
+    indications: [
+      "与其他抗结核药物联合用于各种类型活动性结核病的治疗",
+      "高危人群潜伏性结核分枝杆菌感染的预防性治疗（须先排除活动性结核）",
+    ],
+    adverseReactions: [
+      "严重及致死性肝炎（黑框警告），须定期评估临床症状与肝功能（AST/ALT）",
+      "周围神经病变（呈剂量相关性），补充吡哆醇（维生素 B6）有助于降低发生风险",
+      "恶心、呕吐、上腹不适等胃肠道反应",
+      "皮疹、发热等过敏反应，偶见血液系统或狼疮样反应",
+    ],
+    memoryTip: "「异烟前药 KatG 激活，断分枝菌酸；护肝之外补 B6」——活动性结核切忌单用。",
+    diagram: {
+      title: "KatG 活化 → InhA 受抑 → 分枝菌酸合成阻断",
+      nodes: [
+        { id: "drug", label: "异烟肼前药", role: "drug" },
+        { id: "act", label: "活性代谢产物", role: "drug" },
+        { id: "inha", label: "分枝杆菌 InhA", role: "target" },
+        { id: "myco", label: "分枝菌酸合成 ↓", role: "signal" },
+        { id: "effect", label: "分枝杆菌受损杀灭", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "act", label: "KatG 酶活化", kind: "flow" },
+        { from: "act", to: "inha", label: "结合抑制", kind: "inhibit" },
+        { from: "inha", to: "myco", label: "酶活受抑", kind: "flow" },
+        { from: "myco", to: "effect", label: "细胞壁缺损", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "前药进入结核分枝杆菌",
+        "经细菌 KatG 酶活化",
+        "抑制 InhA 阻断分枝菌酸合成",
+        "分枝杆菌细胞壁受损死亡",
+      ],
+      explanation: "本题选取的上游到下游主线：前药进入结核分枝杆菌 → 经细菌 KatG 酶活化 → 抑制 InhA 阻断分枝菌酸合成 → 分枝杆菌细胞壁受损死亡。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：Isoniazid 口服片说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9499f1cf-2f46-4047-8b71-90aee7dee854",
+        sections: "黑框警告、适应症、临床药理、警告与不良反应：抗结核定位、肝炎风险、周围神经病变与维生素 B6。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+  },
+  {
+    id: "rifampicin",
+    genericName: "利福平",
+    brandNames: [],
+    englishName: "Rifampin",
+    category: "antibacterial",
+    target: "抑制细菌 DNA 依赖性 RNA 聚合酶（rpoB 亚基），阻断 RNA 转录起始",
+    targetQuizDistractorIds: [
+      "levothyroxine",
+      "furosemide",
+      "loratadine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "furosemide",
+      "loratadine",
+    ],
+    mechanismSteps: [
+      {
+        title: "结合细菌 RNA 聚合酶 β 亚基",
+        detail: "利福平高亲和力结合敏感细菌及结核分枝杆菌的 DNA 依赖性 RNA 聚合酶 β 亚基（由 rpoB 编码），在常规治疗浓度下不影响哺乳动物细胞的 RNA 聚合酶。",
+      },
+      {
+        title: "阻断转录起始与蛋白质合成",
+        detail: "抑制 RNA 链合成的起始阶段，减少菌体 mRNA 与关键蛋白生成，对细胞内外繁殖期及部分半静止期分枝杆菌均具杀菌作用；单用极易经 rpoB 突变耐药。",
+      },
+      {
+        title: "强效诱导 CYP450 酶系与 P-gp 转运体",
+        detail: "利福平是肝脏及肠道 CYP3A4、CYP2C9、CYP2C19 及 P-糖蛋白（P-gp）的强诱导剂，可加速多种合用药物（如华法林、他克莫司、激素避孕药、部分抗病毒药）的代谢清除而降低其疗效。",
+      },
+      {
+        title: "提示体液橙红色改变并监测肝功能",
+        detail: "可引起尿液、汗液、唾液、泪液及痰液呈橙红色或红棕色（可能永久染污软性隐形眼镜）；同时需注意肝损伤、血小板减少及间歇给药相关的类流感或免疫反应。",
+      },
+    ],
+    indications: [
+      "与其他抗结核药物联合用于各型结核病的治疗",
+      "脑膜炎奈瑟菌无症状带菌者的短期清除预防（按说明书适应症，不用于活动性脑膜炎单药治疗）",
+    ],
+    adverseReactions: [
+      "尿液、泪液、汗液、唾液等体液呈橙红色改变（可永久染污软性隐形眼镜）",
+      "肝酶升高、高胆红素血症及药物性肝炎（与异烟肼联用时需重点监测）",
+      "胃肠道不适、皮疹、血小板减少及白细胞减少",
+      "间歇或重新启用高剂量时偶见类流感综合征、溶血或急性肾损伤等免疫介导反应",
+    ],
+    memoryTip: "「利福平抑 RNA 聚合酶，强诱导 CYP 染橙红」——合用药浓易暴跌，泪尿变橙提前告。",
+    diagram: {
+      title: "抑制 rpoB → 转录受阻 → 敏感菌杀灭",
+      nodes: [
+        { id: "drug", label: "利福平", role: "drug" },
+        { id: "rpob", label: "细菌 RNA 聚合酶", role: "target" },
+        { id: "mrna", label: "RNA 转录受阻", role: "signal" },
+        { id: "prot", label: "菌体蛋白合成 ↓", role: "signal" },
+        { id: "effect", label: "敏感菌杀灭", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "rpob", label: "结合抑制", kind: "inhibit" },
+        { from: "rpob", to: "mrna", label: "起始阶段受阻", kind: "flow" },
+        { from: "mrna", to: "prot", label: "翻译减少", kind: "flow" },
+        { from: "prot", to: "effect", label: "菌体死亡", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "结合细菌 RNA 聚合酶 β 亚基",
+        "阻断 DNA 转录起始环节",
+        "细菌 RNA 与蛋白合成受抑",
+        "敏感分枝杆菌或细菌死亡",
+      ],
+      explanation: "本题选取的上游到下游主线：结合细菌 RNA 聚合酶 β 亚基 → 阻断 DNA 转录起始环节 → 细菌 RNA 与蛋白合成受抑 → 敏感分枝杆菌或细菌死亡。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：Rifampin 口服胶囊说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=50f706f9-5003-4e15-bece-85b6213b1f5c",
+        sections: "临床药理、适应症、警告、药物相互作用与不良反应：RNA 聚合酶抑制、CYP 强诱导及体液着色。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
   },
 ];

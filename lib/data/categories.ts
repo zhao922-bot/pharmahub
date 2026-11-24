@@ -71,6 +71,18 @@ export const CATEGORIES: readonly Category[] = [
     summary: "沿麦角固醇通路理解抗真菌作用，并区分局部制剂与系统治疗。",
     order: 11,
   },
+  {
+    id: "immunomodulator",
+    name: "免疫与风湿免疫",
+    summary: "从钙调磷酸酶、JAK 通路到 TNF-α 单抗，理解免疫抑制与靶向调控。",
+    order: 12,
+  },
+  {
+    id: "antidote",
+    name: "急救与特异性解毒",
+    summary: "从竞争性受体拮抗到酶重活化，理解中毒急救与逆转过量的关键靶点。",
+    order: 13,
+  },
 ];
 
 const CATEGORY_MAP: ReadonlyMap<CategoryId, Category> = new Map(

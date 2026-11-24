@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 抗病毒药 · 4 张卡片
+ * 抗病毒药 · 8 张卡片
  *
  * 抗病毒药的选择性来自「病毒特有、宿主没有」的靶点。
  * 这两张卡分别代表两条路径：
@@ -322,5 +322,318 @@ export const antiviralCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-21",
+  },
+  {
+    id: "baloxavir-marboxil",
+    genericName: "玛巴洛沙韦",
+    brandNames: [
+      "速福达",
+    ],
+    englishName: "Baloxavir marboxil",
+    category: "antiviral",
+    target: "前药水解为巴洛沙韦，抑制流感病毒聚合酶酸性（PA）蛋白的帽依赖性核酸内切酶",
+    mechanismSteps: [
+      {
+        title: "前药经水解转化为活性形式",
+        detail: "玛巴洛沙韦为前药，口服后经水解转化为具有抗流感活性的巴洛沙韦。",
+      },
+      {
+        title: "抑制病毒 PA 核酸内切酶",
+        detail: "巴洛沙韦靶向甲型和乙型流感病毒 RNA 聚合酶的 PA 亚基，阻断病毒基因转录所需的帽依赖性核酸内切酶活性。",
+      },
+      {
+        title: "在转录早期阻断病毒复制",
+        detail: "不同于奥司他韦抑制病毒释放，玛巴洛沙韦在病毒 RNA 转录起始阶段抑制复制；但仍不可替代流感疫苗。",
+      },
+      {
+        title: "注意给药时机与多价阳离子影响",
+        detail: "单纯性流感应在症状出现 48 小时内单次给药；应避免与乳制品、钙强化饮品或含钙、铁、镁、铝、硒、锌的制酸剂及补充剂同服。",
+      },
+    ],
+    indications: [
+      "5 岁及以上急性单纯性流感患者的治疗（症状出现不超过 48 小时，含既往健康及高并发症风险人群）",
+      "5 岁及以上人群接触流感患者后的暴露后预防",
+    ],
+    adverseReactions: [
+      "腹泻、支气管炎、恶心、鼻咽炎及头痛",
+      "超敏反应，包括速发严重过敏反应、血管性水肿与荨麻疹",
+      "多形性红斑、皮疹及呕吐等上市后报告反应",
+    ],
+    memoryTip: "前药变身拦 PA 内切酶，阻断流感病毒转录；单次口服但要避开奶制品和多价阳离子。",
+    diagram: {
+      title: "玛巴洛沙韦：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "玛巴洛沙韦", role: "drug" },
+        { id: "s0", label: "水解为巴洛沙韦", role: "signal" },
+        { id: "s1", label: "PA 核酸内切酶", role: "target" },
+        { id: "s2", label: "病毒转录受阻", role: "signal" },
+        { id: "s3", label: "流感病毒复制 ↓", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "水解放出", kind: "flow" },
+        { from: "s0", to: "s1", label: "直接抑制", kind: "inhibit" },
+        { from: "s1", to: "s2", label: "导致", kind: "flow" },
+        { from: "s2", to: "s3", label: "复制减少", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "水解为巴洛沙韦",
+        "PA 核酸内切酶受抑",
+        "病毒 mRNA 转录受阻",
+        "流感病毒复制减少",
+      ],
+      explanation: "本题选取的上游到下游主线：水解为巴洛沙韦 → PA 核酸内切酶受抑 → 病毒 mRNA 转录受阻 → 流感病毒复制减少。它是简化的作用关系，不表示卡片中的其他并行作用或临床限制可省略。",
+    },
+    sources: [
+      {
+        title: "XOFLUZA（baloxavir marboxil）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b58b2899-4d22-41e1-8f0c-bdead8917694",
+        sections: "第 1、2.1、5.1、6、7.1、12.1 节：适应症、PA 内切酶机制、超敏反应及多价阳离子相互作用。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "allopurinol",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "allopurinol",
+      "metformin",
+    ],
+  },
+  {
+    id: "nirmatrelvir-ritonavir",
+    genericName: "奈玛特韦/利托那韦",
+    brandNames: [],
+    englishName: "Nirmatrelvir / Ritonavir",
+    category: "antiviral",
+    target: "奈玛特韦抑制 SARS-CoV-2 主蛋白酶（Mpro/3CLpro），利托那韦抑制 CYP3A4 减缓其代谢",
+    mechanismSteps: [
+      {
+        title: "奈玛特韦抑制主蛋白酶",
+        detail: "奈玛特韦为拟肽类抑制剂，靶向 SARS-CoV-2 的主蛋白酶（Mpro，又称 3CLpro），阻止病毒多聚蛋白裂解为功能性复制酶组件。",
+      },
+      {
+        title: "阻断新冠病毒复制进程",
+        detail: "病毒多聚蛋白无法正常加工后，病毒复制受到抑制；本组合并非直接灭活体内外游离病毒或替代疫苗免疫。",
+      },
+      {
+        title: "利托那韦发挥药代增强作用",
+        detail: "利托那韦本身不直接抑制 SARS-CoV-2 主蛋白酶，而是强效抑制 CYP3A4，减缓奈玛特韦代谢以维持有效血药浓度。",
+      },
+      {
+        title: "用药前必须全面核查药物相互作用",
+        detail: "利托那韦的强效 CYP3A 抑制可使多种合用药物（如部分他汀类、抗心律失常药、抗凝药、镇静催眠药等）暴露骤升甚至危及生命，也禁与强效 CYP3A 诱导剂联用。",
+      },
+    ],
+    indications: [
+      "进展为重症（含住院或死亡）风险较高的轻至中度新型冠状病毒感染（COVID-19）成人及 12 岁以上且体重≥40 kg 儿童治疗",
+    ],
+    adverseReactions: [
+      "味觉障碍与腹泻",
+      "高血压及肌痛",
+      "因强效抑制 CYP3A 导致的严重药物相互作用风险（黑框警告重点）",
+      "肝转氨酶升高、临床肝炎及黄疸",
+      "严重超敏反应（如过敏性休克、SJS/TEN）及未控制 HIV-1 感染者出现蛋白酶抑制剂耐药风险",
+    ],
+    memoryTip: "奈玛特韦拦主蛋白酶，利托那韦锁住 CYP3A4 保浓度；开方前务必逐一排查合用药。",
+    diagram: {
+      title: "奈玛特韦 / 利托那韦：双组分协同机制",
+      nodes: [
+        { id: "nirm", label: "奈玛特韦", role: "drug" },
+        { id: "rito", label: "利托那韦", role: "drug" },
+        { id: "cyp", label: "CYP3A4 代谢", role: "target" },
+        { id: "mpro", label: "病毒 Mpro 蛋白酶", role: "target" },
+        { id: "poly", label: "多聚蛋白裂解 ↓", role: "signal" },
+        { id: "effect", label: "新冠病毒复制 ↓", role: "effect" },
+      ],
+      edges: [
+        { from: "rito", to: "cyp", label: "强效抑制", kind: "inhibit" },
+        { from: "nirm", to: "mpro", label: "靶向阻断", kind: "inhibit" },
+        { from: "cyp", to: "mpro", label: "维持高暴露", kind: "flow" },
+        { from: "mpro", to: "poly", label: "阻断加工", kind: "flow" },
+        { from: "poly", to: "effect", label: "复制受抑", kind: "flow" },
+      ],
+    },
+    sources: [
+      {
+        title: "PAXLOVID（nirmatrelvir; ritonavir）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8a99d6d6-fd9e-45bb-b1bf-48c7f761232a",
+        sections: "黑框警告、第 1、4、5、6、7、12.1 节：Mpro 抑制、CYP3A4 药代增强及严重药物相互作用。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "allopurinol",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "allopurinol",
+      "metformin",
+    ],
+  },
+  {
+    id: "bictegravir",
+    genericName: "比克替拉韦",
+    brandNames: [],
+    englishName: "Bictegravir",
+    category: "antiviral",
+    target: "抑制 HIV-1 整合酶链转移活性，阻止病毒 DNA 整合入宿主基因组（须联合方案使用）",
+    mechanismSteps: [
+      {
+        title: "结合 HIV-1 整合酶活性位点",
+        detail: "比克替拉韦属于整合酶链转移抑制剂（INSTI），与整合酶活性位点的金属离子结合。",
+      },
+      {
+        title: "阻断病毒 DNA 链转移整合",
+        detail: "抑制 HIV-1 整合酶催化病毒 DNA 整合入宿主细胞基因组的关键链转移步骤。",
+      },
+      {
+        title: "抑制 HIV-1 复制周期",
+        detail: "阻断前病毒整合，使病毒无法借助宿主基因组持续产生子代病毒。",
+      },
+      {
+        title: "仅作为完整联合 ART 方案一部分",
+        detail: "临床以比克替拉韦/恩曲他滨/丙酚替诺福韦（B/F/TAF）等复方完整方案治疗 HIV-1，不得单药使用；停药前需筛查并防范合并 HBV 急性加重，且需错开含铝/镁制酸剂等多价阳离子。",
+      },
+    ],
+    indications: [
+      "作为完整联合抗逆转录病毒方案的组成部分，用于成人及体重≥14 kg 儿童 HIV-1 感染治疗（不可单药使用）",
+    ],
+    adverseReactions: [
+      "腹泻、恶心及头痛",
+      "含 TAF/FTC 的完整复方停药后可发生合并乙肝病毒（HBV）感染的严重急性加重（黑框警告）",
+      "与多价阳离子（铝、镁、钙、铁）同服可螯合并降低吸收，需按说明书错开或随餐调整",
+      "免疫重建炎性综合征及少见肾脏或肝脏不良事件",
+    ],
+    memoryTip: "比克替拉韦锁住整合酶链转移，不让病毒 DNA 插进宿主；必须联合 ART，且要避开铝镁钙铁螯合。",
+    diagram: {
+      title: "比克替拉韦：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "比克替拉韦", role: "drug" },
+        { id: "s0", label: "HIV-1 整合酶", role: "target" },
+        { id: "s1", label: "链转移步骤受阻", role: "signal" },
+        { id: "s2", label: "病毒整合入宿主 ↓", role: "signal" },
+        { id: "s3", label: "HIV-1 复制受抑", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "结合活性位点", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "阻断催化", kind: "flow" },
+        { from: "s1", to: "s2", label: "无法嵌入", kind: "flow" },
+        { from: "s2", to: "s3", label: "复制减少", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "结合 HIV-1 整合酶活性位点",
+        "阻断整合酶链转移活性",
+        "阻止病毒 DNA 整合入宿主基因组",
+        "联合方案下抑制 HIV-1 复制",
+      ],
+      explanation: "本题选取的上游到下游主线：结合 HIV-1 整合酶活性位点 → 阻断整合酶链转移活性 → 阻止病毒 DNA 整合入宿主基因组 → 联合方案下抑制 HIV-1 复制。需注意比克替拉韦仅用于完整联合方案，不可单药使用。",
+    },
+    sources: [
+      {
+        title: "BIKTARVY（bictegravir; emtricitabine; tenofovir alafenamide）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4270f2b3-5753-48ee-89a3-5a0248a85703",
+        sections: "黑框警告、第 1、4、5、6、7.2、12.4 节：HIV-1 完整方案、整合酶链转移抑制机制、多价阳离子相互作用及 HBV 共感染停药风险。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "allopurinol",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "allopurinol",
+      "metformin",
+    ],
+  },
+  {
+    id: "ganciclovir",
+    genericName: "更昔洛韦",
+    brandNames: [],
+    englishName: "Ganciclovir",
+    category: "antiviral",
+    target: "经巨细胞病毒（CMV）UL97 蛋白激酶启动磷酸化，活性三磷酸物抑制病毒 DNA 聚合酶",
+    mechanismSteps: [
+      {
+        title: "由 CMV UL97 激酶启动磷酸化",
+        detail: "不同于阿昔洛韦主要依赖 HSV/VZV 胸苷激酶，更昔洛韦在 CMV 感染细胞内由病毒 UL97 基因编码的蛋白激酶催化形成单磷酸物。",
+      },
+      {
+        title: "宿主细胞酶继续三磷酸化",
+        detail: "细胞内激酶进一步将其磷酸化为具有活性的更昔洛韦三磷酸，且在 CMV 感染细胞内浓聚水平更高。",
+      },
+      {
+        title: "抑制病毒 DNA 聚合酶并干扰延伸",
+        detail: "活性三磷酸竞争性抑制病毒 DNA 聚合酶，并掺入正在合成的病毒 DNA 链中，抑制病毒 DNA 合成；UL97 或 UL54 突变可导致耐药。",
+      },
+      {
+        title: "警惕严重血液学及生殖毒性",
+        detail: "说明书黑框警告粒细胞减少（中性粒细胞减少）、贫血、血小板减少及全血细胞减少，并具潜在致畸、致突变与生育力损害风险。",
+      },
+    ],
+    indications: [
+      "免疫功能低下成人（包括艾滋病患者）巨细胞病毒（CMV）视网膜炎的治疗（静脉制剂）",
+      "有 CMV 发病风险成人器官/造血干细胞移植受者的 CMV 疾病预防",
+    ],
+    adverseReactions: [
+      "严重血液学毒性：中性粒细胞减少、贫血、血小板减少及全血细胞减少（黑框警告）",
+      "生育力损害、胚胎胎儿毒性/致畸性及潜在致癌致突变风险（黑框警告）",
+      "肾功能损害，肾功能不全者需调整剂量并监测血象与肌酐",
+      "发热、恶心、腹泻、转氨酶升高及外周神经病变",
+    ],
+    memoryTip: "CMV 认 UL97，疱疹认胸苷激酶；更昔洛韦重骨髓抑制和生殖毒性。",
+    diagram: {
+      title: "更昔洛韦：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "更昔洛韦", role: "drug" },
+        { id: "s0", label: "UL97 激酶磷酸化", role: "signal" },
+        { id: "s1", label: "生成三磷酸活性物", role: "signal" },
+        { id: "s2", label: "病毒 DNA 聚合酶", role: "target" },
+        { id: "s3", label: "CMV 复制受抑", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "病毒酶启动", kind: "flow" },
+        { from: "s0", to: "s1", label: "细胞酶续磷酸化", kind: "flow" },
+        { from: "s1", to: "s2", label: "竞争抑制", kind: "inhibit" },
+        { from: "s2", to: "s3", label: "链延伸受阻", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "CMV UL97 激酶初步磷酸化",
+        "细胞激酶生成三磷酸活性物",
+        "竞争抑制病毒 DNA 聚合酶",
+        "阻断 CMV DNA 合成与复制",
+      ],
+      explanation: "本题选取的上游到下游主线：CMV UL97 激酶初步磷酸化 → 细胞激酶生成三磷酸活性物 → 竞争抑制病毒 DNA 聚合酶 → 阻断 CMV DNA 合成与复制。需注意与阿昔洛韦（依赖 HSV/VZV 胸苷激酶）区分。",
+    },
+    sources: [
+      {
+        title: "Ganciclovir 注射剂说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b47f5d1c-36b8-49b6-a410-3b3f4661dde7",
+        sections: "黑框警告、第 1、5、6、12.4 节：CMV 视网膜炎与移植预防、UL97 激酶磷酸化与耐药、骨髓及生殖毒性。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "allopurinol",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "allopurinol",
+      "metformin",
+    ],
   },
 ];

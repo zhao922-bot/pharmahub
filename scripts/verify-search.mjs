@@ -74,7 +74,7 @@ const rTrad = await search("受體");
 check("繁体输入能搜到简体内容", rTrad.items.length > 0, `命中 ${rTrad.items.length} 张`);
 
 // 5. 按记忆要点搜索
-const r5 = await search("让肝以为能量不够");
+const r5 = await search("不靠强促分泌");
 check("按记忆要点搜索命中", r5.items.some(i => i.name === "二甲双胍"), r5.items.map(i=>i.name).join("、"));
 
 // 6. 多词 AND

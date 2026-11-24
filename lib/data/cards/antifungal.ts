@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 抗真菌药 · 5 张卡片
+ * 抗真菌药 · 7 张卡片
  *
  * 核心矛盾是「选择性难题」：真菌是真核生物，与人体细胞结构接近，
  * 可攻击的特异性靶点比抗菌药少得多。这正是抗真菌药数量少、
@@ -383,5 +383,170 @@ export const antifungalCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-21",
+  },
+  {
+    id: "caspofungin",
+    genericName: "卡泊芬净",
+    brandNames: [
+      "科赛斯",
+    ],
+    englishName: "Caspofungin",
+    category: "antifungal",
+    target: "抑制真菌细胞壁 β-(1,3)-D-葡聚糖合成酶，破坏真菌细胞壁完整性",
+    mechanismSteps: [
+      {
+        title: "抑制 β-(1,3)-D-葡聚糖合成",
+        detail: "卡泊芬净属于棘白菌素类抗真菌药，非竞争性抑制真菌细胞壁必需成分 β-(1,3)-D-葡聚糖的合成。",
+      },
+      {
+        title: "削弱真菌细胞壁结构稳定性",
+        detail: "人体细胞不含 β-(1,3)-D-葡聚糖，因此该靶点选择性较好；合成受阻后真菌细胞壁结构完整性受损。",
+      },
+      {
+        title: "覆盖念珠菌与特定曲霉感染",
+        detail: "对念珠菌属（包括部分唑类耐药株）与曲霉属具活性；但对隐球菌、毛霉目及镰刀菌等通常缺乏临床活性，不可视作全谱抗真菌药。",
+      },
+      {
+        title: "注意静脉给药与肝功能及相互作用",
+        detail: "仅用于缓慢静脉输注（首日负荷剂量后每日维持）；主要经水解和 N-乙酰化缓慢代谢而非 CYP 途径，中度肝功能不全需调整维持剂量，与环孢素联用需警惕转氨酶升高。",
+      },
+    ],
+    indications: [
+      "成人及 3 月龄以上儿童中性粒细胞减少伴发热的疑似真菌感染经验性治疗",
+      "念珠菌血症及特定侵袭性念珠菌感染（腹腔脓肿、腹膜炎、胸膜腔感染）与食管念珠菌病",
+      "其他治疗无效或不能耐受的侵袭性曲霉病",
+    ],
+    adverseReactions: [
+      "肝功能异常（ALT、AST 升高）及少见临床显著肝损伤或肝衰竭",
+      "组胺介导的输注相关反应（皮疹、面部肿胀、瘙痒、潮红或支气管痉挛）及超敏反应",
+      "发热、静脉炎、低钾血症及胃肠道不适",
+    ],
+    memoryTip: "棘白菌素专打细胞壁 β-(1,3)-D-葡聚糖；人体没有细胞壁所以选择性好，但不覆盖隐球菌。",
+    diagram: {
+      title: "卡泊芬净：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "卡泊芬净", role: "drug" },
+        { id: "s0", label: "葡聚糖合成酶", role: "target" },
+        { id: "s1", label: "β-葡聚糖合成 ↓", role: "signal" },
+        { id: "s2", label: "真菌细胞壁受损", role: "signal" },
+        { id: "s3", label: "真菌裂解或受抑", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "非竞争抑制", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "合成受阻", kind: "flow" },
+        { from: "s1", to: "s2", label: "结构失稳", kind: "flow" },
+        { from: "s2", to: "s3", label: "抗真菌效应", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "抑制 β-(1,3)-D-葡聚糖合成酶",
+        "真菌细胞壁 β-葡聚糖合成减少",
+        "细胞壁结构完整性受损",
+        "敏感念珠菌或曲霉受抑",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制 β-(1,3)-D-葡聚糖合成酶 → 真菌细胞壁 β-葡聚糖合成减少 → 细胞壁结构完整性受损 → 敏感念珠菌或曲霉受抑。它是简化的作用关系，不表示所有真菌均敏感（如隐球菌通常不覆盖）。",
+    },
+    sources: [
+      {
+        title: "CANCIDAS（caspofungin acetate）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bad23a6-09a6-4194-9182-093ed61bc71c",
+        sections: "第 1、2、5、6、7、12.1、12.3 节：β-(1,3)-D-葡聚糖合成抑制、适应症范围、输注及肝损伤风险、与环孢素相互作用。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "allopurinol",
+    ],
+  },
+  {
+    id: "voriconazole",
+    genericName: "伏立康唑",
+    brandNames: [
+      "威凡",
+    ],
+    englishName: "Voriconazole",
+    category: "antifungal",
+    target: "抑制真菌 CYP 依赖的 14α-去甲基化酶，阻断麦角固醇合成（覆盖曲霉等侵袭性霉菌）",
+    mechanismSteps: [
+      {
+        title: "抑制真菌 14α-去甲基化酶",
+        detail: "伏立康唑是三唑类抗真菌药，强效抑制真菌细胞色素 P450 依赖的羊毛甾醇 14α-去甲基化酶。",
+      },
+      {
+        title: "破坏真菌细胞膜麦角固醇合成",
+        detail: "麦角固醇合成减少且异常甲基化甾醇蓄积，破坏真菌细胞膜结构与通透性；与氟康唑不同，对曲霉等丝状真菌具强活性，但不覆盖毛霉目。",
+      },
+      {
+        title: "呈非线性药代动力学特征",
+        detail: "因肝脏代谢酶饱和，伏立康唑呈非线性药代动力学（加量时血药暴露呈超比例升高），且经 CYP2C19、CYP2C9 和 CYP3A4 代谢，个体差异大。",
+      },
+      {
+        title: "关注视觉障碍与复杂 CYP 相互作用",
+        detail: "常见一过性视觉障碍（畏光、视物模糊、色觉改变），长程需警惕视神经炎；同时是 CYP3A4、CYP2C9、CYP2C19 强抑制剂，合用禁忌多；中重度肾功能不全应避免静脉制剂以防辅料 SBECD 蓄积。",
+      },
+    ],
+    indications: [
+      "成人及 2 岁以上儿童侵袭性曲霉病",
+      "非中性粒细胞减少患者的念珠菌血症及深部组织念珠菌感染、食管念珠菌病",
+      "其他治疗无效或不能耐受的足放线病菌属（Scedosporium）与镰刀菌属（Fusarium）严重感染",
+    ],
+    adverseReactions: [
+      "一过性视觉障碍（视物模糊、色觉改变、畏光，约见于两成患者），长期使用偶见视神经炎或视乳头水肿",
+      "肝毒性（转氨酶、胆红素升高及罕见严重肝衰竭）",
+      "严重光敏性皮肤反应、皮疹及 QT 间期延长伴心律失常风险",
+      "复杂且可能致命的 CYP 药物相互作用；口服制剂需空腹（餐前或餐后至少 1 小时）服用",
+    ],
+    memoryTip: "伏立康唑抗曲霉，特点有三多：视觉改变多、非线性暴露变化大、CYP 相互作用多。",
+    diagram: {
+      title: "伏立康唑：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "伏立康唑", role: "drug" },
+        { id: "s0", label: "14α-去甲基化酶", role: "target" },
+        { id: "s1", label: "麦角固醇合成 ↓", role: "signal" },
+        { id: "s2", label: "真菌膜功能受损", role: "signal" },
+        { id: "s3", label: "曲霉等生长受抑", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "强效抑制", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "阻断转化", kind: "flow" },
+        { from: "s1", to: "s2", label: "膜屏障破坏", kind: "flow" },
+        { from: "s2", to: "s3", label: "抗真菌作用", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "抑制真菌 14α-去甲基化酶",
+        "麦角固醇合成减少且异常甾醇蓄积",
+        "真菌细胞膜结构与功能受损",
+        "抑制曲霉或念珠菌等敏感真菌",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制真菌 14α-去甲基化酶 → 麦角固醇合成减少且异常甾醇蓄积 → 真菌细胞膜结构与功能受损 → 抑制曲霉或念珠菌等敏感真菌。它是简化的作用关系，临床应用还需高度关注其非线性药代、视觉反应及 CYP 相互作用。",
+    },
+    sources: [
+      {
+        title: "VFEND（voriconazole）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dac26bcd-7a59-401f-9f66-a0649767cece",
+        sections: "第 1、2、4、5、6、7、12.1、12.3 节：曲霉等适应症、麦角固醇抑制、非线性 PK、视觉异常、光敏、QT 延长及 CYP 禁忌。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "allopurinol",
+    ],
   },
 ];

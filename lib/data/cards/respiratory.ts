@@ -311,6 +311,15 @@ export const respiratoryCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "选择性结合并阻断 CysLT1 受体",
+        "白三烯介导的气道信号减弱",
+        "气道收缩及炎症反应减轻",
+        "有助于哮喘长期预防与控制",
+      ],
+      explanation: "本题选取的上游到下游主线：选择性结合并阻断 CysLT1 受体 → 白三烯介导的气道信号减弱 → 气道收缩及炎症反应减轻 → 有助于哮喘长期预防与控制。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Montelukast 片说明书",
@@ -379,6 +388,15 @@ export const respiratoryCards: readonly DrugCard[] = [
         { from: "n1", to: "n2", kind: "flow", label: "受抑后" },
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "吸入后长效拮抗气道平滑肌 M3 受体",
+        "乙酰胆碱介导的胆碱能收缩信号减弱",
+        "支气管平滑肌舒张",
+        "维持较长时间的支气管扩张效应",
+      ],
+      explanation: "本题选取的上游到下游主线：吸入后长效拮抗气道平滑肌 M3 受体 → 乙酰胆碱介导的胆碱能收缩信号减弱 → 支气管平滑肌舒张 → 维持较长时间的支气管扩张效应。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -605,6 +623,15 @@ export const respiratoryCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "拮抗气道毒蕈碱型胆碱受体",
+        "减弱乙酰胆碱收缩信号与钙相关反应",
+        "支气管平滑肌松弛",
+        "可逆性支气管痉挛缓解",
+      ],
+      explanation: "本题选取的上游到下游主线：拮抗气道毒蕈碱型胆碱受体 → 减弱乙酰胆碱收缩信号与钙相关反应 → 支气管平滑肌松弛 → 可逆性支气管痉挛缓解。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {

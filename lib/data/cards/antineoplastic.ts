@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 抗肿瘤药物 · 7 张卡片
+ * 抗肿瘤药物 · 11 张卡片
  *
  * 三条主线：烷化剂（DNA 交联）、抗代谢药（叶酸循环）、
  * 分子靶向（HER2 单抗、BCR-ABL 与 EGFR 酪氨酸激酶抑制剂）。
@@ -566,6 +566,335 @@ export const antineoplasticCards: readonly DrugCard[] = [
       "levothyroxine",
       "aciclovir",
       "allopurinol",
+    ],
+  },
+  {
+    id: "pembrolizumab",
+    genericName: "帕博利珠单抗",
+    brandNames: [
+      "可瑞达",
+    ],
+    englishName: "Pembrolizumab",
+    category: "antineoplastic",
+    target: "结合 T 细胞表面 PD-1 受体，阻断其与 PD-L1/PD-L2 结合以解除免疫抑制",
+    mechanismSteps: [
+      {
+        title: "结合 T 细胞 PD-1 免疫检查点",
+        detail: "帕博利珠单抗是人源化单克隆抗体，高亲和力结合 T 细胞表面的程序性死亡受体-1（PD-1）。",
+      },
+      {
+        title: "阻断 PD-L1 / PD-L2 配体结合",
+        detail: "部分肿瘤细胞上调 PD-L1/PD-L2 以逃避免疫监视；阻断 PD-1 与配体相互作用可解除该通路对 T 细胞增殖与细胞因子分泌的抑制。",
+      },
+      {
+        title: "恢复抗肿瘤 T 细胞免疫应答",
+        detail: "增强机体内源性抗肿瘤 T 细胞免疫反应，而非直接对肿瘤细胞发挥细胞毒杀伤。",
+      },
+      {
+        title: "按生物标志物和获批情境用药，警惕免疫相关不良反应",
+        detail: "多种瘤种需依据经验证检测评估 PD-L1（TPS/CPS）或 MSI-H/dMMR 等标志物；免疫系统被激活后可攻击正常器官，引起潜在致命的免疫介导不良反应，多需糖皮质激素干预。",
+      },
+    ],
+    indications: [
+      "符合相应分期及生物标志物检测条件（如 PD-L1 表达）的黑色素瘤、非小细胞肺癌、头颈部鳞癌等获批实体瘤及经典霍奇金淋巴瘤",
+      "经检测确认为微卫星高度不稳定（MSI-H）或错配修复缺陷（dMMR）的特定不可切除或转移性实体瘤",
+    ],
+    adverseReactions: [
+      "免疫介导性肺炎、结肠炎及肝炎（可严重甚至致命，需监测并按分级使用糖皮质激素）",
+      "免疫介导性内分泌病变：甲状腺功能减退/亢进、垂体炎、肾上腺皮质功能不全及 1 型糖尿病",
+      "免疫介导性肾炎伴肾功能异常，及严重皮肤反应（包括 SJS/TEN）",
+      "疲劳、肌肉骨骼疼痛、输注反应及异体造血干细胞移植相关并发症风险",
+    ],
+    memoryTip: "帕博利珠单抗松开 T 细胞的 PD-1 刹车；按标志物（PD-L1/MSI-H）选人，全身器官都要防免疫误伤。",
+    diagram: {
+      title: "帕博利珠单抗：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "帕博利珠单抗", role: "drug" },
+        { id: "s0", label: "PD-1 检查点", role: "target" },
+        { id: "s1", label: "阻断 PD-L1 结合", role: "signal" },
+        { id: "s2", label: "T 细胞抑制解除", role: "signal" },
+        { id: "s3", label: "抗肿瘤免疫增强", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "结合阻断", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "屏蔽配体", kind: "flow" },
+        { from: "s1", to: "s2", label: "解除刹车", kind: "activate" },
+        { from: "s2", to: "s3", label: "免疫杀伤", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "单抗结合 T 细胞 PD-1 受体",
+        "阻断 PD-1 与 PD-L1/PD-L2 结合",
+        "解除 PD-1 通路对 T 细胞的抑制",
+        "增强内源性抗肿瘤 T 细胞应答",
+      ],
+      explanation: "本题选取的上游到下游主线：单抗结合 T 细胞 PD-1 受体 → 阻断 PD-1 与 PD-L1/PD-L2 结合 → 解除 PD-1 通路对 T 细胞的抑制 → 增强内源性抗肿瘤 T 细胞应答。它是简化的作用关系，临床使用需结合特定瘤种、标志物检测及免疫相关不良反应监测。",
+    },
+    sources: [
+      {
+        title: "KEYTRUDA（pembrolizumab）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=295058cb-4654-460d-9b19-33aa822d564a",
+        sections: "第 1、2.1、5.1、6、12.1 节：PD-1 通路阻断、PD-L1/MSI-H 标志物检测要求及免疫介导性器官毒性。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "omeprazole",
+    ],
+  },
+  {
+    id: "paclitaxel",
+    genericName: "紫杉醇",
+    brandNames: [
+      "泰素",
+    ],
+    englishName: "Paclitaxel",
+    category: "antineoplastic",
+    target: "促进微管蛋白聚合并稳定微管、抑制其解聚，将细胞阻滞于 G2/M 期",
+    mechanismSteps: [
+      {
+        title: "结合微管并抑制解聚",
+        detail: "紫杉醇属于紫杉烷类抗肿瘤药，促进微管蛋白二聚体组装为微管，并通过阻止微管解聚使其过度稳定（与长春碱类抑制聚合方向相反）。",
+      },
+      {
+        title: "破坏微管网络动态重组",
+        detail: "微管正常动态重组受阻，在细胞周期中形成异常微管束，有丝分裂期出现多极纺锤体星状体。",
+      },
+      {
+        title: "诱导 G2/M 期阻滞与细胞凋亡",
+        detail: "分裂期细胞无法完成正常染色体分离，停滞于 G2/M 期并触发程序性细胞死亡。",
+      },
+      {
+        title: "关注剂量限制性毒性与溶媒预处理",
+        detail: "常规紫杉醇注射液含聚氧乙烯蓖麻油溶媒，易引发严重超敏反应，须规范给予糖皮质激素及 H1/H2 拮抗剂预处理；且存在骨髓抑制和累积性周围神经病变。",
+      },
+    ],
+    indications: [
+      "晚期卵巢癌的一线（联合顺铂）及后续治疗（常规紫杉醇注射液）",
+      "特定乳腺癌辅助治疗及联合化疗失败后的转移性乳腺癌",
+      "不适合手术或放疗的非小细胞肺癌联合顺铂一线治疗，及艾滋病相关卡波西肉瘤二线治疗",
+    ],
+    adverseReactions: [
+      "剂量限制性骨髓抑制（主要为重度中性粒细胞减少及感染风险，黑框警告）",
+      "严重超敏反应（呼吸困难、低血压、血管性水肿，需严格预处理，黑框警告）",
+      "剂量累积性周围神经病变（肢端麻木、感觉异常）",
+      "脱发、关节痛/肌痛、心动过缓及消化道黏膜炎",
+    ],
+    memoryTip: "紫杉醇“把微管冻住不拆伙”，阻在 G2/M 期；谨防中性粒细胞下降、手脚麻木和蓖麻油过敏。",
+    diagram: {
+      title: "紫杉醇：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "紫杉醇", role: "drug" },
+        { id: "s0", label: "微管聚合稳定", role: "target" },
+        { id: "s1", label: "阻止微管解聚", role: "signal" },
+        { id: "s2", label: "G2/M 期阻滞", role: "signal" },
+        { id: "s3", label: "肿瘤细胞凋亡", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "促进稳定", kind: "activate" },
+        { from: "s0", to: "s1", label: "动态丧失", kind: "inhibit" },
+        { from: "s1", to: "s2", label: "有丝分裂受阻", kind: "flow" },
+        { from: "s2", to: "s3", label: "诱发凋亡", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "结合微管并促进组装稳定",
+        "阻止微管正常解聚与重组",
+        "有丝分裂受阻停滞于 G2/M 期",
+        "触发细胞凋亡与抗肿瘤效应",
+      ],
+      explanation: "本题选取的上游到下游主线：结合微管并促进组装稳定 → 阻止微管正常解聚与重组 → 有丝分裂受阻停滞于 G2/M 期 → 触发细胞凋亡与抗肿瘤效应。需区分长春碱类（抑制微管聚合）与紫杉烷类（稳定微管、防解聚）。",
+    },
+    sources: [
+      {
+        title: "Paclitaxel 注射液说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ea28753a-8631-460a-bfdc-b101eb8ac84a",
+        sections: "黑框警告、第 1、5、6、12.1 节：微管稳定与 G2/M 期阻滞、卵巢/乳腺/NSCLC 适应症、中性粒细胞减少与超敏反应。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "omeprazole",
+    ],
+  },
+  {
+    id: "osimertinib",
+    genericName: "奥希替尼",
+    brandNames: [
+      "泰瑞沙",
+    ],
+    englishName: "Osimertinib",
+    category: "antineoplastic",
+    target: "第三代不可逆 EGFR 酪氨酸激酶抑制剂，共价结合并抑制 EGFR 敏感突变及 T790M 耐药突变",
+    mechanismSteps: [
+      {
+        title: "不可逆共价结合突变型 EGFR",
+        detail: "奥希替尼为第三代 EGFR-TKI，与特定突变型 EGFR 激酶结构域形成不可逆共价结合（区别于吉非替尼的可逆结合）。",
+      },
+      {
+        title: "同时覆盖敏感突变与 T790M 突变",
+        detail: "既抑制外显子 19 缺失或 21 L858R 等敏感激活突变，又可抑制第一/二代 TKI 耐药常见的 T790M 突变，且对野生型 EGFR 亲和力相对较低。",
+      },
+      {
+        title: "阻断下游增殖信号通路",
+        detail: "抑制 EGFR 磷酸化及下游增殖生存信号转导，抑制相应基因突变 NSCLC 细胞生长。",
+      },
+      {
+        title: "必须以分子检测为依据并监测心肺毒性",
+        detail: "用药前须经临床验证检测确认 EGFR 19del、L858R 或耐药后 T790M 突变存在；并需密切监测间质性肺病、QTc 延长及心肌病等严重不良反应。",
+      },
+    ],
+    indications: [
+      "经检测确认存在 EGFR 外显子 19 缺失或 21 L858R 突变的成人非小细胞肺癌（术后辅助治疗、转移性一线单药或局晚/转移性一线联合培美曲塞及铂类）",
+      "经既往 EGFR-TKI 治疗进展后、经检测确认存在 EGFR T790M 突变的转移性成人非小细胞肺癌",
+    ],
+    adverseReactions: [
+      "间质性肺病（ILD）/非感染性肺炎，可致命，出现呼吸异常需及时停药评估",
+      "QTc 间期延长及心肌病/左室射血分数下降，需定期心电图与心功能监测",
+      "腹泻、皮疹、皮肤干燥及甲沟/甲毒性",
+      "角膜炎、多形性红斑/SJS 及胚胎胎儿毒性",
+    ],
+    memoryTip: "三代奥希不可逆，既打 19del/L858R 又打 T790M；用药前必测突变，治疗中盯紧间质性肺炎与心脏 QT/LVEF。",
+    diagram: {
+      title: "奥希替尼：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "奥希替尼", role: "drug" },
+        { id: "s0", label: "突变型 EGFR", role: "target" },
+        { id: "s1", label: "共价抑制激酶", role: "signal" },
+        { id: "s2", label: "下游信号阻断", role: "signal" },
+        { id: "s3", label: "突变肿瘤生长 ↓", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "不可逆结合", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "包含 T790M", kind: "flow" },
+        { from: "s1", to: "s2", label: "磷酸化受抑", kind: "flow" },
+        { from: "s2", to: "s3", label: "增殖受限", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "不可逆共价结合突变型 EGFR",
+        "抑制敏感突变与 T790M 激酶活性",
+        "阻断下游增殖生存信号转导",
+        "抑制 EGFR 突变 NSCLC 细胞增殖",
+      ],
+      explanation: "本题选取的上游到下游主线：不可逆共价结合突变型 EGFR → 抑制敏感突变与 T790M 激酶活性 → 阻断下游增殖生存信号转导 → 抑制 EGFR 突变 NSCLC 细胞增殖。用药前必须有相应分子检测依据，并警惕 ILD 与心脏不良反应。",
+    },
+    sources: [
+      {
+        title: "TAGRISSO（osimertinib）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5e81b4a7-b971-45e1-9c31-29cea8c87ce7",
+        sections: "第 1、2.1、5.1～5.6、6、12.1 节：辅助/一线/T790M 二线适应症、突变检测要求、不可逆共价结合及心肺毒性。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "omeprazole",
+    ],
+  },
+  {
+    id: "letrozole",
+    genericName: "来曲唑",
+    brandNames: [
+      "弗隆",
+    ],
+    englishName: "Letrozole",
+    category: "antineoplastic",
+    target: "选择性、非甾体类芳香化酶（CYP19A1）竞争性抑制剂，阻断雄激素向雌激素转化",
+    mechanismSteps: [
+      {
+        title: "竞争性抑制芳香化酶",
+        detail: "来曲唑是非甾体类芳香化酶抑制剂，可逆性竞争抑制 CYP19A1（芳香化酶）活性，阻断雌激素生物合成的最后一步。",
+      },
+      {
+        title: "降低外周雌激素水平",
+        detail: "阻断肾上腺来源雄烯二酮和睾酮在脂肪等外周组织中向雌酮、雌二醇的转化；在绝经后女性中外周转化是主要雌激素来源，因此说明书适应症限定于绝经后状态。",
+      },
+      {
+        title: "剥夺激素依赖性肿瘤生长信号",
+        detail: "雌激素水平显著下降，减少雌激素受体激活，从而抑制激素受体阳性乳腺癌细胞增殖；不适用于绝经前卵巢功能完整者单药抑制雌激素。",
+      },
+      {
+        title: "监测骨密度与血脂变化",
+        detail: "长期深度抑制雌激素可导致骨密度下降、骨质疏松与骨折风险升高，并可引起胆固醇升高及潮热、关节痛；妊娠期禁用。",
+      },
+    ],
+    indications: [
+      "绝经后激素受体阳性（HR+）早期乳腺癌的辅助治疗及他莫昔芬标准辅助治疗后的延伸辅助治疗",
+      "绝经后 HR+ 或激素受体未知局部晚期/转移性乳腺癌一线治疗，以及抗雌激素治疗进展后的绝经后晚期乳腺癌",
+    ],
+    adverseReactions: [
+      "骨密度下降、骨质疏松及骨折风险升高（需评估并监测骨密度）",
+      "潮热、出汗及关节痛/骨痛/肌痛等雌激素缺乏表现",
+      "高胆固醇血症及疲劳、头晕",
+      "胚胎胎儿毒性（妊娠期禁用）",
+    ],
+    memoryTip: "来曲唑专卡绝经后芳香化酶，断绝雄转雌路径；长期服药记住查骨密度和血脂。",
+    diagram: {
+      title: "来曲唑：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "来曲唑", role: "drug" },
+        { id: "s0", label: "芳香化酶", role: "target" },
+        { id: "s1", label: "雄转雌过程受阻", role: "signal" },
+        { id: "s2", label: "血雌激素水平 ↓", role: "signal" },
+        { id: "s3", label: "HR+ 乳腺癌受抑", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "竞争抑制", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "阻断合成", kind: "flow" },
+        { from: "s1", to: "s2", label: "水平显著下降", kind: "flow" },
+        { from: "s2", to: "s3", label: "剥夺生长信号", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "竞争性抑制芳香化酶（CYP19A1）",
+        "阻断外周雄激素向雌激素转化",
+        "绝经后体内雌激素水平显著下降",
+        "抑制 HR+ 乳腺癌细胞增殖",
+      ],
+      explanation: "本题选取的上游到下游主线：竞争性抑制芳香化酶（CYP19A1） → 阻断外周雄激素向雌激素转化 → 绝经后体内雌激素水平显著下降 → 抑制 HR+ 乳腺癌细胞增殖。需注意其乳腺癌说明书适应症限定于绝经后女性，长期应关注骨密度及血脂。",
+    },
+    sources: [
+      {
+        title: "FEMARA（letrozole）说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=82b77d74-085f-45ac-a7dd-1f5c038bf406",
+        sections: "第 1、4、5、6、12.1 节：绝经后 HR+ 乳腺癌辅助/延伸辅助/晚期适应症、芳香化酶机制、骨密度与血脂及妊娠禁忌。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "omeprazole",
     ],
   },
 ];
