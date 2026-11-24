@@ -11,9 +11,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { quiz as quizCopy } from "@/lib/copy";
-import { CATEGORIES, cardRepository, getCategoryName, isCategoryId } from "@/lib/data";
+import { caseQuizCopy } from "@/lib/copy-cases";
+import { quizFeaturesCopy } from "@/lib/copy-features";
+import {
+  CATEGORIES,
+  cardRepository,
+  getCategoryName,
+  isCategoryId,
+  studyRepository,
+} from "@/lib/data";
+import { CASE_QUESTIONS } from "@/lib/data/cases";
 import { quizRepository } from "@/lib/data/quiz";
 import { compareRepository } from "@/lib/data/compare";
+import { generateCaseQuiz } from "@/lib/quiz/case-generator";
 import { generateQuiz } from "@/lib/quiz/generator";
 import { generateCompareQuiz } from "@/lib/quiz/compare-generator";
 import { cn } from "@/lib/utils";
@@ -26,8 +36,49 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-/** 每组测验的题目数量 */
-const QUESTIONS_PER_SET = 8;
+const ALLOWED_COUNTS = [5, 8, 12] as const;
+type QuizCount = (typeof ALLOWED_COUNTS)[number];
+const DEFAULT_COUNT: QuizCount = 8;
+
+type QuizScope = "all" | "favorites" | "due";
+
+function parseQuizCount(raw?: string): QuizCount {
+  const num = Number(raw);
+  return num === 5 || num === 8 || num === 12 ? num : DEFAULT_COUNT;
+}
+
+function buildQuizHref({
+  mode,
+  category,
+  compare,
+  scope,
+  count,
+  seed,
+}: {
+  mode?: "cases" | null;
+  category?: CategoryId | null;
+  compare?: string | null;
+  scope?: QuizScope;
+  count?: QuizCount;
+  seed?: number;
+}): string {
+  const params = new URLSearchParams();
+  if (compare) {
+    params.set("compare", compare);
+  } else {
+    if (mode === "cases") params.set("mode", "cases");
+    if (category) params.set("category", category);
+    if (scope && scope !== "all") params.set("scope", scope);
+  }
+  if (count && count !== DEFAULT_COUNT) {
+    params.set("count", String(count));
+  }
+  if (seed !== undefined) {
+    params.set("seed", String(seed));
+  }
+  const query = params.toString();
+  return query ? `/quiz?${query}` : "/quiz";
+}
 
 /**
  * 把分类 id 映射成一个稳定的整数偏移量，用于参与种子计算。
@@ -45,18 +96,27 @@ function hashCategoryId(id: string): number {
 }
 
 interface QuizPageProps {
-  /** 可选：category 限定分类；seed 保证同一组题可复现 */
-  searchParams: Promise<{ category?: string; compare?: string; seed?: string }>;
+  /** 可选：mode=cases 临床情景题；category 限定分类；scope 限定学习范围；count 题量；seed 保证同一组题可复现 */
+  searchParams: Promise<{
+    mode?: string;
+    category?: string;
+    compare?: string;
+    seed?: string;
+    count?: string;
+    scope?: string;
+  }>;
 }
 
 export default async function QuizPage({ searchParams }: QuizPageProps) {
   const today = new Date();
   const filters = await searchParams;
 
-  const [allCards, stats, compareGroups] = await Promise.all([
+  const [allCards, stats, compareGroups, favoriteCardIds, dueCardIds] = await Promise.all([
     cardRepository.getAll(),
     quizRepository.getStats(today),
     compareRepository.getAll(),
+    studyRepository.getFavoriteCardIds(),
+    studyRepository.getDueCardIds(today),
   ]);
 
   const activeCompare = filters.compare !== undefined
@@ -65,17 +125,34 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
   // 明确请求了对比组却不存在时返回 404，不能悄悄改考全部卡片。
   if (filters.compare !== undefined && !activeCompare) notFound();
 
+  const isCasesMode = !activeCompare && filters.mode === "cases";
+  const activeCount = parseQuizCount(filters.count);
+  const activeScope: QuizScope =
+    !activeCompare && (filters.scope === "favorites" || filters.scope === "due")
+      ? filters.scope
+      : "all";
+
   // 分类筛选：非法值一律回退为「全部」，与卡片库的行为保持一致
   const rawCategory = filters.category;
   const activeCategory: CategoryId | null =
     !activeCompare && rawCategory && isCategoryId(rawCategory) ? rawCategory : null;
 
-  // 限定分类时，只有该分类的卡片参与出题；
-  // 但**干扰项仍从全量卡片里取**——否则分类题只有 1 个选项，
-  // 干扰项必须来自其他分类才有区分度。
-  const quizCards = activeCategory
+  const categoryCards = activeCategory
     ? allCards.filter((card) => card.category === activeCategory)
     : allCards;
+
+  const favoriteSet = new Set(favoriteCardIds);
+  const dueSet = new Set(dueCardIds);
+
+  // 限定分类或学习范围时，只有对应范围的卡片参与出题；
+  // 但**干扰项仍从全量卡片里取**——否则分类题只有 1 个选项，
+  // 干扰项必须来自其他分类才有区分度。
+  const quizCards =
+    activeScope === "favorites"
+      ? categoryCards.filter((card) => favoriteSet.has(card.id))
+      : activeScope === "due"
+        ? categoryCards.filter((card) => dueSet.has(card.id))
+        : categoryCards;
 
   const activeCategoryName = activeCategory ? getCategoryName(activeCategory) : null;
 
@@ -89,25 +166,89 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
           `${today.getFullYear()}${`${today.getMonth() + 1}`.padStart(2, "0")}${`${today.getDate()}`.padStart(2, "0")}${today.getHours()}`,
         );
 
-  // 分类参与种子计算，避免切换分类后题目与「全部」高度重合
+  // 分类与范围参与种子计算，避免切换后题目与「全部」高度重合
   const scopeId = activeCompare?.id ?? activeCategory;
-  const seed = scopeId ? baseSeed + hashCategoryId(scopeId) : baseSeed;
+  const seed =
+    (scopeId ? baseSeed + hashCategoryId(scopeId) : baseSeed) +
+    (activeScope !== "all" ? hashCategoryId(activeScope) : 0) +
+    (isCasesMode ? hashCategoryId("cases") : 0);
 
   const categoryNames = new Map(CATEGORIES.map((category) => [category.id, category.name]));
 
-  const questions = activeCompare ? generateCompareQuiz({
-    group: activeCompare, allCards, count: QUESTIONS_PER_SET, seed,
-  }) : generateQuiz({
-    cards: quizCards,
-    allCards,
-    categoryNames,
-    count: QUESTIONS_PER_SET,
-    seed,
+  const scopedCases = CASE_QUESTIONS.filter((item) => {
+    if (activeCategory && item.category !== activeCategory) return false;
+    if (activeScope === "favorites" && !favoriteSet.has(item.cardId)) return false;
+    if (activeScope === "due" && !dueSet.has(item.cardId)) return false;
+    return true;
   });
-  const scopeQuery = activeCompare
-    ? `compare=${activeCompare.id}&`
-    : activeCategory ? `category=${activeCategory}&` : "";
+
+  const questions = activeCompare
+    ? generateCompareQuiz({
+        group: activeCompare,
+        allCards,
+        count: activeCount,
+        seed,
+      })
+    : isCasesMode
+      ? generateCaseQuiz({
+          caseQuestions: scopedCases,
+          count: activeCount,
+          seed,
+        })
+      : generateQuiz({
+          cards: quizCards,
+          allCards,
+          categoryNames,
+          count: activeCount,
+          seed,
+        });
+
+  const scopeParams = new URLSearchParams();
+  if (activeCompare) {
+    scopeParams.set("compare", activeCompare.id);
+  } else {
+    if (isCasesMode) scopeParams.set("mode", "cases");
+    if (activeCategory) scopeParams.set("category", activeCategory);
+    if (activeScope !== "all") scopeParams.set("scope", activeScope);
+  }
+  if (activeCount !== DEFAULT_COUNT) {
+    scopeParams.set("count", String(activeCount));
+  }
+  const scopeQueryString = scopeParams.toString();
+  const scopeQuery = scopeQueryString ? `${scopeQueryString}&` : "";
   const retryHref = `/quiz?${scopeQuery}seed=${baseSeed + 1}`;
+
+  const scopeBaseCards = isCasesMode
+    ? allCards.filter((card) =>
+        CASE_QUESTIONS.some(
+          (item) =>
+            item.cardId === card.id &&
+            (!activeCategory || item.category === activeCategory),
+        ),
+      )
+    : categoryCards;
+
+  const scopeCounts = {
+    all: isCasesMode
+      ? CASE_QUESTIONS.filter(
+          (item) => !activeCategory || item.category === activeCategory,
+        ).length
+      : categoryCards.length,
+    favorites: isCasesMode
+      ? CASE_QUESTIONS.filter(
+          (item) =>
+            (!activeCategory || item.category === activeCategory) &&
+            favoriteSet.has(item.cardId),
+        ).length
+      : scopeBaseCards.filter((card) => favoriteSet.has(card.id)).length,
+    due: isCasesMode
+      ? CASE_QUESTIONS.filter(
+          (item) =>
+            (!activeCategory || item.category === activeCategory) &&
+            dueSet.has(item.cardId),
+        ).length
+      : scopeBaseCards.filter((card) => dueSet.has(card.id)).length,
+  };
 
   const accuracy =
     stats.answeredTotal > 0
@@ -140,15 +281,47 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
           </p>
         </div>
 
+        {/* 题型模式切换：基础四题型 vs 临床情景 */}
+        <div
+          role="group"
+          aria-label="选择测验模式"
+          className="mt-4 flex flex-wrap items-center gap-1.5"
+        >
+          <OptionChip
+            href={buildQuizHref({
+              category: activeCategory,
+              scope: activeScope,
+              count: activeCount,
+            })}
+            active={!activeCompare && !isCasesMode}
+            label="基础机制题"
+          />
+          <OptionChip
+            href={buildQuizHref({
+              mode: "cases",
+              category: activeCategory,
+              scope: activeScope,
+              count: activeCount,
+            })}
+            active={isCasesMode}
+            label={caseQuizCopy.modeTitle}
+            count={CASE_QUESTIONS.length}
+          />
+        </div>
+
         {/* 分类筛选：用链接而不是客户端状态，保证 URL 可分享、刷新后仍在同一分类 */}
         <div
           role="group"
           aria-label={quizCopy.filterLabel}
-          className="mt-4 -mx-4 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-3 -mx-4 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           <div className="flex w-max items-center gap-2">
             <CategoryChip
-              href="/quiz"
+              href={buildQuizHref({
+                mode: isCasesMode ? "cases" : null,
+                scope: activeScope,
+                count: activeCount,
+              })}
               active={activeCategory === null && !activeCompare}
               label={quizCopy.filterAll}
               count={allCards.length}
@@ -156,10 +329,59 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
             {categoryCounts.map(({ category, count }) => (
               <CategoryChip
                 key={category.id}
-                href={`/quiz?category=${category.id}`}
+                href={buildQuizHref({
+                  mode: isCasesMode ? "cases" : null,
+                  category: category.id,
+                  scope: activeScope,
+                  count: activeCount,
+                })}
                 active={activeCategory === category.id}
                 label={category.name}
                 count={count}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* 范围与题量筛选 */}
+        <div className="mt-3 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          <div
+            role="group"
+            aria-label={quizFeaturesCopy.scopeLabel}
+            className="flex flex-wrap items-center gap-1.5"
+          >
+            {(["all", "favorites", "due"] as const).map((scopeOption) => (
+              <OptionChip
+                key={scopeOption}
+                href={buildQuizHref({
+                  mode: isCasesMode ? "cases" : null,
+                  category: activeCategory,
+                  scope: scopeOption,
+                  count: activeCount,
+                })}
+                active={!activeCompare && activeScope === scopeOption}
+                label={quizFeaturesCopy.scopes[scopeOption]}
+                count={scopeCounts[scopeOption]}
+              />
+            ))}
+          </div>
+          <div
+            role="group"
+            aria-label={quizFeaturesCopy.countLabel}
+            className="flex flex-wrap items-center gap-1.5"
+          >
+            {ALLOWED_COUNTS.map((countOption) => (
+              <OptionChip
+                key={countOption}
+                href={buildQuizHref({
+                  mode: isCasesMode ? "cases" : null,
+                  compare: activeCompare?.id,
+                  category: activeCategory,
+                  scope: activeScope,
+                  count: countOption,
+                })}
+                active={activeCount === countOption}
+                label={quizFeaturesCopy.countOption(countOption)}
               />
             ))}
           </div>
@@ -180,7 +402,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
               {compareGroups.map((group) => (
                 <CategoryChip
                   key={group.id}
-                  href={`/quiz?compare=${group.id}`}
+                  href={buildQuizHref({ compare: group.id, count: activeCount })}
                   active={activeCompare?.id === group.id}
                   label={group.title}
                   count={group.drugIds.length}
@@ -203,12 +425,38 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
               </Link>
             </CardContent>
           </Card>
+        ) : isCasesMode ? (
+          <Card className="mt-4 border-primary/20 bg-primary/5">
+            <CardContent className="p-4">
+              <p className="text-[11px] font-medium text-primary">{caseQuizCopy.modeTitle}</p>
+              <p className="mt-1 text-sm font-medium">{caseQuizCopy.modeSubtitle}</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                {activeCategoryName
+                  ? caseQuizCopy.scopeCategoryHint(activeCategoryName, scopedCases.length)
+                  : caseQuizCopy.scopeAllHint(scopedCases.length, new Set(scopedCases.map((q) => q.category)).size)}
+                {" · "}
+                {caseQuizCopy.questionCountHint(questions.length)}
+              </p>
+              <p className="mt-1.5 text-[11px] text-muted-foreground">
+                {caseQuizCopy.disclaimerNote}
+              </p>
+            </CardContent>
+          </Card>
         ) : null}
 
-        {activeCategoryName ? (
+        {!activeCompare && (activeCategoryName || activeScope !== "all") ? (
           <p className="mt-2 text-xs text-muted-foreground">
-            {quizCopy.filterActive(activeCategoryName)} ·{" "}
-            {quizCopy.filterCountHint(quizCards.length)}
+            {activeCategoryName ? (
+              <>
+                {quizCopy.filterActive(activeCategoryName)} ·{" "}
+                {quizCopy.filterCountHint(quizCards.length)}
+              </>
+            ) : (
+              quizFeaturesCopy.scopeActive(
+                quizFeaturesCopy.scopes[activeScope],
+                quizCards.length,
+              )
+            )}
           </p>
         ) : null}
 
@@ -252,7 +500,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
         <div className="mt-5">
           {questions.length > 0 ? (
             <QuizRunner
-              key={`${scopeId ?? "all"}:${seed}`}
+              key={`${isCasesMode ? "cases" : "normal"}:${scopeId ?? "all"}:${activeScope}:${activeCount}:${seed}`}
               questions={questions}
               retryHref={retryHref}
               compareId={activeCompare?.id}
@@ -261,13 +509,27 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
             <Card>
               <CardContent className="px-4 py-10 text-center">
                 <p className="text-sm font-medium">
-                  {activeCompare ? quizCopy.compareEmptyTitle : quizCopy.filterEmptyTitle}
+                  {activeCompare
+                    ? quizCopy.compareEmptyTitle
+                    : isCasesMode
+                      ? caseQuizCopy.emptyTitle
+                      : activeScope !== "all"
+                        ? quizFeaturesCopy.scopeEmptyTitle[activeScope]
+                        : quizCopy.filterEmptyTitle}
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  {activeCompare ? quizCopy.compareEmptyBody : quizCopy.filterEmptyBody}
+                  {activeCompare
+                    ? quizCopy.compareEmptyBody
+                    : isCasesMode
+                      ? caseQuizCopy.emptyBody
+                      : activeScope !== "all"
+                        ? quizFeaturesCopy.scopeEmptyBody[activeScope]
+                        : quizCopy.filterEmptyBody}
                 </p>
                 <Button asChild variant="outline" size="sm" className="mt-4">
-                  <Link href="/quiz">{quizCopy.filterClear}</Link>
+                  <Link href={isCasesMode ? "/quiz?mode=cases" : "/quiz"}>
+                    {isCasesMode ? caseQuizCopy.emptyResetCta : quizCopy.filterClear}
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -316,7 +578,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
           <p className="mt-2 text-xs leading-5 text-muted-foreground">
             {activeCompare ? quizCopy.compareInstructions : <>
             靶点与用途题仅使用经核对的候选项；机制题仅考已单独梳理的上下游主线，
-            不把正文段落自动当作时间顺序。每组最多 {QUESTIONS_PER_SET} 题，按可用题型出题。
+            不把正文段落自动当作时间顺序。每组最多 {activeCount} 题，按可用题型出题。
             分类题指本库的学习分类。答错的题目会自动进入错题本。
             {activeCategory ? "选定分类时，干扰项仍限于各卡片的核对集合。" : ""}
             </>}
@@ -360,6 +622,44 @@ function CategoryChip({
       >
         {count}
       </span>
+    </Link>
+  );
+}
+
+/** 范围与题量筛选按钮。不设置 aria-current="page"，保持分类/对比组的单选高亮语义 */
+function OptionChip({
+  href,
+  active,
+  label,
+  count,
+}: {
+  href: string;
+  active: boolean;
+  label: string;
+  count?: number;
+}) {
+  return (
+    <Link
+      href={href}
+      data-active={active ? "true" : undefined}
+      className={cn(
+        "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+        active
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-border bg-background text-foreground/80 hover:bg-accent hover:text-accent-foreground",
+      )}
+    >
+      <span>{label}</span>
+      {count !== undefined ? (
+        <span
+          className={cn(
+            "text-[11px] tabular-nums",
+            active ? "text-primary-foreground/75" : "text-muted-foreground",
+          )}
+        >
+          {count}
+        </span>
+      ) : null}
     </Link>
   );
 }

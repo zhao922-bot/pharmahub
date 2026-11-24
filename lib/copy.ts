@@ -234,6 +234,7 @@ export const quiz = {
     indication: "适应症",
     "mechanism-order": "机制顺序",
     compare: "同类药对比",
+    case: "临床情景",
   },
 
   statsTitle: "答题统计",
@@ -284,6 +285,7 @@ export const wrongBook = {
     indication: "适应症",
     "mechanism-order": "机制顺序",
     compare: "同类药对比",
+    case: "临床情景",
   },
   viewCard: "查看卡片",
 } as const;
@@ -518,3 +520,7 @@ export const common = {
   error: "出了点问题",
   retry: "重试",
 } as const;
+
+export * from "./copy-enrichment";
+export * from "./copy-features";
+export * from "./copy-cases";

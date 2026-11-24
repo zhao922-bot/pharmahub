@@ -4,6 +4,10 @@ import { notFound } from "next/navigation";
 import { AlertTriangle, ArrowLeft, ArrowRight, Columns2, Info, Lightbulb, Target } from "lucide-react";
 
 import { MechanismDiagram } from "@/components/diagram/mechanism-diagram";
+import {
+  ClinicalTagBadges,
+  DrugInteractionsSection,
+} from "@/components/cards/card-enrichment-sections";
 import { ReviewPanel } from "@/components/review/review-panel";
 import { FavoriteButton } from "@/components/review/favorite-button";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -14,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { detail, nav, compare as compareCopy } from "@/lib/copy";
 import { cardRepository, getCategoryName } from "@/lib/data";
+import { CARD_ENRICHMENTS } from "@/lib/data/card-enrichment";
 import { compareRepository } from "@/lib/data/compare";
 import { studyRepository } from "@/lib/data/study";
 import { isDue } from "@/lib/review/sm2";
@@ -55,6 +60,11 @@ export default async function CardDetailPage({ params }: CardDetailPageProps) {
   const index = allCards.findIndex((item) => item.id === card.id);
   const prevCard = index > 0 ? allCards[index - 1] : undefined;
   const nextCard = index >= 0 && index < allCards.length - 1 ? allCards[index + 1] : undefined;
+  const enrichment = CARD_ENRICHMENTS[card.id];
+  const interactions = card.interactions ?? enrichment?.interactions;
+  const cardLookup = new Map(
+    allCards.map((item) => [item.id, { id: item.id, genericName: item.genericName }]),
+  );
 
   // 复习记录与收藏状态来自 云端数据库，需要动态渲染
   const today = new Date();
@@ -147,6 +157,9 @@ export default async function CardDetailPage({ params }: CardDetailPageProps) {
             ))}
           </ul>
         </section>
+
+        {/* 代表性药物相互作用（DDI 互链） */}
+        <DrugInteractionsSection interactions={interactions} cardLookup={cardLookup} />
 
         {/* 同类药对比入口：只在参与对比时出现 */}
         {compares.length > 0 ? (
@@ -336,6 +349,8 @@ function CardHeaderBlock({
   totalCards: number;
   favorited: boolean;
 }) {
+  const clinicalTags = card.clinicalTags ?? CARD_ENRICHMENTS[card.id]?.clinicalTags;
+
   return (
     <header className="mt-3">
       <div className="flex flex-wrap items-center gap-2">
@@ -356,6 +371,8 @@ function CardHeaderBlock({
         {card.englishName}
         {card.brandNames.length > 0 ? ` · ${card.brandNames.join("、")}` : ""}
       </p>
+
+      <ClinicalTagBadges tags={clinicalTags} />
 
       <div className="mt-4 rounded-lg border border-primary/15 bg-primary/[0.04] p-4">
         <div className="flex items-center gap-1.5">

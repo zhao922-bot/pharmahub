@@ -33,6 +33,12 @@ export interface WrongQuestionRecord {
   lastCorrectAt: string | null;
 }
 
+export interface CardAttemptStat {
+  cardId: string;
+  answered: number;
+  correct: number;
+}
+
 export interface QuizRepository {
   /** 记录一次答题，返回是否正确 */
   recordAttempt(input: {
@@ -44,6 +50,7 @@ export interface QuizRepository {
     now: Date;
   }): Promise<{ isCorrect: boolean }>;
   getStats(today: Date): Promise<QuizStats>;
+  getCardAttemptStats(): Promise<CardAttemptStat[]>;
   getWrongQuestions(): Promise<WrongQuestionRecord[]>;
   /** 答对后标记错题已攻克（不清除记录，只更新状态） */
   markCorrect(questionId: string, now: Date): Promise<void>;

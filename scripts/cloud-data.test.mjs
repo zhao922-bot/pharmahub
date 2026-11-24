@@ -5,6 +5,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { D1StudyRepository } from '../lib/db/study-store.ts';
 import { D1QuizRepository } from '../lib/db/quiz-store.ts';
 import { D1ExportRepository } from '../lib/db/export-store.ts';
+import { D1ImportRepository } from '../lib/db/import-store.ts';
+import { parseImportDataset } from '../lib/export/import.ts';
 import { toDateKey, nextReviewDate, fromDateKey, calculateStreak } from '../lib/review/sm2.ts';
 import { buildHeatmapGrid } from '../lib/review/heatmap.ts';
 
@@ -36,7 +38,7 @@ function fixture(t) {
   };
   const user = userId => {
     const context = async () => ({ db, userId });
-    return { study: new D1StudyRepository(context), quiz: new D1QuizRepository(context), exports: new D1ExportRepository(context) };
+    return { study: new D1StudyRepository(context), quiz: new D1QuizRepository(context), exports: new D1ExportRepository(context), imports: new D1ImportRepository(context) };
   };
   return { db, sqlite, a: user('alice'), b: user('bob') };
 }
@@ -127,4 +129,176 @@ test('UTC+8 midnight, month boundary, leap year and heatmap share the same date'
   assert.equal(today.date, '2026-10-22');
   assert.equal(grid.currentStreak, 2);
   assert.equal(calculateStreak(new Set(dates), now), 2);
+});
+
+test('getAllReviewLogs and getCardAttemptStats stay isolated per account', async t => {
+  const { a, b } = fixture(t);
+  await a.study.recordReview('c1', 2, now);
+  await a.study.recordReview('c2', 1, now);
+  await b.study.recordReview('c3', 2, now);
+
+  const aLogs = await a.study.getAllReviewLogs();
+  const bLogs = await b.study.getAllReviewLogs();
+  assert.deepEqual(aLogs.map(l => l.cardId).sort(), ['c1', 'c2']);
+  assert.deepEqual(bLogs.map(l => l.cardId), ['c3']);
+
+  await a.quiz.recordAttempt(attempt);
+  await a.quiz.recordAttempt({ ...attempt, selectedId: 'right' });
+  await a.quiz.recordAttempt({ ...attempt, questionId: 'q2', cardId: 'c2', selectedId: 'right' });
+  await b.quiz.recordAttempt({ ...attempt, cardId: 'c3' });
+
+  const aStats = await a.quiz.getCardAttemptStats();
+  const bStats = await b.quiz.getCardAttemptStats();
+  assert.deepEqual(
+    aStats.sort((x, y) => x.cardId.localeCompare(y.cardId)),
+    [
+      { cardId: 'c1', answered: 2, correct: 1 },
+      { cardId: 'c2', answered: 1, correct: 1 },
+    ],
+  );
+  assert.deepEqual(bStats, [{ cardId: 'c3', answered: 1, correct: 0 }]);
+});
+
+test('D1ImportRepository merges favorites, reviews, quiz, wrong-book idempotently per user_id', async t => {
+  const { a, b } = fixture(t);
+  const validCards = new Set(['c1', 'c2', 'c3']);
+
+  // Favorites: insert, duplicate skip, re-enable disabled row (enabled=0)
+  await a.study.toggleFavorite('c2', now);
+  await a.study.toggleFavorite('c2', now); // now enabled=0
+  assert.equal(await a.study.isFavorite('c2'), false);
+
+  const favDataset = parseImportDataset({
+    kind: 'favorites',
+    records: [
+      { cardId: 'c1', createdAt: '2026-10-20T08:00:00.000Z' },
+      { cardId: 'c1', createdAt: '2026-10-20T09:00:00.000Z' },
+      { cardId: 'c2', createdAt: '2026-10-21T08:00:00.000Z' },
+    ],
+  }, validCards);
+  assert.deepEqual(await a.imports.mergeDataset(favDataset), {
+    kind: 'favorites',
+    total: 3,
+    inserted: 1,
+    updated: 1,
+    skipped: 1,
+  });
+  assert.equal(await a.study.isFavorite('c1'), true);
+  assert.equal(await a.study.isFavorite('c2'), true);
+  assert.deepEqual(await b.study.getFavoriteCardIds(), []);
+
+  // Reviews: insert chronologically and rebuild SM-2 review_log; re-import skips all
+  const revDataset = parseImportDataset({
+    kind: 'reviews',
+    records: [
+      { cardId: 'c1', quality: 2, reviewedAt: '2026-10-10T02:00:00.000Z', reviewedOn: '2026-10-10' },
+      { cardId: 'c1', quality: 2, reviewedAt: '2026-10-11T02:00:00.000Z', reviewedOn: '2026-10-11' },
+    ],
+  }, validCards);
+  assert.deepEqual(await a.imports.mergeDataset(revDataset), {
+    kind: 'reviews',
+    total: 2,
+    inserted: 2,
+    updated: 0,
+    skipped: 0,
+  });
+  const rebuilt = await a.study.getReviewLog('c1');
+  assert.equal(rebuilt?.repetitions, 2);
+  assert.equal(rebuilt?.intervalDays, 6);
+  assert.equal(rebuilt?.nextReviewAt, '2026-10-17');
+  assert.deepEqual(await a.imports.mergeDataset(revDataset), {
+    kind: 'reviews',
+    total: 2,
+    inserted: 0,
+    updated: 0,
+    skipped: 2,
+  });
+  assert.equal(await b.study.getReviewLog('c1'), null);
+
+  // Quiz attempts: insert, duplicate skip
+  const quizDataset = parseImportDataset({
+    kind: 'quiz',
+    records: [
+      {
+        questionId: 'case:demo',
+        cardId: 'c1',
+        kind: 'case',
+        isCorrect: false,
+        answeredAt: '2026-10-21T16:05:00.000Z',
+        answeredOn: '2026-10-22',
+      },
+    ],
+  }, validCards);
+  assert.deepEqual(await a.imports.mergeDataset(quizDataset), {
+    kind: 'quiz',
+    total: 1,
+    inserted: 1,
+    updated: 0,
+    skipped: 0,
+  });
+  assert.deepEqual(await a.imports.mergeDataset(quizDataset), {
+    kind: 'quiz',
+    total: 1,
+    inserted: 0,
+    updated: 0,
+    skipped: 1,
+  });
+  assert.equal((await a.exports.getQuizAttempts()).length, 1);
+  assert.equal((await b.exports.getQuizAttempts()).length, 0);
+
+  // Wrong book: insert, update with max wrongCount + later timestamps, skip unchanged
+  const wrongInsert = parseImportDataset({
+    kind: 'wrong-book',
+    records: [
+      {
+        questionId: 'case:demo',
+        cardId: 'c1',
+        kind: 'case',
+        wrongCount: 2,
+        lastWrongAt: '2026-10-20T10:00:00.000Z',
+        lastCorrectAt: null,
+      },
+    ],
+  }, validCards);
+  assert.deepEqual(await a.imports.mergeDataset(wrongInsert), {
+    kind: 'wrong-book',
+    total: 1,
+    inserted: 1,
+    updated: 0,
+    skipped: 0,
+  });
+  assert.deepEqual(await a.imports.mergeDataset(wrongInsert), {
+    kind: 'wrong-book',
+    total: 1,
+    inserted: 0,
+    updated: 0,
+    skipped: 1,
+  });
+
+  const wrongUpdate = parseImportDataset({
+    kind: 'wrong-book',
+    records: [
+      {
+        questionId: 'case:demo',
+        cardId: 'c1',
+        kind: 'case',
+        wrongCount: 4,
+        lastWrongAt: '2026-10-22T10:00:00.000Z',
+        lastCorrectAt: '2026-10-23T08:00:00.000Z',
+      },
+    ],
+  }, validCards);
+  assert.deepEqual(await a.imports.mergeDataset(wrongUpdate), {
+    kind: 'wrong-book',
+    total: 1,
+    inserted: 0,
+    updated: 1,
+    skipped: 0,
+  });
+  const aWrong = await a.quiz.getWrongQuestions();
+  assert.equal(aWrong.length, 1);
+  assert.equal(aWrong[0].wrongCount, 4);
+  assert.equal(aWrong[0].lastWrongAt, '2026-10-22T10:00:00.000Z');
+  assert.equal(aWrong[0].lastCorrectAt, '2026-10-23T08:00:00.000Z');
+  assert.deepEqual(await b.quiz.getWrongQuestions(), []);
 });

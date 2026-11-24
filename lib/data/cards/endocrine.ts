@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 内分泌系统 · 16 张卡片
+ * 内分泌系统 · 17 张卡片
  */
 export const endocrineCards: readonly DrugCard[] = [
   {
@@ -709,6 +709,15 @@ export const endocrineCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "抑制 DPP-4 酶",
+        "活性内源性 GLP-1 与 GIP 保留增加",
+        "依血糖促进胰岛素分泌并抑制胰高血糖素",
+        "肝糖输出减少与血糖改善",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制 DPP-4 酶 → 活性内源性 GLP-1 与 GIP 保留增加 → 依血糖促进胰岛素分泌并抑制胰高血糖素 → 肝糖输出减少与血糖改善。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：JANUVIA（sitagliptin）说明书",
@@ -779,6 +788,15 @@ export const endocrineCards: readonly DrugCard[] = [
         { from: "n1", to: "n2", kind: "flow", label: "后续变化" },
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "结合并激活 GLP-1 受体",
+        "以葡萄糖依赖方式促进胰岛素分泌并抑制胰高血糖素",
+        "外周糖利用增加及肝糖输出减少",
+        "空腹与餐后血糖下降",
+      ],
+      explanation: "本题选取的上游到下游主线：结合并激活 GLP-1 受体 → 以葡萄糖依赖方式促进胰岛素分泌并抑制胰高血糖素 → 外周糖利用增加及肝糖输出减少 → 空腹与餐后血糖下降。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -854,6 +872,15 @@ export const endocrineCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "抑制小肠 α-葡萄糖苷酶及胰 α-淀粉酶",
+        "复杂碳水化合物分解为单糖变慢",
+        "肠道葡萄糖吸收延迟",
+        "餐后血糖峰值降低",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制小肠 α-葡萄糖苷酶及胰 α-淀粉酶 → 复杂碳水化合物分解为单糖变慢 → 肠道葡萄糖吸收延迟 → 餐后血糖峰值降低。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -998,6 +1025,15 @@ export const endocrineCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "结合骨表面羟磷灰石",
+        "抑制破骨细胞活性",
+        "骨吸收与骨转换减少",
+        "骨量增加并降低相应骨折风险",
+      ],
+      explanation: "本题选取的上游到下游主线：结合骨表面羟磷灰石 → 抑制破骨细胞活性 → 骨吸收与骨转换减少 → 骨量增加并降低相应骨折风险。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Alendronate sodium 片说明书",
@@ -1067,6 +1103,15 @@ export const endocrineCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "关闭胰岛 β 细胞 ATP 敏感性钾通道",
+        "β 细胞膜发生去极化",
+        "电压依赖性钙通道开放与钙内流增加",
+        "促进胰岛素释放并降低血糖",
+      ],
+      explanation: "本题选取的上游到下游主线：关闭胰岛 β 细胞 ATP 敏感性钾通道 → β 细胞膜发生去极化 → 电压依赖性钙通道开放与钙内流增加 → 促进胰岛素释放并降低血糖。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -1139,6 +1184,15 @@ export const endocrineCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "抑制肾近端小管 SGLT2",
+        "滤过葡萄糖重吸收减少",
+        "尿糖排泄增加",
+        "不依赖促分泌而降低血糖",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制肾近端小管 SGLT2 → 滤过葡萄糖重吸收减少 → 尿糖排泄增加 → 不依赖促分泌而降低血糖。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -1226,5 +1280,86 @@ export const endocrineCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-21",
+  },
+  {
+    id: "denosumab",
+    genericName: "地舒单抗",
+    brandNames: [],
+    englishName: "Denosumab",
+    category: "endocrine",
+    target: "结合核因子 κB 受体活化因子配体（RANKL），抑制破骨细胞形成、功能与存活",
+    targetQuizDistractorIds: [
+      "amlodipine",
+      "omeprazole",
+      "oseltamivir",
+    ],
+    indicationQuizDistractorIds: [
+      "amlodipine",
+      "omeprazole",
+      "oseltamivir",
+    ],
+    mechanismSteps: [
+      {
+        title: "特异性结合并中和 RANKL",
+        detail: "地舒单抗为人源 IgG2 单克隆抗体，高亲和力结合破骨细胞分化与活化的关键信号分子 RANKL，阻止其与破骨细胞前体及成熟破骨细胞表面的 RANK 受体结合。",
+      },
+      {
+        title: "抑制破骨细胞分化、活化与骨吸收",
+        detail: "阻断 RANKL-RANK 通路后，破骨细胞生成减少、功能受抑并加速凋亡，从而显著降低骨吸收，提高皮质骨和松质骨的骨密度。",
+      },
+      {
+        title: "高度关注严重低钙血症黑框警告",
+        detail: "抑制骨吸收可减少钙释放入血；晚期慢性肾脏病（尤其伴 CKD-MBD 或透析患者）发生严重甚至危及生命低钙血症的风险显著升高（黑框警告）。用药前须纠正低钙血症并保证足够钙与维生素 D 补充。",
+      },
+      {
+        title: "警惕停药或延迟给药后的反跳性多发椎体骨折",
+        detail: "与双膦酸盐长期滞留骨基质不同，地舒单抗停药或推迟注射后骨转换可快速反跳，多发椎体骨折风险上升；停药时应在医生评估下过渡到其他抗骨吸收方案，切勿自行中断。",
+      },
+    ],
+    indications: [
+      "具有高骨折风险的绝经后妇女骨质疏松症的治疗（PROLIA 60 mg 每 6 个月皮下注射）",
+      "增加具有高骨折风险的男性骨质疏松症患者骨量（以及糖皮质激素性骨质疏松或特定肿瘤内分泌治疗相关骨丢失，见说明书）",
+    ],
+    adverseReactions: [
+      "低钙血症（晚期慢性肾脏病患者可发生致命性严重低钙血症，黑框警告）",
+      "停药或延迟给药后骨转换反跳及多发性椎体骨折风险升高",
+      "肌肉骨骼痛、背痛、四肢疼痛及高胆固醇血症",
+      "颌骨坏死（ONJ）及非典型股骨骨折（与抗骨吸收治疗相关）",
+      "严重皮肤感染（如蜂窝织炎）及湿疹等超敏反应",
+    ],
+    memoryTip: "「地舒封住 RANKL 控破骨，停药反跳易椎折」——先查血钙补维 D，慢肾患者防重度低钙。",
+    diagram: {
+      title: "中和 RANKL → 破骨受抑 → 减少骨吸收",
+      nodes: [
+        { id: "drug", label: "地舒单抗", role: "drug" },
+        { id: "rankl", label: "RANKL 配体", role: "target" },
+        { id: "oc", label: "破骨细胞成熟与活化 ↓", role: "signal" },
+        { id: "resorp", label: "骨吸收减弱", role: "signal" },
+        { id: "effect", label: "骨密度提升、骨折 ↓", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "rankl", label: "单抗中和", kind: "inhibit" },
+        { from: "rankl", to: "oc", label: "RANK 信号阻断", kind: "flow" },
+        { from: "oc", to: "resorp", label: "破骨减少", kind: "flow" },
+        { from: "resorp", to: "effect", label: "骨量保护", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "特异性结合并中和 RANKL",
+        "阻断 RANKL 与破骨细胞 RANK 结合",
+        "破骨细胞形成与骨吸收活性受抑",
+        "骨量流失减缓且脆性骨折风险下降",
+      ],
+      explanation: "本题选取的上游到下游主线：特异性结合并中和 RANKL → 阻断 RANKL 与破骨细胞 RANK 结合 → 破骨细胞形成与骨吸收活性受抑 → 骨量流失减缓且脆性骨折风险下降。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：PROLIA（地舒单抗）皮下注射液说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=49e5afe9-a0c7-40c4-af9f-f287a80c5c88",
+        sections: "黑框警告、第 1、4、5、6、12.1 节：晚期 CKD 严重低钙血症、停药后椎体骨折与 RANKL 抑制机制。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
   },
 ];

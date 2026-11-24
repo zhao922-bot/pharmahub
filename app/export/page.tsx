@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Braces, Download, FileDown, Table2 } from "lucide-react";
 
+import { ImportPanel } from "@/components/export/import-panel";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
@@ -145,6 +146,8 @@ export default async function ExportPage() {
             </ul>
           </>
         )}
+
+        <ImportPanel />
 
         <div className="mt-6 rounded-lg border border-dashed border-border bg-muted/20 p-4">
           <p className="text-xs font-medium">{exportCopy.noteTitle}</p>

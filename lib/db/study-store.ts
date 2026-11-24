@@ -47,6 +47,12 @@ export class D1StudyRepository implements StudyProgressRepository {
     return found.filter((row) => wanted.has(row.card_id)).map(toLog);
   }
 
+  async getAllReviewLogs(): Promise<ReviewLog[]> {
+    const { db, userId } = await this.context();
+    const found = await rows<LogRow>(db.prepare("SELECT * FROM review_log WHERE user_id = ?").bind(userId));
+    return found.map(toLog);
+  }
+
   async getDueCardIds(today: Date): Promise<string[]> {
     const { db, userId } = await this.context();
     return (await rows<{ card_id: string }>(db.prepare("SELECT card_id FROM review_log WHERE user_id = ? AND next_review_at <= ? ORDER BY next_review_at ASC").bind(userId, toDateKey(today)))).map((r) => r.card_id);

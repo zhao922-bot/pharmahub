@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import { validateQuizAnswer } from "../lib/quiz/validate-answer.ts";
 import { buildQuestion, generateQuiz } from "../lib/quiz/generator.ts";
 import { buildCompareQuestion } from "../lib/quiz/compare-generator.ts";
+import { buildCaseQuestion } from "../lib/quiz/case-generator.ts";
+import { CASE_QUESTIONS } from "../lib/data/cases.ts";
 import { cardRepository } from "../lib/data/cards/index.ts";
 import { CATEGORIES } from "../lib/data/categories.ts";
 import { COMPARE_GROUPS } from "../lib/data/compares.ts";
@@ -50,4 +52,16 @@ test("统一校验保留对比题身份和服务端正确答案校验", () => {
   assert.deepEqual(validate(input(q)), { question: q, selectedId: q.correctOptionId });
   assert.equal(validate({ ...input(q), kind: "target" }), null);
   assert.equal(validate({ ...input(q), correctId: "forged" }), null);
+});
+test("统一校验保留临床情景题身份并拒绝篡改答案", () => {
+  const spec = CASE_QUESTIONS[0];
+  const q = buildCaseQuestion(`case:${spec.id}`, CASE_QUESTIONS);
+  assert.ok(q);
+  const wrong = q.options.find((o) => o.id !== q.correctOptionId).id;
+  assert.deepEqual(validate(input(q)), { question: q, selectedId: q.correctOptionId });
+  assert.equal(validate(input(q, wrong)).selectedId, wrong);
+  assert.equal(validate({ ...input(q), kind: "target" }), null);
+  assert.equal(validate({ ...input(q), correctId: wrong }), null);
+  assert.equal(validate({ ...input(q), cardId: "unknown-card" }), null);
+  assert.equal(validate({ ...input(q), questionId: "case:missing" }), null);
 });

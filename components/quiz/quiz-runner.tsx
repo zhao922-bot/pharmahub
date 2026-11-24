@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, CheckCircle2, X, XCircle } from "lucide-react";
 
@@ -8,6 +8,7 @@ import { submitQuizAnswerAction } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { quiz as quizCopy } from "@/lib/copy";
+import { quizFeaturesCopy } from "@/lib/copy-features";
 import type { QuizQuestion } from "@/lib/quiz/generator";
 import { cn } from "@/lib/utils";
 
@@ -79,7 +80,7 @@ export function QuizRunner({ questions, mode = "normal", retryHref = "/quiz", co
     [currentQuestion, answered, isSubmitting],
   );
 
-  function handleNext() {
+  const handleNext = useCallback(() => {
     if (isSubmitting || !answered) return;
     if (currentIndex + 1 >= questions.length) {
       setFinished(true);
@@ -88,7 +89,45 @@ export function QuizRunner({ questions, mode = "normal", retryHref = "/quiz", co
     setCurrentIndex((index) => index + 1);
     setSelectedId(null);
     setSubmitError(null);
-  }
+  }, [isSubmitting, answered, currentIndex, questions.length]);
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.metaKey || event.ctrlKey || event.altKey || event.isComposing) return;
+      const target = event.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+      if (finished || !currentQuestion || isSubmitting) return;
+
+      if (!answered) {
+        if (event.key >= "1" && event.key <= "4") {
+          const index = Number(event.key) - 1;
+          const option = currentQuestion.options[index];
+          if (option) {
+            event.preventDefault();
+            void handleSelect(option.id);
+          }
+        }
+        return;
+      }
+
+      if (event.key === "Enter" || event.key === " ") {
+        if (event.key === "Enter" && target?.closest("a")) return;
+        event.preventDefault();
+        handleNext();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [finished, currentQuestion, isSubmitting, answered, handleSelect, handleNext]);
 
   function restartReview() {
     setCurrentIndex(0);
@@ -314,14 +353,22 @@ export function QuizRunner({ questions, mode = "normal", retryHref = "/quiz", co
             <p className="mt-1 whitespace-pre-line text-sm leading-6 text-foreground/85">
               {currentQuestion.explanation}
             </p>
-            {currentQuestion.comparison ? (
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5">
               <Link
-                href={`/compare/${currentQuestion.comparison.id}`}
-                className="mt-3 inline-block text-xs font-medium text-primary hover:underline"
+                href={`/cards/${currentQuestion.cardId}`}
+                className="inline-block text-xs font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
               >
-                {quizCopy.compareBack}
+                {quizFeaturesCopy.viewCardLink}
               </Link>
-            ) : null}
+              {currentQuestion.comparison ? (
+                <Link
+                  href={`/compare/${currentQuestion.comparison.id}`}
+                  className="inline-block text-xs font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+                >
+                  {quizCopy.compareBack}
+                </Link>
+              ) : null}
+            </div>
           </div>
 
           <Button onClick={handleNext} className="mt-4 w-full">
@@ -334,6 +381,10 @@ export function QuizRunner({ questions, mode = "normal", retryHref = "/quiz", co
       {isSubmitting ? (
         <p className="text-center text-xs text-muted-foreground">{quizCopy.submitting}</p>
       ) : null}
+
+      <p className="hidden text-center text-[11px] text-muted-foreground sm:block">
+        {quizFeaturesCopy.shortcutHint}
+      </p>
     </div>
   );
 }

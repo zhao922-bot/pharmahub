@@ -54,6 +54,7 @@ export async function recordReviewAction(
   revalidatePath("/");
   revalidatePath("/cards");
   revalidatePath(`/cards/${cardId}`);
+  revalidatePath("/review");
 
   return {
     ok: true,
@@ -72,6 +73,7 @@ export async function toggleFavoriteAction(cardId: string): Promise<{ ok: boolea
   revalidatePath("/");
   revalidatePath("/cards");
   revalidatePath(`/cards/${cardId}`);
+  revalidatePath("/review");
   return { ok: true, favorited };
 }
 

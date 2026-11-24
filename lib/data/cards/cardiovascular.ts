@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 心血管系统 · 24 张卡片
+ * 心血管系统 · 26 张卡片
  *
  * 条目按所列说明书与指南整理。机制为教学简化；并行作用及未明机制不能强排为时间顺序。
  *
@@ -1206,6 +1206,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "阻滞 L 型钙通道",
+        "细胞钙内流减少",
+        "血管平滑肌舒张与外周阻力下降",
+        "血压及心肌耗氧降低",
+      ],
+      explanation: "本题选取的上游到下游主线：阻滞 L 型钙通道 → 细胞钙内流减少 → 血管平滑肌舒张与外周阻力下降 → 血压及心肌耗氧降低。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Diltiazem hydrochloride 缓释片说明书",
@@ -1348,6 +1357,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "短暂抑制房室结传导",
+        "冲动经房室结传导减慢",
+        "依赖房室结的折返环路中断",
+        "相应阵发性室上速终止",
+      ],
+      explanation: "本题选取的上游到下游主线：短暂抑制房室结传导 → 冲动经房室结传导减慢 → 依赖房室结的折返环路中断 → 相应阵发性室上速终止。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "emc：Adenosine 注射液产品说明书",
@@ -1422,6 +1440,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "fibrin", to: "effect", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "结合并增强抗凝血酶作用",
+        "加快凝血因子 Xa 与Ⅱa 失活",
+        "纤维蛋白形成减少",
+        "血栓形成及扩展受抑",
+      ],
+      explanation: "本题选取的上游到下游主线：结合并增强抗凝血酶作用 → 加快凝血因子 Xa 与Ⅱa 失活 → 纤维蛋白形成减少 → 血栓形成及扩展受抑。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Heparin sodium 注射液说明书",
@@ -1493,6 +1520,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "阻断心脏 β1 受体",
+        "心脏对交感刺激反应减弱",
+        "心率减慢与心脏做功减少",
+        "心肌耗氧下降",
+      ],
+      explanation: "本题选取的上游到下游主线：阻断心脏 β1 受体 → 心脏对交感刺激反应减弱 → 心率减慢与心脏做功减少 → 心肌耗氧下降。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -1640,6 +1676,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "直接选择性抑制凝血因子 Xa",
+        "凝血酶生成减少",
+        "纤维蛋白形成减少",
+        "血栓形成受抑",
+      ],
+      explanation: "本题选取的上游到下游主线：直接选择性抑制凝血因子 Xa → 凝血酶生成减少 → 纤维蛋白形成减少 → 血栓形成受抑。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：XARELTO（利伐沙班）说明书",
@@ -1712,6 +1757,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "抑制 HMG-CoA 还原酶",
+        "肝内胆固醇合成减少",
+        "肝细胞表面 LDL 受体增加",
+        "血 LDL 胆固醇清除增多并下降",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制 HMG-CoA 还原酶 → 肝内胆固醇合成减少 → 肝细胞表面 LDL 受体增加 → 血 LDL 胆固醇清除增多并下降。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "emc：Rosuvastatin 片产品说明书",
@@ -1782,6 +1836,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "直接可逆结合血小板 P2Y12 受体",
+        "阻断 ADP 诱导的下游信号转导",
+        "血小板活化与聚集减弱",
+        "动脉粥样硬化血栓风险降低",
+      ],
+      explanation: "本题选取的上游到下游主线：直接可逆结合血小板 P2Y12 受体 → 阻断 ADP 诱导的下游信号转导 → 血小板活化与聚集减弱 → 动脉粥样硬化血栓风险降低。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
@@ -1858,6 +1921,15 @@ export const cardiovascularCards: readonly DrugCard[] = [
         { from: "fibrin", to: "effect", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "增强抗凝血酶的抑制作用",
+        "以抗 Xa 活性为主并较弱抑制Ⅱa 因子",
+        "凝血级联与纤维蛋白形成受抑",
+        "血栓形成与扩展减少",
+      ],
+      explanation: "本题选取的上游到下游主线：增强抗凝血酶的抑制作用 → 以抗 Xa 活性为主并较弱抑制Ⅱa 因子 → 凝血级联与纤维蛋白形成受抑 → 血栓形成与扩展减少。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "emc：Clexane（依诺肝素钠）注射剂说明书",
@@ -1866,5 +1938,167 @@ export const cardiovascularCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-21",
+  },
+  {
+    id: "dabigatran",
+    genericName: "达比加群酯",
+    brandNames: [],
+    englishName: "Dabigatran etexilate",
+    category: "cardiovascular",
+    target: "前药经酯酶水解为达比加群，直接、可逆性抑制凝血酶（Ⅱa 因子）",
+    targetQuizDistractorIds: [
+      "metformin",
+      "omeprazole",
+      "levothyroxine",
+    ],
+    indicationQuizDistractorIds: [
+      "metformin",
+      "omeprazole",
+      "levothyroxine",
+    ],
+    mechanismSteps: [
+      {
+        title: "口服前药经酯酶转化为活性达比加群",
+        detail: "达比加群酯本身几乎无抗凝活性，口服吸收后迅速经血浆与肝脏酯酶水解为活性成分达比加群。",
+      },
+      {
+        title: "直接、竞争性抑制游离与结合凝血酶（Ⅱa）",
+        detail: "不依赖抗凝血酶，可逆结合凝血酶（因子Ⅱa）的活性位点，阻止纤维蛋白原裂解为纤维蛋白并抑制凝血酶诱导的血小板聚集。",
+      },
+      {
+        title: "受 P-gp 转运体及肾功能清除高度影响",
+        detail: "达比加群酯为 P-糖蛋白（P-gp）底物，而活性达比加群约 80% 经肾脏原型排泄；肾功能减退或合用强 P-gp 抑制剂（如决奈达隆、系统性酮康唑）显著升高血药暴露与出血风险，需依 CrCl 减量或禁用。",
+      },
+      {
+        title: "具备特异性逆转剂依达赛珠单抗",
+        detail: "发生危及生命或难以控制的出血或需紧急手术时，可使用依达赛珠单抗（Idarucizumab）快速中和达比加群抗凝活性；另须警惕过早停药致血栓风险及椎管内血肿黑框警告，且胶囊不可拆开或咀嚼。",
+      },
+    ],
+    indications: [
+      "非瓣膜性心房颤动成人患者的卒中与体循环栓塞风险降低",
+      "深静脉血栓形成（DVT）及肺栓塞（PE）的治疗与复发预防（按说明书疗程与适应人群）",
+      "髋关节置换术后深静脉血栓形成与肺栓塞的预防",
+    ],
+    adverseReactions: [
+      "出血（包括消化道出血与颅内出血等严重或致死性出血）",
+      "消化不良、胃炎样症状及腹痛（胶囊须整粒吞服，不得拆开、压碎或咀嚼）",
+      "过早停药在无替代抗凝情况下增加血栓形成风险（黑框警告）",
+      "椎管内麻醉或腰椎穿刺相关硬膜外/脊髓血肿风险（黑框警告）",
+    ],
+    memoryTip: "「达比加群直抑Ⅱa，前药 P-gp 主肾排」——紧急逆转找依达赛珠单抗，胶囊切勿拆开。",
+    diagram: {
+      title: "前药水解 → 直接抑制Ⅱa → 特异性逆转对比",
+      nodes: [
+        { id: "pro", label: "达比加群酯前药", role: "drug" },
+        { id: "act", label: "活性达比加群", role: "drug" },
+        { id: "iia", label: "凝血酶（Ⅱa 因子）", role: "target" },
+        { id: "fib", label: "纤维蛋白生成 ↓", role: "signal" },
+        { id: "effect", label: "血栓形成受抑", role: "effect" },
+      ],
+      edges: [
+        { from: "pro", to: "act", label: "酯酶水解", kind: "flow" },
+        { from: "act", to: "iia", label: "直接可逆抑制", kind: "inhibit" },
+        { from: "iia", to: "fib", label: "活性受阻", kind: "flow" },
+        { from: "fib", to: "effect", label: "抗凝效应", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "前药达比加群酯经酯酶水解活化",
+        "直接可逆抑制凝血酶（Ⅱa 因子）",
+        "阻止纤维蛋白原转化为纤维蛋白",
+        "血栓形成与扩展风险降低",
+      ],
+      explanation: "本题选取的上游到下游主线：前药达比加群酯经酯酶水解活化 → 直接可逆抑制凝血酶（Ⅱa 因子） → 阻止纤维蛋白原转化为纤维蛋白 → 血栓形成与扩展风险降低。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：PRADAXA（达比加群酯）胶囊说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ba74e3cd-b06f-4145-b284-5fd6b84ff3c9",
+        sections: "黑框警告、第 1、2、5、7、12 节：适应症、肾功能与 P-gp 调整、依达赛珠单抗逆转及直接凝血酶抑制机制。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+  },
+  {
+    id: "evolocumab",
+    genericName: "依洛尤单抗",
+    brandNames: [],
+    englishName: "Evolocumab",
+    category: "cardiovascular",
+    target: "结合并抑制 PCSK9，减少肝细胞 LDL 受体降解以增加 LDL-C 清除",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "allopurinol",
+    ],
+    indicationQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "allopurinol",
+    ],
+    mechanismSteps: [
+      {
+        title: "特异性结合血循环中的 PCSK9",
+        detail: "依洛尤单抗为人源 IgG2 单克隆抗体，高亲和力结合前蛋白转化酶枯草溶菌素 9（PCSK9），阻断 PCSK9 与肝细胞表面低密度脂蛋白受体（LDLR）结合。",
+      },
+      {
+        title: "保护 LDL 受体免于溶酶体降解并促进循环利用",
+        detail: "生理情况下 PCSK9 会促进内吞后的 LDLR 在肝细胞溶酶体内降解；依洛尤单抗阻断该过程后，更多 LDLR 得以重新返回肝细胞表面。",
+      },
+      {
+        title: "显著增强肝脏对循环 LDL-C 的清除",
+        detail: "肝细胞表面 LDLR 数量增加，加速血浆中 LDL-C 的摄取与清除，可单药或联合他汀、依折麦布进一步大幅降低 LDL-C 水平。",
+      },
+      {
+        title: "明确适应证范围与皮下注射给药管理",
+        detail: "用于确诊动脉粥样硬化性心血管疾病成人预防主要不良心血管事件，以及原发性高脂血症（含杂合子与纯合子家族性高胆固醇血症）的降脂治疗；为皮下注射生物制剂，须核对过敏史。",
+      },
+    ],
+    indications: [
+      "降低已确诊心血管疾病成人患者的心肌梗死、卒中及冠状动脉血运重建等心血管事件风险",
+      "配合饮食控制（单用或联合其他降脂药）用于成人原发性高脂血症（含杂合子家族性高胆固醇血症）的 LDL-C 降低",
+      "配合其他降脂治疗用于纯合子家族性高胆固醇血症（HoFH）患者进一步降低 LDL-C",
+    ],
+    adverseReactions: [
+      "鼻咽炎、上呼吸道感染或流感样症状",
+      "注射部位红斑、疼痛或淤青",
+      "背痛、肌痛或少数患者血糖轻度升高",
+      "超敏反应（包括皮疹、荨麻疹，少见血管性水肿，出现严重过敏须停药）",
+    ],
+    memoryTip: "「依洛尤锁住 PCSK9，保住肝细胞 LDL 受体」——皮下注射单抗，让受体循环再利用。",
+    diagram: {
+      title: "抑制 PCSK9 → 减少 LDLR 降解 → LDL-C 清除增加",
+      nodes: [
+        { id: "drug", label: "依洛尤单抗", role: "drug" },
+        { id: "pcsk9", label: "PCSK9 蛋白", role: "target" },
+        { id: "ldlr", label: "肝细胞 LDLR 循环 ↑", role: "signal" },
+        { id: "clear", label: "血浆 LDL-C 清除 ↑", role: "signal" },
+        { id: "effect", label: "血脂与事件风险 ↓", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "pcsk9", label: "单抗结合阻断", kind: "inhibit" },
+        { from: "pcsk9", to: "ldlr", label: "受体降解 ↓", kind: "flow" },
+        { from: "ldlr", to: "clear", label: "肝摄取增强", kind: "flow" },
+        { from: "clear", to: "effect", label: "LDL-C 显著下降", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "特异性结合循环中的 PCSK9",
+        "阻止 PCSK9 介导的 LDL 受体降解",
+        "肝细胞表面 LDL 受体数量增加",
+        "血浆 LDL-C 清除加快并显著降低",
+      ],
+      explanation: "本题选取的上游到下游主线：特异性结合循环中的 PCSK9 → 阻止 PCSK9 介导的 LDL 受体降解 → 肝细胞表面 LDL 受体数量增加 → 血浆 LDL-C 清除加快并显著降低。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：REPATHA（依洛尤单抗）注射液说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cd61e902-166d-4aa6-9f3c-a18c1008d07e",
+        sections: "第 1、5、6、12.1 节：心血管事件与高脂血症适应症、过敏反应及 PCSK9-LDLR 循环机制。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
   },
 ];

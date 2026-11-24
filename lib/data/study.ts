@@ -31,6 +31,7 @@ export interface StudyProgressRepository {
   getProgress(today: Date): Promise<StudyProgress>;
   getReviewLog(cardId: string): Promise<ReviewLog | null>;
   getReviewLogs(cardIds: string[]): Promise<ReviewLog[]>;
+  getAllReviewLogs(): Promise<ReviewLog[]>;
   getDueCardIds(today: Date): Promise<string[]>;
   /** 记录一次复习，返回更新后的记录 */
   recordReview(

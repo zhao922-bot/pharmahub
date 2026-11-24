@@ -1,4 +1,6 @@
-import type { DrugCard, CategoryId, CompareGroup } from "@/lib/types";
+import type { DrugCard, CategoryId, CompareGroup, CaseQuestionSpec } from "@/lib/types";
+import { CASE_QUESTIONS } from "@/lib/data/cases";
+import { buildCaseQuestion } from "@/lib/quiz/case-generator";
 import { buildCompareQuestion } from "@/lib/quiz/compare-generator";
 import { createRandom, hashString, shuffle } from "@/lib/quiz/random";
 
@@ -15,7 +17,7 @@ import { createRandom, hashString, shuffle } from "@/lib/quiz/random";
  *    从不同角度考察对机制链的理解，而不只是记忆药名。
  */
 
-export type QuestionKind = "target" | "category" | "indication" | "mechanism-order" | "compare";
+export type QuestionKind = "target" | "category" | "indication" | "mechanism-order" | "compare" | "case";
 
 export interface QuizOption {
   /** 选项 id，用于提交答案 */
@@ -48,6 +50,7 @@ export const QUESTION_KIND_LABELS: Record<QuestionKind, string> = {
   indication: "适应症",
   "mechanism-order": "机制顺序",
   compare: "同类药对比",
+  case: "临床情景",
 };
 
 /** 从候选池里挑 n 个不与正确答案重复的干扰项 */
@@ -262,6 +265,7 @@ export interface GenerateWrongBookQuizOptions {
   /** 错题本记录，按调用方给的顺序出题 */
   wrongQuestions: readonly { questionId?: string; cardId: string; kind: QuestionKind }[];
   compareGroups?: readonly CompareGroup[];
+  caseQuestions?: readonly CaseQuestionSpec[];
   /** 全量卡片，既用于查卡片也用于提供干扰项 */
   allCards: readonly DrugCard[];
   /** 分类 id → 中文名 */
@@ -285,6 +289,7 @@ export function generateWrongBookQuiz({
   categoryNames,
   limit,
   compareGroups = [],
+  caseQuestions = CASE_QUESTIONS,
 }: GenerateWrongBookQuizOptions): QuizQuestion[] {
   const cardById = new Map(allCards.map((card) => [card.id, card]));
   const questions: QuizQuestion[] = [];
@@ -294,7 +299,7 @@ export function generateWrongBookQuiz({
     if (limit !== undefined && questions.length >= limit) break;
 
     // 同一道题在错题本里本应唯一，这里再兜一层，防止上游数据异常导致重复出题
-    const questionKey = record.kind === "compare"
+    const questionKey = record.kind === "compare" || record.kind === "case"
       ? record.questionId
       : `${record.cardId}:${record.kind}`;
     if (!questionKey) continue;
@@ -305,7 +310,9 @@ export function generateWrongBookQuiz({
 
     const question = record.kind === "compare"
       ? buildCompareQuestion(questionKey, compareGroups, allCards)
-      : buildQuestion(card, record.kind, allCards, categoryNames);
+      : record.kind === "case"
+        ? buildCaseQuestion(questionKey, caseQuestions)
+        : buildQuestion(card, record.kind, allCards, categoryNames);
     if (!question || question.cardId !== record.cardId) continue;
 
     seen.add(questionKey);

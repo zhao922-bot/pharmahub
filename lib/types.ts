@@ -27,6 +27,8 @@ export const CATEGORY_IDS = [
   "antiallergic",
   "antiviral",
   "antifungal",
+  "immunomodulator",
+  "antidote",
 ] as const;
 
 export type CategoryId = (typeof CATEGORY_IDS)[number];
@@ -77,6 +79,30 @@ export interface MechanismStep {
   detail: string;
 }
 
+export interface DrugInteraction {
+  /** 相互作用对象名称（药名、药物类别或食物/饮品） */
+  partner: string;
+  /** 若对象在本卡片库中，填其稳定卡片 id，供详情页跳转 */
+  targetCardId?: string;
+  /** 相互作用机制（如 CYP3A4 强抑制、药效学协同致高钾） */
+  mechanism: string;
+  /** 临床后果与学习要点提示 */
+  consequence: string;
+}
+
+export const CLINICAL_TAG_IDS = [
+  "prodrug",
+  "narrow-therapeutic-index",
+  "cyp-inhibitor",
+  "cyp-inducer",
+  "renal-adjustment",
+  "hepatic-caution",
+  "pregnancy-caution",
+  "qt-prolongation",
+] as const;
+
+export type ClinicalTagId = (typeof CLINICAL_TAG_IDS)[number];
+
 export interface DrugCard {
   /** 稳定的英文 id，如 "metoprolol"，用于路由与复习记录关联 */
   id: string;
@@ -115,6 +141,10 @@ export interface DrugCard {
   needsVerification?: boolean;
   /** 待核实的具体说明，仅当 needsVerification 为 true 时展示 */
   verificationNote?: string;
+  /** 典型代表性药物相互作用（可选，供知识互链展示） */
+  interactions?: DrugInteraction[];
+  /** 药代与用药特征标签（可选） */
+  clinicalTags?: ClinicalTagId[];
 }
 
 /** 用户对一张卡片的掌握自评：0 没记住 / 1 模糊 / 2 记住了 */
@@ -186,4 +216,25 @@ export interface ReviewLog {
   nextReviewAt: string;
   /** 最近一次复习时间，ISO 日期字符串 */
   lastReviewedAt: string;
+}
+
+/** 临床机制情景题定义（纯学习向情景题，不构成个体化处方建议） */
+export interface CaseQuestionSpec {
+  /** 稳定英文 id（如 "acei-cough-switch-arb"），发布后不可改名 */
+  id: string;
+  /** 题目核心关联的主卡片 id */
+  cardId: string;
+  /** 题目所属分类 */
+  category: CategoryId;
+  /** 学习型临床机制情景题干 */
+  prompt: string;
+  /** 正确答案选项文本 */
+  correctOption: string;
+  /** 3 个互斥干扰项文本 */
+  distractors: [string, string, string];
+  /** 机制与选药辨析解析（说明正确原因与排除理由） */
+  explanation: string;
+  /** 公开说明书或权威指南来源 */
+  sources: { title: string; url: string; sections: string }[];
+  sourcesCheckedOn: string;
 }

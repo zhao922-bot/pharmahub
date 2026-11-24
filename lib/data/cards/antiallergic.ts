@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 抗过敏药 · 4 张卡片
+ * 抗过敏药 · 6 张卡片
  *
  * 核心是「第一代 vs 第二代」的分野：
  * 两代都阻断 H1 受体，差别在于能否透过血脑屏障。
@@ -315,5 +315,174 @@ export const antiallergicCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-20",
+  },
+  {
+    id: "cromoglicate",
+    genericName: "色甘酸钠",
+    brandNames: [],
+    englishName: "Sodium cromoglicate",
+    category: "antiallergic",
+    target: "稳定肥大细胞膜，抑制致敏肥大细胞脱颗粒及组胺、白三烯等炎症介质释放",
+    mechanismSteps: [
+      {
+        title: "稳定致敏肥大细胞",
+        detail: "色甘酸钠是肥大细胞膜稳定剂，在接触变应原或激发因素时抑制致敏肥大细胞脱颗粒，并间接影响钙离子内流。",
+      },
+      {
+        title: "减少组胺与白三烯等介质释放",
+        detail: "阻止 I 型变态反应中的组胺、白三烯等炎性介质释放，既可减轻速发相也可减弱迟发相反应，而非在受体端拮抗组胺。",
+      },
+      {
+        title: "发挥预防性抗炎保护作用",
+        detail: "规律预防用药可降低气道对运动、冷空气或变应原诱发的支气管痉挛反应；起效较慢，需持续使用建立保护。",
+      },
+      {
+        title: "明确无直接舒张支气管作用，不可用于急性哮喘急救",
+        detail: "色甘酸钠没有直接的支气管舒张或抗组胺受体阻断活性，对已发生的急性哮喘发作或哮喘持续状态无效，不能替代沙丁胺醇等急救药物。",
+      },
+    ],
+    indications: [
+      "支气管哮喘及运动、冷空气等诱发支气管痉挛的预防性长期管理（吸入雾化溶液，不可用于急性发作急救）",
+      "急慢性过敏性结膜炎及春季角结膜炎的预防与症状控制（需对应眼科滴眼液剂型）",
+    ],
+    adverseReactions: [
+      "吸入后一过性咳嗽、咽喉刺激、鼻塞或偶见吸入诱发的短暂喘息与支气管痉挛",
+      "罕见严重超敏反应（血管性水肿、喉头水肿或过敏性休克）",
+      "停药时若病情控制不稳可能导致哮喘症状反复，需在医师指导下调整方案",
+    ],
+    memoryTip: "色甘酸钠稳住肥大细胞不放炎症介质，只做哮喘或过敏的提前预防，不管急性喘息急救。",
+    diagram: {
+      title: "色甘酸钠：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "色甘酸钠", role: "drug" },
+        { id: "s0", label: "致敏肥大细胞", role: "target" },
+        { id: "s1", label: "脱颗粒受抑制", role: "signal" },
+        { id: "s2", label: "组胺等介质 ↓", role: "signal" },
+        { id: "s3", label: "预防过敏反应", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "稳定细胞膜", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "减少钙内流", kind: "flow" },
+        { from: "s1", to: "s2", label: "释放受阻", kind: "flow" },
+        { from: "s2", to: "s3", label: "降低发作", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "稳定致敏肥大细胞膜",
+        "抑制抗原刺激后的脱颗粒",
+        "减少组胺与白三烯等介质释放",
+        "发挥预防性抗过敏与气道保护",
+      ],
+      explanation: "本题选取的上游到下游主线：稳定致敏肥大细胞膜 → 抑制抗原刺激后的脱颗粒 → 减少组胺与白三烯等介质释放 → 发挥预防性抗过敏与气道保护。切记色甘酸钠无直接支气管舒张作用，不能用于急性哮喘急救。",
+    },
+    sources: [
+      {
+        title: "Cromolyn Sodium 吸入雾化溶液说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0209cd6c-5c43-0b93-e063-6294a90ac964",
+        sections: "适应症、临床药理、警告与不良反应：肥大细胞稳定机制、支气管哮喘预防定位及急性发作禁用提示。",
+      },
+      {
+        title: "Sodium Cromoglicate 2% 滴眼液说明书 · emc",
+        url: "https://www.medicines.org.uk/emc/product/11074/smpc",
+        sections: "4.1、5.1 节：过敏性结膜炎预防用途与肥大细胞稳定机制。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "omeprazole",
+    ],
+  },
+  {
+    id: "fexofenadine",
+    genericName: "非索非那定",
+    brandNames: [],
+    englishName: "Fexofenadine",
+    category: "antiallergic",
+    target: "外周选择性组胺 H1 受体拮抗剂，极少穿透血脑屏障（为特非那定活性代谢物）",
+    mechanismSteps: [
+      {
+        title: "高选择性拮抗外周 H1 受体",
+        detail: "非索非那定是第二代抗组胺药（特非那定的药理活性代谢物），竞争性阻断外周组胺 H1 受体，几乎无抗胆碱或 α 受体阻断作用，也不引起特非那定相关的心脏 QT 间期延长风险。",
+      },
+      {
+        title: "减轻组胺介导的鼻眼与皮肤症状",
+        detail: "抑制组胺引起的毛细血管扩张、通透性增加与风团、红斑、瘙痒反应。",
+      },
+      {
+        title: "中枢穿透极少但仍需关注个体差异",
+        detail: "由于血脑屏障穿透极有限且为外排转运体底物，非索非那定通常几乎无镇静嗜睡；但极少数人仍可能头晕或嗜睡，首次驾驶前宜确认自身反应。",
+      },
+      {
+        title: "警惕 P-gp / OATP 转运体及果汁、制酸剂相互作用",
+        detail: "吸收与处置受 P-糖蛋白（P-gp）及有机阴离子转运多肽（OATP）影响：西柚汁、橙汁、苹果汁等果汁可显著降低其生物利用度（约降 36%）并削弱疗效；含铝、镁制酸剂亦大幅降低吸收，应以白水送服并错开制酸剂。",
+      },
+    ],
+    indications: [
+      "季节性过敏性鼻炎相关症状的缓解（按不同规格对应成人及儿童适用年龄）",
+      "慢性特发性荨麻疹皮肤瘙痒与风团症状的缓解",
+    ],
+    adverseReactions: [
+      "头痛、嗜睡（发生率低但仍需留意）、头晕及恶心",
+      "罕见疲劳、失眠或神经紧张等反应",
+      "极罕见过敏反应（皮疹、血管性水肿、胸闷或潮红）",
+      "与果汁或含铝/镁制酸剂同服可明显降低血药暴露导致疗效下降",
+    ],
+    memoryTip: "非索非那定外周选择性强、最不易犯困；但记住白水送服，别配西柚/橙/苹果汁或铝镁制酸剂。",
+    diagram: {
+      title: "非索非那定：作用主线（简化示意）",
+      nodes: [
+        { id: "drug", label: "非索非那定", role: "drug" },
+        { id: "s0", label: "外周 H1 受体", role: "target" },
+        { id: "s1", label: "组胺信号减弱", role: "signal" },
+        { id: "s2", label: "渗出与风团 ↓", role: "signal" },
+        { id: "s3", label: "过敏症状缓解", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "s0", label: "选择阻断", kind: "inhibit" },
+        { from: "s0", to: "s1", label: "介质受抑", kind: "flow" },
+        { from: "s1", to: "s2", label: "局部减轻", kind: "flow" },
+        { from: "s2", to: "s3", label: "症状改善", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "选择性拮抗外周组胺 H1 受体",
+        "减弱组胺介导的局部信号",
+        "减轻毛细血管渗出与风团瘙痒",
+        "缓解过敏性鼻炎或荨麻疹症状",
+      ],
+      explanation: "本题选取的上游到下游主线：选择性拮抗外周组胺 H1 受体 → 减弱组胺介导的局部信号 → 减轻毛细血管渗出与风团瘙痒 → 缓解过敏性鼻炎或荨麻疹症状。给药时须注意 P-gp/OATP 转运影响，避免用果汁或铝镁制酸剂同服。",
+    },
+    sources: [
+      {
+        title: "Telfast（fexofenadine hydrochloride）120 mg 片说明书 · emc",
+        url: "https://www.medicines.org.uk/emc/product/1433/smpc",
+        sections: "第 4.1、4.4、4.5、4.8、5.1 节：过敏性鼻炎适应症、外周 H1 选择性、P-gp 相互作用及驾驶与不良反应说明。",
+      },
+      {
+        title: "Fexofenadine Hydrochloride 片说明书 · DailyMed",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d7fe71e4-aada-40f5-86a8-bf0d7eb9b851",
+        sections: "药物相互作用与用法警告：西柚/橙/苹果汁降低暴露（约 36%）及含铝镁制酸剂降低吸收。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+    targetQuizDistractorIds: [
+      "omeprazole",
+      "levothyroxine",
+      "amlodipine",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "metformin",
+      "allopurinol",
+    ],
   },
 ];

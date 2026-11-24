@@ -7,7 +7,13 @@ import { DrugCardListItem } from "@/components/cards/drug-card-list-item";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cards as cardsCopy } from "@/lib/copy";
-import type { Category, CategoryId } from "@/lib/types";
+import { cardFilterCopy } from "@/lib/copy-features";
+import {
+  CLINICAL_TAG_IDS,
+  type Category,
+  type CategoryId,
+  type ClinicalTagId,
+} from "@/lib/types";
 import type { DrugCardSummary } from "@/lib/data/cards";
 import {
   buildSearchIndex,
@@ -17,6 +23,8 @@ import {
 import { cn } from "@/lib/utils";
 
 type CategoryFilter = CategoryId | "all";
+type StatusFilter = "all" | "favorites" | "due" | "unlearned" | "mastered";
+type TagFilter = ClinicalTagId | "all";
 
 interface CardBrowserProps {
   cards: DrugCardSummary[];
@@ -25,6 +33,9 @@ interface CardBrowserProps {
   totalCount: number;
   /** 从首页分类入口带入的初始分类 */
   initialCategory: CategoryId | null;
+  favoriteIds?: string[];
+  dueIds?: string[];
+  learnedIds?: string[];
 }
 
 /**
@@ -42,11 +53,55 @@ export function CardBrowser({
   categoryCounts,
   totalCount,
   initialCategory,
+  favoriteIds = [],
+  dueIds = [],
+  learnedIds = [],
 }: CardBrowserProps) {
   const [keyword, setKeyword] = useState("");
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>(
     initialCategory ?? "all",
   );
+  const [activeStatus, setActiveStatus] = useState<StatusFilter>("all");
+  const [activeTag, setActiveTag] = useState<TagFilter>("all");
+
+  const favoriteSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
+  const dueSet = useMemo(() => new Set(dueIds), [dueIds]);
+  const learnedSet = useMemo(() => new Set(learnedIds), [learnedIds]);
+
+  const statusCounts = useMemo(() => {
+    let favorites = 0;
+    let due = 0;
+    let unlearned = 0;
+    let mastered = 0;
+    for (const card of cards) {
+      if (favoriteSet.has(card.id)) favorites += 1;
+      if (dueSet.has(card.id)) due += 1;
+      if (!learnedSet.has(card.id)) {
+        unlearned += 1;
+      } else if (!dueSet.has(card.id)) {
+        mastered += 1;
+      }
+    }
+    return {
+      all: totalCount,
+      favorites,
+      due,
+      unlearned,
+      mastered,
+    };
+  }, [cards, favoriteSet, dueSet, learnedSet, totalCount]);
+
+  const availableTags = useMemo(() => {
+    const counts = new Map<ClinicalTagId, number>();
+    for (const card of cards) {
+      for (const tag of card.clinicalTags ?? []) {
+        counts.set(tag, (counts.get(tag) ?? 0) + 1);
+      }
+    }
+    return CLINICAL_TAG_IDS
+      .filter((tag) => (counts.get(tag) ?? 0) > 0)
+      .map((tag) => ({ id: tag, count: counts.get(tag) ?? 0 }));
+  }, [cards]);
 
   const trimmedKeyword = keyword.trim();
 
@@ -69,16 +124,50 @@ export function CardBrowser({
       );
   }, [index, cards, deferredKeyword]);
 
-  const filtered = useMemo(
-    () =>
-      activeCategory === "all"
-        ? matched
-        : matched.filter((entry) => entry.card.category === activeCategory),
-    [matched, activeCategory],
-  );
+  const filtered = useMemo(() => {
+    return matched.filter(({ card }) => {
+      if (activeCategory !== "all" && card.category !== activeCategory) {
+        return false;
+      }
+      if (activeStatus === "favorites" && !favoriteSet.has(card.id)) {
+        return false;
+      }
+      if (activeStatus === "due" && !dueSet.has(card.id)) {
+        return false;
+      }
+      if (activeStatus === "unlearned" && learnedSet.has(card.id)) {
+        return false;
+      }
+      if (
+        activeStatus === "mastered" &&
+        (!learnedSet.has(card.id) || dueSet.has(card.id))
+      ) {
+        return false;
+      }
+      if (
+        activeTag !== "all" &&
+        !(card.clinicalTags?.includes(activeTag) ?? false)
+      ) {
+        return false;
+      }
+      return true;
+    });
+  }, [
+    matched,
+    activeCategory,
+    activeStatus,
+    activeTag,
+    favoriteSet,
+    dueSet,
+    learnedSet,
+  ]);
 
   const hasKeyword = deferredKeyword.length > 0;
-  const isFiltering = activeCategory !== "all" || hasKeyword;
+  const isFiltering =
+    activeCategory !== "all" ||
+    activeStatus !== "all" ||
+    activeTag !== "all" ||
+    hasKeyword;
 
   // 输入与结果不同步时（deferred 还没追上），提示正在搜索
   const isStale = hasKeyword && trimmedKeyword !== deferredKeyword;
@@ -86,6 +175,8 @@ export function CardBrowser({
   function resetFilters() {
     setKeyword("");
     setActiveCategory("all");
+    setActiveStatus("all");
+    setActiveTag("all");
   }
 
   return (
@@ -145,6 +236,57 @@ export function CardBrowser({
             ))}
           </div>
         </div>
+
+        {/* 学习状态筛选 */}
+        <div
+          role="group"
+          aria-label={cardFilterCopy.statusGroupLabel}
+          className="-mx-4 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <div className="flex w-max items-center gap-2 sm:w-full sm:flex-wrap">
+            {(["all", "favorites", "due", "unlearned", "mastered"] as const).map(
+              (statusKey) => (
+                <FilterChip
+                  key={statusKey}
+                  active={activeStatus === statusKey}
+                  onClick={() => setActiveStatus(statusKey)}
+                  label={cardFilterCopy.statuses[statusKey]}
+                  count={statusCounts[statusKey]}
+                  compact
+                />
+              ),
+            )}
+          </div>
+        </div>
+
+        {/* 用药特征标签筛选（仅当卡片带 clinicalTags 时展示） */}
+        {availableTags.length > 0 ? (
+          <div
+            role="group"
+            aria-label={cardFilterCopy.tagGroupLabel}
+            className="-mx-4 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            <div className="flex w-max items-center gap-1.5 sm:w-full sm:flex-wrap">
+              <FilterChip
+                active={activeTag === "all"}
+                onClick={() => setActiveTag("all")}
+                label={cardFilterCopy.allTags}
+                count={totalCount}
+                compact
+              />
+              {availableTags.map((tag) => (
+                <FilterChip
+                  key={tag.id}
+                  active={activeTag === tag.id}
+                  onClick={() => setActiveTag(tag.id)}
+                  label={cardFilterCopy.clinicalTags[tag.id]}
+                  count={tag.count}
+                  compact
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <div className="flex items-center justify-between gap-3">
@@ -169,7 +311,15 @@ export function CardBrowser({
         >
           {filtered.map((entry) => (
             <li key={entry.card.id}>
-              <DrugCardListItem card={entry.card} match={entry.match} />
+              <DrugCardListItem
+                card={entry.card}
+                match={entry.match}
+                status={{
+                  favorited: favoriteSet.has(entry.card.id),
+                  due: dueSet.has(entry.card.id),
+                  learned: learnedSet.has(entry.card.id),
+                }}
+              />
             </li>
           ))}
         </ul>
@@ -201,11 +351,13 @@ function FilterChip({
   onClick,
   label,
   count,
+  compact = false,
 }: {
   active: boolean;
   onClick: () => void;
   label: string;
   count: number;
+  compact?: boolean;
 }) {
   return (
     <button
@@ -213,7 +365,8 @@ function FilterChip({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+        "inline-flex shrink-0 items-center gap-1.5 rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+        compact ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm",
         active
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-background text-foreground/80 hover:bg-accent hover:text-accent-foreground",

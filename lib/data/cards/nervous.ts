@@ -1,7 +1,7 @@
 import type { DrugCard } from "@/lib/types";
 
 /**
- * 神经系统 · 17 张卡片
+ * 神经系统 · 20 张卡片
  *
  * 四条主线：
  * - 抗焦虑/镇静：苯二氮䓬增强 GABA 抑制（地西泮）
@@ -1266,5 +1266,236 @@ export const nervousCards: readonly DrugCard[] = [
       },
     ],
     sourcesCheckedOn: "2026-10-21",
+  },
+  {
+    id: "olanzapine",
+    genericName: "奥氮平",
+    brandNames: [],
+    englishName: "Olanzapine",
+    category: "nervous",
+    target: "拮抗中枢多巴胺 D2 与 5-HT2A 受体，同时作用于毒蕈碱、组胺 H1 及 α1 等多种受体",
+    targetQuizDistractorIds: [
+      "metformin",
+      "atorvastatin",
+      "omeprazole",
+    ],
+    indicationQuizDistractorIds: [
+      "metformin",
+      "atorvastatin",
+      "omeprazole",
+    ],
+    mechanismSteps: [
+      {
+        title: "拮抗 D2 与 5-HT2A 等多受体",
+        detail: "奥氮平属于第二代（非典型）抗精神病药，对 5-HT2A 与多巴胺 D2 受体均有高亲和力拮抗作用，临床疗效确切但完整作用机制涉及多受体协同，不能简化为单一受体直线因果。",
+      },
+      {
+        title: "同时结合 H1、M1 与 α1 受体",
+        detail: "对组胺 H1、毒蕈碱 M 受体及 α1 肾上腺素能受体的拮抗与嗜睡、体重增加、抗胆碱症状及体位性低血压等反应相关。",
+      },
+      {
+        title: "监测显著代谢异常风险",
+        detail: "可能引起明显体重增加、高血糖（含酮症酸中毒或高渗状态）及血脂异常（甘油三酯与胆固醇升高），治疗前及治疗期间需监测空腹血糖、血脂与体重。",
+      },
+      {
+        title: "注意老年痴呆相关性精神病黑框警告",
+        detail: "老年痴呆相关性精神病患者使用抗精神病药时全因死亡及脑血管不良事件风险升高，奥氮平未获批用于该人群；另需关注迟发性运动障碍及抗精神病药恶性综合征（NMS）。",
+      },
+    ],
+    indications: [
+      "精神分裂症的治疗（成人及按说明书核准的青少年适用范围）",
+      "双相 I 型障碍急性躁狂或混合发作的单药或联合维持治疗（按制剂规格与年龄要求）",
+    ],
+    adverseReactions: [
+      "老年痴呆相关性精神病患者死亡率升高（黑框警告，未获批用于该人群）",
+      "体重明显增加、高血糖/糖尿病恶化及血脂异常（高甘油三酯与高胆固醇）",
+      "嗜睡、头晕、体位性低血压及口干、便秘等抗胆碱样反应",
+      "锥体外系反应、静坐不能及迟发性运动障碍（通常较经典强 D2 拮抗药少见但仍可发生）",
+      "少见但严重的抗精神病药恶性综合征（NMS）及伴嗜酸性粒细胞增多和系统症状的药疹（DRESS）",
+    ],
+    memoryTip: "「奥氮平多受体广泛阻断，长胖高糖盯代谢」——记住老年痴呆精神病黑框警告。",
+    diagram: {
+      title: "D2 / 5-HT2A 拮抗与多受体效应（并行提示）",
+      nodes: [
+        { id: "drug", label: "奥氮平", role: "drug" },
+        { id: "d2", label: "D2 / 5-HT2A 受体", role: "target" },
+        { id: "multi", label: "H1 / M / α1 等受体", role: "target" },
+        { id: "ctrl", label: "精神症状改善", role: "effect" },
+        { id: "meta", label: "代谢与镇静风险", role: "signal" },
+      ],
+      edges: [
+        { from: "drug", to: "d2", label: "拮抗主导", kind: "inhibit" },
+        { from: "drug", to: "multi", label: "并行结合", kind: "inhibit" },
+        { from: "d2", to: "ctrl", label: "临床效应", kind: "flow" },
+        { from: "multi", to: "meta", label: "不良反应线索", kind: "flow" },
+      ],
+    },
+    sources: [
+      {
+        title: "DailyMed：ZYPREXA（奥氮平）片剂说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b418946a-1ab4-4d89-a012-d94fc361a3c4",
+        sections: "黑框警告、第 1、5、6、12.1 节：老年痴呆死亡风险、精神分裂症与双相适应症、代谢警告及多受体药理。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+  },
+  {
+    id: "zolpidem",
+    genericName: "唑吡坦",
+    brandNames: [],
+    englishName: "Zolpidem",
+    category: "nervous",
+    target: "选择性结合 GABA-A 受体复合体 α1 亚基，正向别构调节氯离子通道",
+    targetQuizDistractorIds: [
+      "levothyroxine",
+      "allopurinol",
+      "warfarin",
+    ],
+    indicationQuizDistractorIds: [
+      "levothyroxine",
+      "allopurinol",
+      "warfarin",
+    ],
+    mechanismSteps: [
+      {
+        title: "结合 GABA-A 受体 α1 亚基位点",
+        detail: "唑吡坦为非苯二氮䓬类咪唑并吡啶镇静催眠药（Z 类药物），优先结合含 α1 亚基的 GABA-A 受体，而不直接替代 GABA。",
+      },
+      {
+        title: "增强 GABA 介导的氯离子内流",
+        detail: "以正向别构调节方式提高氯离子通道开放频率，使神经元超极化并降低中枢兴奋性，从而主要发挥促眠作用。",
+      },
+      {
+        title: "用于失眠的短期治疗并留足睡眠时间",
+        detail: "普通片主要用于入睡困难为主的失眠短期治疗；睡前即刻服用且应保证次日清醒前有 7～8 小时睡眠窗口，使用最低有效剂量（女性起始通常更低）。",
+      },
+      {
+        title: "警惕复杂睡眠行为黑框警告与中枢抑制叠加",
+        detail: "说明书载明复杂睡眠行为（如梦游、睡驾及无意识进食或打电话等，可致严重伤害甚至死亡）黑框警告，一旦发生须立即停药并禁用；避免联用酒精及其他中枢抑制药。",
+      },
+    ],
+    indications: [
+      "成人以入睡困难为主的失眠短期治疗（速释片）",
+    ],
+    adverseReactions: [
+      "复杂睡眠行为（梦游、睡驾等，黑框警告），发生后须立即停药并列为后续禁忌",
+      "次日残留困倦、头晕、平衡障碍及跌倒风险（老年患者尤为明显）",
+      "与酒精或其他中枢神经抑制药合用可加重呼吸抑制及精神运动受损",
+      "长期或超量使用可产生耐受性、躯体依赖及停药反跳性失眠",
+    ],
+    memoryTip: "「唑吡坦偏爱 α1 促入睡，留足七八小时防梦游」——睡驾等复杂睡眠行为出现即停药。",
+    diagram: {
+      title: "GABA-A α1 正向调节 → 神经元超极化 → 促眠",
+      nodes: [
+        { id: "drug", label: "唑吡坦", role: "drug" },
+        { id: "gaba", label: "GABA-A α1 亚基", role: "target" },
+        { id: "cl", label: "Cl− 内流增加", role: "signal" },
+        { id: "hyper", label: "中枢兴奋性 ↓", role: "signal" },
+        { id: "effect", label: "诱导与维持睡眠", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "gaba", label: "正向别构调节", kind: "activate" },
+        { from: "gaba", to: "cl", label: "通道开放 ↑", kind: "flow" },
+        { from: "cl", to: "hyper", label: "膜超极化", kind: "flow" },
+        { from: "hyper", to: "effect", label: "镇静催眠", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "选择性结合 GABA-A 受体 α1 亚基",
+        "正向增强 GABA 介导的氯离子内流",
+        "神经元超极化并降低兴奋性",
+        "产生促入睡的镇静催眠效应",
+      ],
+      explanation: "本题选取的上游到下游主线：选择性结合 GABA-A 受体 α1 亚基 → 正向增强 GABA 介导的氯离子内流 → 神经元超极化并降低兴奋性 → 产生促入睡的镇静催眠效应。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：AMBIEN（酒石酸唑吡坦）片剂说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=747949c5-2c91-4909-8a07-71b6826f8e97",
+        sections: "黑框警告、第 1、2、5、6、12.1 节：复杂睡眠行为、短期失眠适应症、次日损害与 GABA-A α1 机制。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
+  },
+  {
+    id: "sumatriptan",
+    genericName: "舒马普坦",
+    brandNames: [],
+    englishName: "Sumatriptan",
+    category: "nervous",
+    target: "选择性激动 5-HT1B 与 5-HT1D 受体，收缩颅内扩张血管并抑制三叉神经血管通路介质释放",
+    targetQuizDistractorIds: [
+      "metformin",
+      "amlodipine",
+      "omeprazole",
+    ],
+    indicationQuizDistractorIds: [
+      "metformin",
+      "amlodipine",
+      "omeprazole",
+    ],
+    mechanismSteps: [
+      {
+        title: "选择性激动 5-HT1B/1D 受体",
+        detail: "舒马普坦为曲坦类选择性血清素受体激动剂，作用于颅内血管平滑肌上的 5-HT1B 受体及三叉神经末梢上的 5-HT1D 受体。",
+      },
+      {
+        title: "收缩颅内扩张血管并减少神经源性炎症",
+        detail: "引起发作期扩张的颅内脑膜血管收缩，同时抑制三叉神经释放降钙素基因相关肽（CGRP）等促炎与致痛神经肽，减轻疼痛信号传递。",
+      },
+      {
+        title: "仅用于偏头痛急性期顿挫治疗",
+        detail: "口服片仅用于成人伴或不伴先兆的急性偏头痛发作治疗（注射剂亦可用于丛集性头痛急性发作），不用于偏头痛预防治疗。",
+      },
+      {
+        title: "严禁用于缺血性心脏病及冠状动脉痉挛患者",
+        detail: "可诱发冠状动脉血管痉挛（如变异型心绞痛），故禁用于冠心病、心肌缺血、脑血管/外周血管缺血性综合征及未控制高血压患者；与麦角胺类或其他曲坦类间隔不少于 24 小时，联用 SSRI/SNRI 需警惕血清素综合征。",
+      },
+    ],
+    indications: [
+      "成人伴或不伴先兆的偏头痛急性发作治疗（不可用于偏头痛预防）",
+    ],
+    adverseReactions: [
+      "胸闷、颈部或咽喉紧缩/压迫感（非心源性多见，但需排除心肌缺血）",
+      "冠状动脉血管痉挛、心肌缺血或严重心律失常（冠心病及血管痉挛者禁用）",
+      "头晕、感觉异常（刺痛或温热感）、疲乏或一过性血压升高",
+      "与 SSRI/SNRI 联用时偶见血清素综合征；频繁使用可致药物过度使用性头痛",
+    ],
+    memoryTip: "「舒马普坦激动 1B/1D，急性止痛不预防」——冠心病、血管痉挛与未控高血压禁用。",
+    diagram: {
+      title: "5-HT1B/1D 激动 → 颅内血管收缩与递质抑制",
+      nodes: [
+        { id: "drug", label: "舒马普坦", role: "drug" },
+        { id: "ht1b", label: "5-HT1B / 1D 受体", role: "target" },
+        { id: "vaso", label: "颅内扩张血管收缩", role: "signal" },
+        { id: "cgrp", label: "致痛神经肽释放 ↓", role: "signal" },
+        { id: "effect", label: "急性偏头痛缓解", role: "effect" },
+      ],
+      edges: [
+        { from: "drug", to: "ht1b", label: "选择性激动", kind: "activate" },
+        { from: "ht1b", to: "vaso", label: "1B 血管作用", kind: "flow" },
+        { from: "ht1b", to: "cgrp", label: "1D 神经末梢", kind: "flow" },
+        { from: "vaso", to: "effect", label: "搏动性痛减轻", kind: "flow" },
+        { from: "cgrp", to: "effect", label: "神经源炎症 ↓", kind: "flow" },
+      ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "选择性激动 5-HT1B/1D 受体",
+        "收缩颅内扩张血管并抑制致痛神经肽释放",
+        "三叉神经血管通路痛觉传导减弱",
+        "急性偏头痛发作症状缓解",
+      ],
+      explanation: "本题选取的上游到下游主线：选择性激动 5-HT1B/1D 受体 → 收缩颅内扩张血管并抑制致痛神经肽释放 → 三叉神经血管通路痛觉传导减弱 → 急性偏头痛发作症状缓解。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
+    sources: [
+      {
+        title: "DailyMed：IMITREX（琥珀酸舒马普坦）片剂说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=32f6d89b-4aea-5396-e054-00144ff88e88",
+        sections: "第 1、4、5、7、12.1 节：偏头痛急性适应症与非预防声明、冠脉痉挛禁忌、血清素综合征与 5-HT1B/1D 药理。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-24",
   },
 ];

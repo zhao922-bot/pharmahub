@@ -1,4 +1,9 @@
-import type { QuizRepository, QuizStats, WrongQuestionRecord } from "@/lib/data/quiz";
+import type {
+  CardAttemptStat,
+  QuizRepository,
+  QuizStats,
+  WrongQuestionRecord,
+} from "@/lib/data/quiz";
 import { toDateKey } from "@/lib/review/sm2";
 import { rows, type ContextReader } from "./types";
 
@@ -35,6 +40,21 @@ export class D1QuizRepository implements QuizRepository {
     const total = result[1].results[0] as { answered: number; correct: number };
     return { answeredToday: daily.answered, correctToday: daily.correct, answeredTotal: total.answered,
       correctTotal: total.correct, wrongCount: Number((result[2].results[0] as { n: number }).n) };
+  }
+
+  async getCardAttemptStats(): Promise<CardAttemptStat[]> {
+    const { db, userId } = await this.context();
+    const found = await rows<{ cardId: string; answered: number; correct: number }>(
+      db.prepare(
+        `SELECT card_id AS cardId, COUNT(*) AS answered, COALESCE(SUM(is_correct), 0) AS correct
+         FROM quiz_attempt WHERE user_id = ? GROUP BY card_id`,
+      ).bind(userId),
+    );
+    return found.map((r) => ({
+      cardId: r.cardId,
+      answered: Number(r.answered),
+      correct: Number(r.correct),
+    }));
   }
 
   async getWrongQuestions(): Promise<WrongQuestionRecord[]> {

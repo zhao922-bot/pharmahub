@@ -14,11 +14,13 @@ import { DrugCardListItem } from "@/components/cards/drug-card-list-item";
 import { InstallPrompt } from "@/components/layout/install-prompt";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { CategoryMasteryPanel } from "@/components/review/category-mastery-panel";
 import { StudyHeatmap } from "@/components/review/study-heatmap";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { home, site } from "@/lib/copy";
+import { homeFeaturesCopy } from "@/lib/copy-features";
 import { CATEGORIES, cardRepository } from "@/lib/data";
 import { getCategoryName } from "@/lib/data/categories";
 import { studyRepository } from "@/lib/data/study";
@@ -36,12 +38,24 @@ const HEATMAP_WEEKS = 26;
 export default async function HomePage() {
   const today = new Date();
 
-  const [counts, featured, progress, dueIds, quizStats] = await Promise.all([
+  const [
+    counts,
+    featured,
+    progress,
+    dueIds,
+    quizStats,
+    allCards,
+    allReviewLogs,
+    cardAttemptStats,
+  ] = await Promise.all([
     cardRepository.getCategoryCounts(),
     cardRepository.getFeatured(3),
     studyRepository.getProgress(today),
     studyRepository.getDueCardIds(today),
     quizRepository.getStats(today),
+    cardRepository.getAll(),
+    studyRepository.getAllReviewLogs(),
+    quizRepository.getCardAttemptStats(),
   ]);
 
   // 热力图只关心近半年，多查一天避免边界误差
@@ -124,34 +138,52 @@ export default async function HomePage() {
               </p>
 
               {validDueCards.length > 0 ? (
-                <ul className="mt-3 space-y-1.5">
-                  {validDueCards.map((card) => (
-                    <li key={card.id}>
-                      <Link
-                        href={`/cards/${card.id}`}
-                        className="group flex items-center justify-between gap-2 rounded-md px-2 py-1.5 -mx-2 text-sm transition-colors hover:bg-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      >
-                        <span className="truncate font-medium">{card.genericName}</span>
-                        <ArrowRight
-                          className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
-                          aria-hidden="true"
-                        />
+                <>
+                  <ul className="mt-3 space-y-1.5">
+                    {validDueCards.map((card) => (
+                      <li key={card.id}>
+                        <Link
+                          href={`/cards/${card.id}`}
+                          className="group flex items-center justify-between gap-2 rounded-md px-2 py-1.5 -mx-2 text-sm transition-colors hover:bg-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          <span className="truncate font-medium">{card.genericName}</span>
+                          <ArrowRight
+                            className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                            aria-hidden="true"
+                          />
+                        </Link>
+                      </li>
+                    ))}
+                    {dueCount > validDueCards.length ? (
+                      <li className="px-2 text-[11px] text-muted-foreground">
+                        {home.reviewMore(dueCount - validDueCards.length)}
+                      </li>
+                    ) : null}
+                  </ul>
+                  <div className="mt-3">
+                    <Button asChild size="sm" className="h-8 text-xs">
+                      <Link href="/review">
+                        {homeFeaturesCopy.startReviewQueue}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </Link>
-                    </li>
-                  ))}
-                  {dueCount > validDueCards.length ? (
-                    <li className="px-2 text-[11px] text-muted-foreground">
-                      {home.reviewMore(dueCount - validDueCards.length)}
-                    </li>
-                  ) : null}
-                </ul>
+                    </Button>
+                  </div>
+                </>
               ) : (
-                <Button asChild variant="ghost" size="sm" className="-ml-2 mt-2 h-8 text-xs">
-                  <Link href="/cards">
-                    {home.reviewCardCta}
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </Link>
-                </Button>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <Button asChild size="sm" variant="outline" className="h-8 text-xs">
+                    <Link href="/review">
+                      {homeFeaturesCopy.startReviewQueue}
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="ghost" size="sm" className="h-8 text-xs">
+                    <Link href="/cards">
+                      {home.reviewCardCta}
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </div>
               )}
             </CardContent>
           </Card>
@@ -247,6 +279,15 @@ export default async function HomePage() {
             </CardContent>
           </Card>
         </section>
+
+        {/* 11 分类掌握诊断 */}
+        <CategoryMasteryPanel
+          categories={CATEGORIES}
+          cards={allCards.map((card) => ({ id: card.id, category: card.category }))}
+          learnedCardIds={allReviewLogs.map((log) => log.cardId)}
+          dueCardIds={dueIds}
+          attemptStats={cardAttemptStats}
+        />
 
         {/* 分类入口 */}
         <section className="mt-10" aria-labelledby="categories-heading">

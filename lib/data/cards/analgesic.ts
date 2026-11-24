@@ -470,6 +470,15 @@ export const analgesicCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "抑制 β-微管蛋白聚合",
+        "干扰微管依赖的细胞骨架功能",
+        "中性粒细胞活化、脱颗粒与迁移受限",
+        "痛风相关炎症减轻",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制 β-微管蛋白聚合 → 干扰微管依赖的细胞骨架功能 → 中性粒细胞活化、脱颗粒与迁移受限 → 痛风相关炎症减轻。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Colchicine 片说明书",
@@ -551,6 +560,15 @@ export const analgesicCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "抑制黄嘌呤氧化酶",
+        "嘌呤向尿酸氧化转化减少",
+        "尿酸生成与血尿酸水平降低",
+        "长期减少体内尿酸盐负荷",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制黄嘌呤氧化酶 → 嘌呤向尿酸氧化转化减少 → 尿酸生成与血尿酸水平降低 → 长期减少体内尿酸盐负荷。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Allopurinol 片说明书",
@@ -621,6 +639,15 @@ export const analgesicCards: readonly DrugCard[] = [
         { from: "n2", to: "n3", kind: "flow", label: "后续变化" },
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "抑制黄嘌呤氧化酶",
+        "嘌呤代谢末端的尿酸生成减少",
+        "血尿酸水平下降",
+        "用于经评估的慢性痛风降尿酸管理",
+      ],
+      explanation: "本题选取的上游到下游主线：抑制黄嘌呤氧化酶 → 嘌呤代谢末端的尿酸生成减少 → 血尿酸水平下降 → 用于经评估的慢性痛风降尿酸管理。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {

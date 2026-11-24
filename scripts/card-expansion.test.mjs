@@ -22,6 +22,13 @@ const ids = [
   "rosuvastatin", "ticagrelor", "enoxaparin", "dapagliflozin",
   "prednisolone", "pregabalin", "escitalopram", "diclofenac",
   "ipratropium", "pantoprazole", "nitrofurantoin", "nystatin",
+  "baloxavir-marboxil", "nirmatrelvir-ritonavir", "bictegravir", "ganciclovir",
+  "caspofungin", "voriconazole", "pembrolizumab", "paclitaxel",
+  "osimertinib", "letrozole", "cromoglicate", "fexofenadine",
+  "meropenem", "isoniazid", "rifampicin", "olanzapine",
+  "zolpidem", "sumatriptan", "dabigatran", "evolocumab",
+  "denosumab", "tacrolimus", "tofacitinib", "adalimumab",
+  "naloxone", "flumazenil", "atropine", "pralidoxime",
 ];
 const kinds = ["target", "category", "indication", "mechanism-order"];
 
@@ -121,6 +128,14 @@ test("新旧同机制卡片不能互为错误靶点，限制不依赖候选池�
     ["escitalopram", "sertraline"], ["diclofenac", "ibuprofen"],
     ["ipratropium", "tiotropium"], ["pantoprazole", "omeprazole"],
     ["nystatin", "amphotericin-b"],
+    ["osimertinib", "gefitinib"], ["voriconazole", "fluconazole"],
+    ["fexofenadine", "loratadine"], ["fexofenadine", "cetirizine"],
+    ["ganciclovir", "aciclovir"], ["baloxavir-marboxil", "oseltamivir"],
+    ["dabigatran", "heparin"], ["dabigatran", "apixaban"],
+    ["olanzapine", "chlorpromazine"], ["olanzapine", "haloperidol"],
+    ["zolpidem", "diazepam"], ["atropine", "ipratropium"],
+    ["atropine", "tiotropium"], ["meropenem", "penicillin-g"],
+    ["meropenem", "ceftriaxone"], ["naloxone", "morphine"],
   ]) {
     for (const [id, excluded] of [[first, second], [second, first]]) {
       const card = cards.find((c) => c.id === id);

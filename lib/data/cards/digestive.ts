@@ -685,6 +685,15 @@ export const digestiveCards: readonly DrugCard[] = [
         { from: "n3", to: "n4", kind: "flow", label: "后续变化" },
       ],
     },
+    mechanismQuiz: {
+      steps: [
+        "竞争性阻断胃壁细胞 H2 受体",
+        "组胺介导的促胃酸分泌信号减弱",
+        "基础及刺激后胃酸分泌减少",
+        "酸相关黏膜损伤与症状改善",
+      ],
+      explanation: "本题选取的上游到下游主线：竞争性阻断胃壁细胞 H2 受体 → 组胺介导的促胃酸分泌信号减弱 → 基础及刺激后胃酸分泌减少 → 酸相关黏膜损伤与症状改善。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
+    },
     sources: [
       {
         title: "DailyMed：Famotidine 片说明书",
@@ -1041,6 +1050,15 @@ export const digestiveCards: readonly DrugCard[] = [
         { from: "pump", to: "acid", label: "受抑后", kind: "flow" },
         { from: "acid", to: "effect", kind: "flow", label: "后续变化" },
       ],
+    },
+    mechanismQuiz: {
+      steps: [
+        "在胃壁细胞酸性环境中活化",
+        "抑制 H+/K+-ATP 酶（质子泵）",
+        "阻断基础及刺激性胃酸分泌末端步骤",
+        "相应酸相关症状与黏膜病变改善",
+      ],
+      explanation: "本题选取的上游到下游主线：在胃壁细胞酸性环境中活化 → 抑制 H+/K+-ATP 酶（质子泵） → 阻断基础及刺激性胃酸分泌末端步骤 → 相应酸相关症状与黏膜病变改善。它是简化的作用关系，不表示卡片中的其他并行作用必须依次发生。",
     },
     sources: [
       {
