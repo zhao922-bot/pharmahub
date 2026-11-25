@@ -1,3 +1,4 @@
+import { toDateKey } from "@/lib/review/sm2";
 /**
  * CSV 生成。
  *
@@ -72,8 +73,5 @@ export function buildCsv(
  * 扩展名由调用方给出（csv / json），这样同一个 kind 导出两种格式时文件名不冲突。
  */
 export function buildExportFilename(kind: string, date: Date, extension = "csv"): string {
-  const year = date.getFullYear();
-  const month = `${date.getMonth() + 1}`.padStart(2, "0");
-  const day = `${date.getDate()}`.padStart(2, "0");
-  return `pharmahub-${kind}-${year}${month}${day}.${extension}`;
+  return `pharmahub-${kind}-${toDateKey(date).replaceAll("-", "")}.${extension}`;
 }

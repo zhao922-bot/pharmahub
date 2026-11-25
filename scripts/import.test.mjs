@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS favorite (
 );
 
 CREATE TABLE IF NOT EXISTS quiz_attempt (
+  attempt_id  TEXT UNIQUE,
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   question_id TEXT    NOT NULL,
   card_id     TEXT    NOT NULL,
@@ -433,5 +434,51 @@ test("校验拦截：拒绝未知 kind、未知 cardId、非法日期与非法�
     );
   } finally {
     db.close();
+  }
+});
+
+
+test("真实测验 JSON 往返保留选项、流水 ID 和同一时刻的多次答题", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pharmahub-quiz-backup-"));
+  tempDirs.push(dir);
+  const previousPath = process.env.PHARMAHUB_DB_PATH;
+  process.env.PHARMAHUB_DB_PATH = join(dir, "upgraded.db");
+  const oldDb = new Database(process.env.PHARMAHUB_DB_PATH);
+  oldDb.exec(SCHEMA.replace("  attempt_id  TEXT UNIQUE,", ""));
+  const stamp = "2026-10-19T10:00:00.000Z";
+  const insert = oldDb.prepare(`INSERT INTO quiz_attempt
+    (question_id, card_id, kind, selected_id, correct_id, is_correct, answered_on, answered_at)
+    VALUES ('aspirin:target','aspirin','target',?,'right',?,'2026-10-19',?)`);
+  for (const option of ["wrong-1", "wrong-1", "wrong-2", "right"]) insert.run(option, Number(option === "right"), stamp);
+  oldDb.close();
+  const { buildExport } = await import("../lib/export/build.ts");
+  const { closeDatabase } = await import("../lib/db/sqlite.ts");
+  const destination = createTempDb();
+  const oldDestination = createTempDb();
+  try {
+    const payload = JSON.parse((await buildExport("quiz", "json", new Date(stamp))).content);
+    assert.deepEqual(payload.records.map(r => r.isCorrect), [false, false, false, true]);
+    assert.equal(new Set(payload.records.map(r => r.attemptId)).size, 4);
+    assert.deepEqual(payload.records.map(r => [r.kind, r.correctId, r.selectedId]), [
+      ["target", "right", "wrong-1"], ["target", "right", "wrong-1"], ["target", "right", "wrong-2"], ["target", "right", "right"],
+    ]);
+    assert.equal((await importLearningDataset(payload)).skipped, 4);
+    assert.equal((await importLearningDataset(payload, { db: destination, validCardIds })).inserted, 4);
+    assert.equal((await importLearningDataset(payload, { db: destination, validCardIds })).skipped, 4);
+    assert.deepEqual(destination.prepare("SELECT attempt_id, kind, selected_id, correct_id FROM quiz_attempt ORDER BY id").all(),
+      payload.records.map(r => ({ attempt_id: r.attemptId, kind: r.kind, selected_id: r.selectedId, correct_id: r.correctId })));
+    const legacy = { ...payload, records: payload.records.map(({ attemptId, selectedId, correctId, kind, ...row }) => row) };
+    assert.equal((await importLearningDataset(legacy)).skipped, 4);
+    assert.equal((await importLearningDataset(legacy, { db: oldDestination, validCardIds })).inserted, 4);
+    assert.equal((await importLearningDataset(legacy, { db: oldDestination, validCardIds })).skipped, 4);
+    assert.equal((await importLearningDataset(payload, { db: oldDestination, validCardIds })).updated, 4);
+    assert.equal((await importLearningDataset(payload, { db: oldDestination, validCardIds })).skipped, 4);
+    assert.equal((await importLearningDataset(legacy, { db: oldDestination, validCardIds })).skipped, 4);
+  } finally {
+    closeDatabase();
+    destination.close();
+    oldDestination.close();
+    if (previousPath === undefined) delete process.env.PHARMAHUB_DB_PATH;
+    else process.env.PHARMAHUB_DB_PATH = previousPath;
   }
 });

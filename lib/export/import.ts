@@ -51,6 +51,11 @@ export interface ValidatedReviewRecord {
 }
 
 export interface ValidatedQuizRecord {
+  attemptId: string | null;
+  // 旧备份没有流水 ID，按可用字段和出现次数匹配。
+  legacyOccurrence: number;
+  matchSelectedId: string | null;
+  matchCorrectId: string | null;
   questionId: string;
   cardId: string;
   kind: QuestionKind;
@@ -268,6 +273,7 @@ export function parseImportDataset(
   }
 
   if (kind === "quiz") {
+    const occurrences = new Map<string, number>();
     const records: ValidatedQuizRecord[] = raw.records.map((item, idx) => {
       const rowIndex = idx + 1;
       if (!isPlainObject(item)) {
@@ -289,19 +295,32 @@ export function parseImportDataset(
         rowIndex,
         "答题",
       );
-      const correctId =
-        typeof item.correctId === "string" && item.correctId.length > 0
-          ? item.correctId
-          : "imported-correct";
-      const selectedId =
-        typeof item.selectedId === "string" && item.selectedId.length > 0
-          ? item.selectedId
-          : item.isCorrect
-            ? correctId
-            : "imported-wrong";
-
+      if (item.attemptId !== undefined &&
+          (typeof item.attemptId !== "string" || !/^[a-f0-9]{32}$/.test(item.attemptId))) {
+        throw new ImportValidationError(`第 ${rowIndex} 条测验记录的答题记录 ID 无效。`);
+      }
+      const attemptId = item.attemptId ?? null;
+      const questionId = item.questionId.trim();
+      // 更早的导入器用这两个占位值保存没有选项信息的备份。
+      const placeholder = item.correctId === "imported-correct" &&
+        item.selectedId === (item.isCorrect ? "imported-correct" : "imported-wrong");
+      const matchCorrectId = !placeholder && typeof item.correctId === "string" && item.correctId ? item.correctId : null;
+      const matchSelectedId = !placeholder && typeof item.selectedId === "string" && item.selectedId ? item.selectedId : null;
+      const correctId = matchCorrectId ?? "imported-correct";
+      const selectedId = matchSelectedId ?? (item.isCorrect ? correctId : "imported-wrong");
+      let legacyOccurrence = 0;
+      if (!attemptId || placeholder) {
+        const key = JSON.stringify([questionId, cardId, questionKind, timestamp, dateKey,
+          item.isCorrect, matchSelectedId, matchCorrectId]);
+        legacyOccurrence = (occurrences.get(key) ?? 0) + 1;
+        occurrences.set(key, legacyOccurrence);
+      }
       return {
-        questionId: item.questionId.trim(),
+        attemptId,
+        legacyOccurrence,
+        matchSelectedId,
+        matchCorrectId,
+        questionId,
         cardId,
         kind: questionKind,
         selectedId,
@@ -492,35 +511,39 @@ export function mergeImportDataset(
     }
 
     if (dataset.kind === "quiz") {
-      const existsStmt = db.prepare(
-        "SELECT 1 AS x FROM quiz_attempt WHERE question_id = ? AND answered_at = ? LIMIT 1",
-      );
-      const insertStmt = db.prepare(
-        `INSERT INTO quiz_attempt
-           (question_id, card_id, kind, selected_id, correct_id, is_correct, answered_on, answered_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      );
-      const seen = new Set<string>();
-
+      const upgrade = db.prepare(`UPDATE quiz_attempt SET attempt_id = ?, selected_id = ?, correct_id = ?
+        WHERE NOT EXISTS (SELECT 1 FROM quiz_attempt WHERE attempt_id = ?)
+          AND id = (SELECT id FROM quiz_attempt WHERE question_id = ? AND card_id = ?
+            AND kind = ? AND answered_at = ? AND answered_on = ? AND is_correct = ?
+            AND correct_id = 'imported-correct' AND selected_id IN ('imported-correct', 'imported-wrong')
+            ORDER BY id LIMIT 1)`);
+      const insert = db.prepare(`INSERT INTO quiz_attempt
+        (attempt_id, question_id, card_id, kind, selected_id, correct_id, is_correct, answered_on, answered_at)
+        SELECT COALESCE(?, lower(hex(randomblob(16)))), ?, ?, ?, ?, ?, ?, ?, ?
+        WHERE ? = 0 OR (
+          SELECT COUNT(*) FROM quiz_attempt WHERE question_id = ? AND card_id = ?
+            AND kind = ? AND answered_at = ? AND answered_on = ? AND is_correct = ?
+            AND (? IS NULL OR selected_id = ?) AND (? IS NULL OR correct_id = ?)
+        ) < ?
+        ON CONFLICT(attempt_id) DO NOTHING`);
       for (const row of dataset.records) {
-        const dedupKey = `${row.questionId}\0${row.answeredAt}`;
-        if (seen.has(dedupKey) || existsStmt.get(row.questionId, row.answeredAt)) {
-          summary.skipped += 1;
-          continue;
+        const correct = Number(row.isCorrect);
+        if (row.attemptId && row.legacyOccurrence === 0) {
+          summary.updated += upgrade.run(
+              row.attemptId, row.selectedId, row.correctId, row.attemptId,
+              row.questionId, row.cardId, row.kind, row.answeredAt, row.answeredOn, correct,
+          ).changes;
         }
-        seen.add(dedupKey);
-        insertStmt.run(
-          row.questionId,
-          row.cardId,
-          row.kind,
-          row.selectedId,
-          row.correctId,
-          row.isCorrect ? 1 : 0,
-          row.answeredOn,
-          row.answeredAt,
+        const result = insert.run(
+          row.attemptId, row.questionId, row.cardId, row.kind, row.selectedId, row.correctId,
+          correct, row.answeredOn, row.answeredAt,
+          row.legacyOccurrence, row.questionId, row.cardId, row.kind, row.answeredAt, row.answeredOn,
+          correct, row.matchSelectedId, row.matchSelectedId, row.matchCorrectId, row.matchCorrectId,
+          row.legacyOccurrence,
         );
-        summary.inserted += 1;
+        summary.inserted += result.changes;
       }
+      summary.skipped = summary.total - summary.inserted - summary.updated;
       return;
     }
 

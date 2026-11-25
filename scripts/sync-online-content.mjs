@@ -30,6 +30,7 @@ const SYNC_DIRS = [
   "lib/quiz",
   "lib/diagram",
   "lib/search",
+  "lib/review",
   "lib/export",
   "components",
 ];
@@ -50,8 +51,12 @@ const COPY_FILE_PATTERN = /^lib\/copy[^/]*\.ts$/;
 
 /** 明确排除的路径前缀，防止误覆盖 online 环境专属文件 */
 const EXCLUDED_PREFIXES = [
+  // 云端专属的连接器错误页也必须在 --delete-extra 时保留。
+  "components/connector-error.tsx",
   "lib/db/",
-  "lib/review/",
+  // 本地学习日与云端 UTC+8 学习日的实现不同。
+  "lib/review/sm2.ts",
+  "lib/review/heatmap.ts",
   "lib/export/import.ts",
   "lib/copy.ts",
   "lib/data/study.ts",
@@ -74,7 +79,7 @@ function toPosix(relPath) {
 
 function isExcluded(relPosix) {
   return EXCLUDED_PREFIXES.some(
-    (prefix) => relPosix === prefix.replace(/\/$/, "") || relPosix.startsWith(prefix),
+    (prefix) => prefix.endsWith("/") ? relPosix.startsWith(prefix) : relPosix === prefix,
   );
 }
 

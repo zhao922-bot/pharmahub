@@ -14,7 +14,7 @@ export const caseQuizCopy = {
     "说明：本题库仅用于药理学机制与用药原则学习辨析，题干情景与解析均不构成针对具体患者的个体化诊断或处方建议。",
   sourceCheckedLabel: (date: string) => `资料核对日期：${date}`,
   emptyTitle: "暂无可用的临床情景题",
-  emptyBody: "当前筛选分类下还没有收录临床机制情景题，请切换到全部分类或选择其他系统。",
+  emptyBody: "当前分类与学习范围内没有符合条件的情景题。可切换分类或学习范围。",
   emptyResetCta: "查看全部情景题",
   questionCountHint: (count: number) => `本轮共 ${count} 道机制情景题`,
 } as const;

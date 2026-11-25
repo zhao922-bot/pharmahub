@@ -1,6 +1,7 @@
 // Wave 2 新增功能端到端验收（新分类、第2批新卡、66组对比、临床情景题闭环、自定义题量/范围与键盘快捷键、扩容DDI）
 import puppeteer from "puppeteer-core";
 import Database from "better-sqlite3";
+import { CASE_QUESTIONS } from "../lib/data/cases.ts";
 import { resolveBrowserPath } from "./browser-path.mjs";
 import { getVerificationContext } from "./verify-context.mjs";
 
@@ -32,6 +33,15 @@ try {
     page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
 
   db = new Database(dbPath, { readonly: true, fileMustExist: true });
+
+  const recommendations = 'section[aria-labelledby="mastery-heading"] ol';
+  await go("/");
+  const fresh = await page.$eval(recommendations, (el) => el.textContent);
+  const newCards = await page.$(recommendations + ' a[href*="mode=unlearned"]');
+  check("新账户的推荐说明尚未测验", fresh.includes("尚未测验"));
+  await newCards.click();
+  await page.waitForFunction(() => location.pathname === '/review' && new URLSearchParams(location.search).has('category'));
+  check("首页一键进入该系统的未学卡队列", (await page.$eval("main", (el) => el.textContent)).includes("查看机制与答案"));
 
   // 1. 两个新分类与第 2 批代表卡片
   await go("/cards?category=immunomodulator");
@@ -69,9 +79,22 @@ try {
   const totalAttr = await page.$eval('[role="progressbar"]', (el) => el.getAttribute("aria-valuemax"));
   check("临床情景模式 ?count=5 正常出 5 题且含免责声明", totalAttr === "5" && quizText.includes("临床情景") && quizText.includes("机制与用药原则学习辨析"));
 
-  // 用键盘 '1' 作答第 1 题，等待提交完成后检查关联卡片链接，再用 Enter 切下一题
-  await page.keyboard.press("1");
-  await page.waitForSelector('[aria-live="polite"] button');
+  const firstCase = CASE_QUESTIONS.find((item) => quizText.includes(item.prompt));
+  if (!firstCase) throw new Error("未识别页面上的病例");
+  const feedback = '[aria-live="polite"]';
+  async function checkSources(label) {
+    await page.waitForSelector(feedback + ' button');
+    const links = await page.$$eval(feedback + ' a', (items) => items.map((a) => ({ url: a.href, title: a.textContent })));
+    const text = await page.$eval(feedback, (el) => el.textContent || "");
+    check(label, firstCase.sources.every((source) =>
+      links.some((a) => a.url === source.url && a.title.includes(source.title)) && text.includes(source.sections),
+    ) && text.includes(firstCase.sourcesCheckedOn));
+  }
+  const options = await page.$$eval('ul li button', (items) => items.map((b) => b.textContent || ""));
+  const wrongIndex = options.findIndex((text) => text.includes(firstCase.distractors[0]));
+  if (wrongIndex < 0) throw new Error("未找到该病例的干扰项");
+  await page.keyboard.press(String(wrongIndex + 1));
+  await checkSources("首次作答后显示本题全部来源、章节和核对日期");
   const hasCardLink = (await page.$('[aria-live="polite"] a[href^="/cards/"]')) !== null;
   check("情景题作答后显示关联药物卡片链接", hasCardLink);
   await page.keyboard.press("Enter");
@@ -81,29 +104,8 @@ try {
     (await page.$eval("main", (el) => el.textContent || "")).includes("第 2 / 5 题"),
   );
 
-  // 第 2 题故意点错直到入错题本（最多尝试 4 个按钮直到有 wrong_question 记录）
-  for (let qIdx = 2; qIdx <= 5; qIdx += 1) {
-    await (await page.$$("ul li button"))[0].click();
-    await page.waitForSelector('[aria-live="polite"]');
-    const wrongCaseCount = db.prepare("SELECT COUNT(*) n FROM wrong_question WHERE kind = 'case'").get().n;
-    if (wrongCaseCount > 0) break;
-    await page.$eval('[aria-live="polite"] button', (b) => b.click());
-    await page.waitForFunction(() => !document.querySelector('[aria-live="polite"]'));
-  }
-
-  // 若 5 题全对（极低概率），再换个 seed 故意点选第 2 个选项确保测到错题闭环
-  if (db.prepare("SELECT COUNT(*) n FROM wrong_question WHERE kind = 'case'").get().n === 0) {
-    await go("/quiz?mode=cases&count=5&seed=9999");
-    for (let qIdx = 1; qIdx <= 5; qIdx += 1) {
-      await (await page.$$("ul li button"))[1].click();
-      await page.waitForSelector('[aria-live="polite"]');
-      if (db.prepare("SELECT COUNT(*) n FROM wrong_question WHERE kind = 'case'").get().n > 0) break;
-      await page.$eval('[aria-live="polite"] button', (b) => b.click());
-      await page.waitForFunction(() => !document.querySelector('[aria-live="polite"]'));
-    }
-  }
-  const caseWrongRow = db.prepare("SELECT question_id, card_id FROM wrong_question WHERE kind = 'case' LIMIT 1").get();
-  check("情景题答错写入 wrong_question (kind='case')", Boolean(caseWrongRow));
+  const caseWrongRow = db.prepare("SELECT question_id FROM wrong_question WHERE kind = 'case'").get();
+  check("情景题答错写入对应的错题记录", caseWrongRow?.question_id === "case:" + firstCase.id);
 
   await go("/wrong-book");
   const wrongText = await page.$eval("main", (el) => el.textContent || "");
@@ -111,7 +113,9 @@ try {
 
   await go("/quiz/review");
   const reviewPrompt = await page.$eval("p.text-\\[15px\\]", (el) => el.textContent || "");
-  check("错题重练能精确重建情景题", reviewPrompt.length > 10);
+  check("错题重练能精确重建情景题", reviewPrompt === firstCase.prompt);
+  await page.keyboard.press(String(wrongIndex + 1));
+  await checkSources("错题重练后显示同一病例的全部依据");
 
   for (const kind of ["quiz", "wrong-book"]) {
     const csv = await (await fetch(`${BASE}/api/export/${kind}?format=csv`)).text();
@@ -120,6 +124,27 @@ try {
       `${kind} 导出含情景题与「临床情景」标签`,
       csv.includes("临床情景") && json.records.some((r) => r.kindLabel === "临床情景"),
     );
+  }
+
+  const quizExportUrl = BASE + "/api/export/quiz?format=json";
+  const quizBackup = await (await fetch(quizExportUrl)).json();
+  for (const run of [1, 2]) {
+    const response = await fetch(BASE + "/api/import", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(quizBackup),
+    });
+    const summary = await response.json();
+    check("测验备份第 " + run + " 次导回原库均跳过已有作答", response.ok && summary.skipped === quizBackup.count && summary.inserted === 0);
+  }
+  const afterRestore = await (await fetch(quizExportUrl)).json();
+  check("重新导出后作答内容和条数保持一致", JSON.stringify(afterRestore.records) === JSON.stringify(quizBackup.records));
+
+  await go("/");
+  const weakCategoryLink = await page.$(recommendations + ' a[href="/quiz?category=' + firstCase.category + '"]');
+  check("已答错的系统在首页有专项测验入口", Boolean(weakCategoryLink));
+  if (weakCategoryLink) {
+    await weakCategoryLink.click();
+    await page.waitForFunction((category) => location.pathname === '/quiz' && new URLSearchParams(location.search).get('category') === category, {}, firstCase.category);
+    check("点击推荐后直接进入该系统测验", Boolean(await page.waitForSelector('[role="progressbar"]')));
   }
 
   // 4. 收藏范围专项测验 + 扩容 DDI 互链 + 深色 375px 无溢出

@@ -23,6 +23,7 @@ import {
 import { CASE_QUESTIONS } from "@/lib/data/cases";
 import { quizRepository } from "@/lib/data/quiz";
 import { compareRepository } from "@/lib/data/compare";
+import { getCaseSelection } from "@/lib/quiz/case-selection";
 import { generateCaseQuiz } from "@/lib/quiz/case-generator";
 import { generateQuiz } from "@/lib/quiz/generator";
 import { generateCompareQuiz } from "@/lib/quiz/compare-generator";
@@ -175,12 +176,8 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
 
   const categoryNames = new Map(CATEGORIES.map((category) => [category.id, category.name]));
 
-  const scopedCases = CASE_QUESTIONS.filter((item) => {
-    if (activeCategory && item.category !== activeCategory) return false;
-    if (activeScope === "favorites" && !favoriteSet.has(item.cardId)) return false;
-    if (activeScope === "due" && !dueSet.has(item.cardId)) return false;
-    return true;
-  });
+  const caseSelection = getCaseSelection(CASE_QUESTIONS, activeCategory, activeScope, favoriteSet, dueSet);
+  const scopedCases = caseSelection.questions;
 
   const questions = activeCompare
     ? generateCompareQuiz({
@@ -218,36 +215,10 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
   const scopeQuery = scopeQueryString ? `${scopeQueryString}&` : "";
   const retryHref = `/quiz?${scopeQuery}seed=${baseSeed + 1}`;
 
-  const scopeBaseCards = isCasesMode
-    ? allCards.filter((card) =>
-        CASE_QUESTIONS.some(
-          (item) =>
-            item.cardId === card.id &&
-            (!activeCategory || item.category === activeCategory),
-        ),
-      )
-    : categoryCards;
-
-  const scopeCounts = {
-    all: isCasesMode
-      ? CASE_QUESTIONS.filter(
-          (item) => !activeCategory || item.category === activeCategory,
-        ).length
-      : categoryCards.length,
-    favorites: isCasesMode
-      ? CASE_QUESTIONS.filter(
-          (item) =>
-            (!activeCategory || item.category === activeCategory) &&
-            favoriteSet.has(item.cardId),
-        ).length
-      : scopeBaseCards.filter((card) => favoriteSet.has(card.id)).length,
-    due: isCasesMode
-      ? CASE_QUESTIONS.filter(
-          (item) =>
-            (!activeCategory || item.category === activeCategory) &&
-            dueSet.has(item.cardId),
-        ).length
-      : scopeBaseCards.filter((card) => dueSet.has(card.id)).length,
+  const scopeCounts = isCasesMode ? caseSelection.scopeCounts : {
+    all: categoryCards.length,
+    favorites: categoryCards.filter((card) => favoriteSet.has(card.id)).length,
+    due: categoryCards.filter((card) => dueSet.has(card.id)).length,
   };
 
   const accuracy =
@@ -255,10 +226,11 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
       ? Math.round((stats.correctTotal / stats.answeredTotal) * 100)
       : 0;
 
-  // 分类角标数量：直接复用卡片数据统计，避免再查一次数据库
   const categoryCounts = CATEGORIES.map((category) => ({
     category,
-    count: allCards.filter((card) => card.category === category.id).length,
+    count: isCasesMode
+      ? caseSelection.categoryCounts.get(category.id) ?? 0
+      : allCards.filter((card) => card.category === category.id).length,
   }));
 
   return (
@@ -305,7 +277,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
             })}
             active={isCasesMode}
             label={caseQuizCopy.modeTitle}
-            count={CASE_QUESTIONS.length}
+            count={scopedCases.length}
           />
         </div>
 
@@ -324,7 +296,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
               })}
               active={activeCategory === null && !activeCompare}
               label={quizCopy.filterAll}
-              count={allCards.length}
+              count={isCasesMode ? caseSelection.allCategoriesCount : allCards.length}
             />
             {categoryCounts.map(({ category, count }) => (
               <CategoryChip
@@ -431,6 +403,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
               <p className="text-[11px] font-medium text-primary">{caseQuizCopy.modeTitle}</p>
               <p className="mt-1 text-sm font-medium">{caseQuizCopy.modeSubtitle}</p>
               <p className="mt-1 text-xs text-muted-foreground">
+                {activeScope !== "all" ? `${quizFeaturesCopy.scopes[activeScope]} · ` : ""}
                 {activeCategoryName
                   ? caseQuizCopy.scopeCategoryHint(activeCategoryName, scopedCases.length)
                   : caseQuizCopy.scopeAllHint(scopedCases.length, new Set(scopedCases.map((q) => q.category)).size)}
@@ -444,7 +417,7 @@ export default async function QuizPage({ searchParams }: QuizPageProps) {
           </Card>
         ) : null}
 
-        {!activeCompare && (activeCategoryName || activeScope !== "all") ? (
+        {!activeCompare && !isCasesMode && (activeCategoryName || activeScope !== "all") ? (
           <p className="mt-2 text-xs text-muted-foreground">
             {activeCategoryName ? (
               <>

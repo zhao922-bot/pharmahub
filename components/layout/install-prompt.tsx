@@ -1,11 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Download, X } from "lucide-react";
 
 import { install } from "@/lib/copy";
 
 const STORAGE_KEY = "pharmahub-install-dismissed";
+
+function subscribeNoop() {
+  return () => {};
+}
+
+function getShouldShowInstallPrompt(): boolean {
+  if (typeof window === "undefined") return false;
+
+  // 已经是独立窗口（装过了），不显示
+  const standalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    // iOS Safari 的私有属性
+    (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+  if (standalone) return false;
+
+  // 用户之前关过
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === "1") return false;
+  } catch {
+    // 隐私模式下 localStorage 可能抛错，忽略即可
+  }
+
+  // 只在移动端显示
+  return window.matchMedia("(max-width: 640px)").matches;
+}
 
 /**
  * 「装到主屏幕」引导。
@@ -19,37 +44,14 @@ const STORAGE_KEY = "pharmahub-install-dismissed";
  * - 只在移动端显示（桌面端浏览器有地址栏安装图标，不需要引导）
  * - 已经以独立窗口运行（standalone）时不显示
  * - 用户关掉后不再打扰（localStorage 记住）
- * - 用 useEffect 读取 localStorage，避免服务端渲染时访问 window
+ * - 用 useSyncExternalStore 读取客户端状态，避免服务端渲染时访问 window
  */
 export function InstallPrompt() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // 已经是独立窗口（装过了），不显示
-    const standalone =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      // iOS Safari 的私有属性
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
-    if (standalone) return;
-
-    // 用户之前关过
-    try {
-      if (localStorage.getItem(STORAGE_KEY) === "1") return;
-    } catch {
-      // 隐私模式下 localStorage 可能抛错，忽略即可
-    }
-
-    // 只在移动端显示
-    const isMobile = window.matchMedia("(max-width: 640px)").matches;
-    if (!isMobile) return;
-
-    setVisible(true);
-  }, []);
+  const canShow = useSyncExternalStore(subscribeNoop, getShouldShowInstallPrompt, () => false);
+  const [dismissed, setDismissed] = useState(false);
 
   const dismiss = () => {
-    setVisible(false);
+    setDismissed(true);
     try {
       localStorage.setItem(STORAGE_KEY, "1");
     } catch {
@@ -57,7 +59,7 @@ export function InstallPrompt() {
     }
   };
 
-  if (!visible) return null;
+  if (!canShow || dismissed) return null;
 
   const isIOS =
     typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);

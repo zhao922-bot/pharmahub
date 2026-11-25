@@ -8,6 +8,7 @@ import {
   ClinicalTagBadges,
   DrugInteractionsSection,
 } from "@/components/cards/card-enrichment-sections";
+import { SourceList } from "@/components/source-list";
 import { ReviewPanel } from "@/components/review/review-panel";
 import { FavoriteButton } from "@/components/review/favorite-button";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -263,26 +264,7 @@ export default async function CardDetailPage({ params }: CardDetailPageProps) {
               {detail.sourcesTitle}
             </h2>
             <p className="mt-1 text-xs leading-5 text-muted-foreground">{detail.sourcesHint}</p>
-            <ul className="mt-3 space-y-3">
-              {card.sources.map((source) => (
-                <li key={source.url} className="rounded-lg border bg-card p-3.5">
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="break-words text-sm font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    {source.title}
-                  </a>
-                  <p className="mt-1 text-xs leading-6 text-muted-foreground">{source.sections}</p>
-                </li>
-              ))}
-            </ul>
-            {card.sourcesCheckedOn ? (
-              <p className="mt-2 text-xs text-muted-foreground">
-                {detail.sourcesCheckedOn(card.sourcesCheckedOn)}
-              </p>
-            ) : null}
+            <SourceList sources={card.sources} sourcesCheckedOn={card.sourcesCheckedOn} />
           </section>
         ) : null}
 

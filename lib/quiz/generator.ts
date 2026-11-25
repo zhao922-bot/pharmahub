@@ -40,6 +40,7 @@ export interface QuizQuestion {
   correctOptionId: string;
   /** 答题后的解析，帮助理解而不只是记住答案 */
   explanation: string;
+  references?: Pick<CaseQuestionSpec, "sources" | "sourcesCheckedOn">;
   comparison?: { id: string; title: string; dimension: string };
 }
 

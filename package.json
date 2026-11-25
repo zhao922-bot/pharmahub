@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "check:zh": "node --experimental-strip-types scripts/check-traditional.mjs",
     "check:cards": "node scripts/check-card-counts.mjs && node scripts/check-content.mjs && node scripts/check-card-ids.mjs && node --experimental-strip-types --import ./scripts/ts-alias-hook.mjs scripts/check-compares.mjs",
-    "test": "node --test --experimental-strip-types --import ./scripts/ts-alias-hook.mjs scripts/search.test.mjs scripts/sm2.test.mjs scripts/quiz.test.mjs scripts/review-quiz.test.mjs scripts/csv.test.mjs scripts/serialize.test.mjs scripts/heatmap.test.mjs scripts/compare.test.mjs scripts/compare-quiz.test.mjs scripts/verification.test.mjs scripts/card-expansion.test.mjs scripts/answer-validation.test.mjs scripts/content-rigor.test.mjs scripts/enrichment.test.mjs scripts/import.test.mjs scripts/case-quiz.test.mjs",
+    "test": "node --conditions=react-server --test --experimental-strip-types --import ./scripts/ts-alias-hook.mjs scripts/search.test.mjs scripts/sm2.test.mjs scripts/quiz.test.mjs scripts/review-quiz.test.mjs scripts/learning-feedback.test.mjs scripts/csv.test.mjs scripts/serialize.test.mjs scripts/heatmap.test.mjs scripts/compare.test.mjs scripts/compare-quiz.test.mjs scripts/verification.test.mjs scripts/card-expansion.test.mjs scripts/answer-validation.test.mjs scripts/content-rigor.test.mjs scripts/enrichment.test.mjs scripts/import.test.mjs scripts/case-quiz.test.mjs",
     "icons": "node scripts/gen-icons.mjs",
     "verify": "node scripts/verify.mjs",
     "verify:pwa": "node scripts/verify.mjs verify-pwa",

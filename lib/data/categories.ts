@@ -1,7 +1,7 @@
 import type { Category, CategoryId } from "@/lib/types";
 
 /**
- * 分类体系（最初 7 个，现扩到 11 个）。
+ * 药物卡片与情景题共用的系统分类。
  * order 决定首页与筛选条的展示顺序，与教材章节顺序一致。
  */
 export const CATEGORIES: readonly Category[] = [

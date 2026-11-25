@@ -87,7 +87,19 @@ export function getDatabase(): Database.Database {
   // WAL 模式提升并发读性能，也是 SQLite 官方推荐设置
   connection.pragma("journal_mode = WAL");
   connection.pragma("foreign_keys = ON");
-  connection.exec(SCHEMA);
+  connection.transaction(() => {
+    connection.exec(SCHEMA);
+    const columns = connection.pragma("table_info(quiz_attempt)") as { name: string }[];
+    if (!columns.some((column) => column.name === "attempt_id")) {
+      connection.exec(`ALTER TABLE quiz_attempt ADD COLUMN attempt_id TEXT;
+        UPDATE quiz_attempt SET attempt_id = lower(hex(randomblob(16)));`);
+    }
+    connection.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_quiz_attempt_id ON quiz_attempt(attempt_id);
+      CREATE TRIGGER IF NOT EXISTS assign_quiz_attempt_id AFTER INSERT ON quiz_attempt
+      WHEN NEW.attempt_id IS NULL BEGIN
+        UPDATE quiz_attempt SET attempt_id = lower(hex(randomblob(16))) WHERE id = NEW.id;
+      END;`);
+  }).immediate();
 
   db = connection;
   return db;

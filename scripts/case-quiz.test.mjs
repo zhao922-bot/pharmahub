@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { getCaseSelection } from "../lib/quiz/case-selection.ts";
 import { CASE_QUESTIONS } from "../lib/data/cases.ts";
 import { cardRepository } from "../lib/data/cards/index.ts";
 import {
@@ -13,8 +14,8 @@ import { caseQuizCopy } from "../lib/copy-cases.ts";
 const cards = await cardRepository.getAll();
 const cardById = new Map(cards.map((card) => [card.id, card]));
 
-test("题库规模达标、编号合法唯一且与 135 张基线卡片分类一致", () => {
-  assert.ok(CASE_QUESTIONS.length >= 24);
+test("题库规模达标、编号合法唯一且与 关联卡片分类一致", () => {
+  assert.ok(CASE_QUESTIONS.length >= 26);
   const ids = new Set();
   const categories = new Set();
 
@@ -48,7 +49,7 @@ test("题库规模达标、编号合法唯一且与 135 张基线卡片分类一
     assert.ok(Number.isFinite(Date.parse(spec.sourcesCheckedOn)), `日期无效: ${spec.id}`);
   }
 
-  assert.ok(categories.size >= 10, `覆盖分类不足 10 个，当前为 ${categories.size}`);
+  assert.deepEqual(categories, new Set(cards.map((card) => card.category)));
 });
 
 test("buildCaseQuestion 可确定性重建全部情景题并拒绝非法输入", () => {
@@ -131,7 +132,7 @@ test("generateCaseQuiz 按分类与种子确定性抽题并遵守数量边界", 
   }
 
   assert.deepEqual(
-    generateCaseQuiz({ caseQuestions: CASE_QUESTIONS, category: "immunomodulator", count: 5 }),
+    generateCaseQuiz({ caseQuestions: [], category: "immunomodulator", count: 5 }),
     [],
   );
   for (const invalidCount of [0, -1, NaN, Infinity]) {
@@ -196,4 +197,31 @@ test("validateCaseAnswer 允许提交正确或错误选项并拒绝伪造请求"
 test("临床情景文案标签与题型常量一致", () => {
   assert.equal(caseQuizCopy.modeTitle, QUESTION_KIND_LABELS.case);
   assert.ok(caseQuizCopy.disclaimerNote.includes("不构成"));
+});
+
+test("情景题按实际题目统计分类与范围，同一卡片可有多题", () => {
+  const antidote = CASE_QUESTIONS.find((item) => item.category === "antidote");
+  const immune = CASE_QUESTIONS.find((item) => item.category === "immunomodulator");
+  assert.ok(antidote && immune);
+  const pool = [antidote, { ...antidote, id: "second-antidote-case" }, immune];
+  const favorites = new Set([antidote.cardId, "unrelated-card"]);
+  const due = new Set([immune.cardId]);
+  const select = (category, scope) => getCaseSelection(pool, category, scope, favorites, due);
+
+  const all = select(null, "all");
+  assert.deepEqual(all.questions, pool);
+  assert.equal(all.allCategoriesCount, 3);
+  assert.deepEqual(all.scopeCounts, { all: 3, favorites: 2, due: 1 });
+  assert.equal(all.categoryCounts.get("antidote"), 2);
+  const favorite = select("antidote", "favorites");
+  assert.deepEqual(favorite.questions, pool.slice(0, 2));
+  assert.deepEqual(favorite.scopeCounts, { all: 2, favorites: 2, due: 0 });
+  assert.equal(favorite.allCategoriesCount, 2);
+  assert.equal(favorite.categoryCounts.get("antidote"), 2);
+  const empty = select("antidote", "due");
+  assert.deepEqual(empty.questions, []);
+  assert.equal(empty.categoryCounts.get("antidote") ?? 0, 0);
+  assert.equal(empty.categoryCounts.get("immunomodulator"), 1);
+  assert.equal(empty.allCategoriesCount, 1);
+  assert.deepEqual(select("immunomodulator", "due").questions, [immune]);
 });

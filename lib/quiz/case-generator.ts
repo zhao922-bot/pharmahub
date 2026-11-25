@@ -51,6 +51,7 @@ export function buildCaseQuestion(
     options,
     correctOptionId: correctOption.id,
     explanation: spec.explanation,
+    references: { sources: spec.sources, sourcesCheckedOn: spec.sourcesCheckedOn },
   };
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Monitor, Moon, Sun } from "lucide-react";
 
 import { theme } from "@/lib/copy";
@@ -9,6 +9,42 @@ import { cn } from "@/lib/utils";
 type ThemeMode = "light" | "dark" | "system";
 
 const STORAGE_KEY = "pharmahub-theme";
+
+let sessionThemeMode: ThemeMode | null = null;
+const themeListeners = new Set<() => void>();
+
+function subscribeNoop() {
+  return () => {};
+}
+
+function subscribeTheme(listener: () => void) {
+  themeListeners.add(listener);
+  return () => {
+    themeListeners.delete(listener);
+  };
+}
+
+function getThemeSnapshot(): ThemeMode {
+  if (sessionThemeMode) return sessionThemeMode;
+  if (typeof window === "undefined") return "system";
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark" || stored === "system") return stored;
+  } catch {
+    // 存储被禁用时仍允许本次会话切换主题。
+  }
+  return "system";
+}
+
+function setThemePreference(next: ThemeMode) {
+  sessionThemeMode = next;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, next);
+  } catch {
+    // 本次会话继续生效
+  }
+  for (const listener of themeListeners) listener();
+}
 
 /**
  * 主题切换按钮。
@@ -21,18 +57,8 @@ const STORAGE_KEY = "pharmahub-theme";
  * 3. 切换「跟随系统」时监听 prefers-color-scheme 变化。
  */
 export function ThemeToggle({ className }: { className?: string }) {
-  const [mode, setMode] = useState<ThemeMode>("system");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored === "light" || stored === "dark" || stored === "system") setMode(stored);
-    } catch {
-      // 存储被禁用时仍允许本次会话切换主题。
-    }
-  }, []);
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
+  const mode = useSyncExternalStore(subscribeTheme, getThemeSnapshot, () => "system");
 
   useEffect(() => {
     if (!mounted) return;
@@ -47,7 +73,6 @@ export function ThemeToggle({ className }: { className?: string }) {
     }
 
     apply();
-    try { window.localStorage.setItem(STORAGE_KEY, mode); } catch { /* 本次会话继续生效 */ }
 
     // 仅「跟随系统」时需要监听系统主题变化
     if (mode === "system") {
@@ -66,7 +91,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      onClick={() => setMode(nextMode)}
+      onClick={() => setThemePreference(nextMode)}
       aria-label={`${theme.toggleLabel}（当前：${label}）`}
       title={label}
       className={cn(

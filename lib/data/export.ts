@@ -36,6 +36,9 @@ export interface ReviewStateExportRow {
 
 /** 答题流水的一行 */
 export interface QuizAttemptExportRow {
+  attemptId: string;
+  selectedId: string;
+  correctId: string;
   questionId: string;
   cardId: string;
   kind: string;
@@ -123,7 +126,7 @@ class SqliteExportRepository implements ExportRepository {
     const db = getDatabase();
     const rows = db
       .prepare(
-        `SELECT question_id, card_id, kind, is_correct, answered_on, answered_at
+        `SELECT attempt_id, selected_id, correct_id, question_id, card_id, kind, is_correct, answered_on, answered_at
          FROM quiz_attempt
          ORDER BY answered_at ASC, id ASC`,
       )
@@ -131,6 +134,9 @@ class SqliteExportRepository implements ExportRepository {
       question_id: string;
       card_id: string;
       kind: string;
+      attempt_id: string;
+      selected_id: string;
+      correct_id: string;
       is_correct: number;
       answered_on: string;
       answered_at: string;
@@ -140,6 +146,9 @@ class SqliteExportRepository implements ExportRepository {
       questionId: row.question_id,
       cardId: row.card_id,
       kind: row.kind,
+      attemptId: row.attempt_id,
+      selectedId: row.selected_id,
+      correctId: row.correct_id,
       isCorrect: row.is_correct === 1,
       answeredOn: row.answered_on,
       answeredAt: row.answered_at,

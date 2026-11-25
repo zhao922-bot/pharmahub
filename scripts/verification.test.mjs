@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -59,6 +60,33 @@ test("浏览器：登记与 PATH 均缺失时才用常见目录", () => {
 });
 test("浏览器：完全找不到时提示配置方法", () => {
   assert.throws(() => resolveWith({}), /BROWSER_PATH.*默认浏览器/);
+});
+
+test("内容同步可重复执行，清理共享文件时保留云端连接器与专属导入实现", (t) => {
+  const temp = mkdtempSync(join(tmpdir(), "pharmahub-sync-"));
+  t.after(() => rmSync(temp, { recursive: true, force: true }));
+  const source = join(temp, "main");
+  const target = join(temp, "online");
+  for (const dir of [source, target]) {
+    mkdirSync(join(dir, "components"), { recursive: true });
+    mkdirSync(join(dir, "lib/export"), { recursive: true });
+  }
+  writeFileSync(join(source, "components/button.tsx"), "shared");
+  writeFileSync(join(target, "components/stale.tsx"), "stale");
+  writeFileSync(join(target, "components/connector-error.tsx"), "cloud");
+  writeFileSync(join(source, "lib/export/import.ts"), "sqlite");
+  writeFileSync(join(target, "lib/export/import.ts"), "d1");
+  const sync = (...flags) => {
+    const result = spawnSync(process.execPath, [join(root, "scripts/sync-online-content.mjs"), "--source", source, "--target", target, ...flags], { encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    return result.stdout;
+  };
+  sync("--apply", "--delete-extra");
+  assert.equal(readFileSync(join(target, "components/button.tsx"), "utf8"), "shared");
+  assert.equal(existsSync(join(target, "components/stale.tsx")), false);
+  assert.equal(readFileSync(join(target, "components/connector-error.tsx"), "utf8"), "cloud");
+  assert.equal(readFileSync(join(target, "lib/export/import.ts"), "utf8"), "d1");
+  assert.doesNotMatch(sync("--dry-run"), /\[(?:ADD|UPDATE|EXTRA)\]/);
 });
 
 const directory = join(tmpdir(), "pharmahub-verify-unit");

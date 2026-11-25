@@ -1,7 +1,7 @@
 import type { CaseQuestionSpec } from "@/lib/types";
 
 /**
- * 临床机制情景题核对题库（24 题，覆盖 11 个系统分类）。
+ * 临床机制情景题核对题库（26 题，覆盖 13 个系统分类）。
  * 纯学习向情景辨析，聚焦作用靶点、代谢酶相互作用、耐药与用药边界，
  * 不构成针对个体患者的临床诊断或处方建议。
  */
@@ -641,5 +641,53 @@ export const CASE_QUESTIONS: readonly CaseQuestionSpec[] = [
       },
     ],
     sourcesCheckedOn: "2026-11-24",
+  },
+  {
+    id: "naloxone-postoperative-recurrence",
+    cardId: "naloxone",
+    category: "antidote",
+    prompt:
+      "术后恢复室内，一名接受阿片镇痛的患者呼吸变慢。使用纳洛酮后通气改善，随后在没有追加阿片的情况下呼吸再次变慢。哪项机制能同时解释这两次变化？",
+    correctOption:
+      "纳洛酮与阿片竞争受体。拮抗作用减弱时，体内仍有活性的阿片可再次抑制呼吸",
+    distractors: [
+      "纳洛酮使肝脏迅速清除阿片。其作用减弱后，已清除的阿片重新进入循环",
+      "纳洛酮不可逆地封闭阿片受体。通气再次减弱说明此时已合成了大量新受体",
+      "纳洛酮是阿片受体部分激动剂。通气再次减弱源于纳洛酮自身延迟出现的激动效应",
+    ],
+    explanation:
+      "纳洛酮竞争性占据阿片受体，对 μ 受体亲和力最高，因此可以迅速逆转阿片所致呼吸抑制。若阿片作用持续更久，纳洛酮的拮抗效应消退后，残余阿片仍能作用于受体，这也是最初通气改善后仍需监护的原因。肝清除加快无法解释已经清除的药物重新出现；受体竞争可逆，无需新受体合成即可恢复阿片效应；纳洛酮本身缺乏解释呼吸再抑制所需的阿片激动活性。",
+    sources: [
+      {
+        title: "DailyMed：盐酸纳洛酮注射液（Somerset Therapeutics）说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b59ee3cc-9604-4abc-81be-897e2f42aa67",
+        sections: "Clinical Pharmacology、Warnings 和 Dosage and Administration（Postoperative Opioid Depression）：受体竞争、作用时程与术后呼吸抑制复发。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-25",
+  },
+  {
+    id: "tacrolimus-transplant-nfat-il2",
+    cardId: "tacrolimus",
+    category: "immunomodulator",
+    prompt:
+      "在肾移植抗排斥治疗的机制讨论中，学生观察到，受刺激的 T 细胞接触他克莫司后，进入细胞核的 NFAT 减少，产生的白细胞介素 2（IL-2）也减少。哪个环节最能解释这组结果？",
+    correctOption:
+      "他克莫司与细胞内 FKBP12 结合，抑制钙调磷酸酶，使 NFAT 难以去磷酸化并进入细胞核",
+    distractors: [
+      "他克莫司结合细胞外已经分泌的 IL-2，使其无法与受体结合，从而直接阻断 NFAT 入核",
+      "他克莫司与 FKBP12 结合后增强钙调磷酸酶活性，使 NFAT 去磷酸化后滞留在细胞质",
+      "他克莫司在细胞核内直接占据 IL-2 基因启动子，使已入核的 NFAT 无法启动转录",
+    ],
+    explanation:
+      "他克莫司与 FKBP12 形成的复合物抑制钙调磷酸酶。NFAT 的去磷酸化和入核随之减少，IL-2 等细胞因子的表达下降，T 细胞活化受到抑制。结合细胞外 IL-2 只会截断已分泌细胞因子的信号，不能直接解释 NFAT 入核减少。增强钙调磷酸酶活性会促进 NFAT 去磷酸化和入核，方向与观察相反。直接占据启动子至多能解释转录减少，无法解释上游的入核变化。",
+    sources: [
+      {
+        title: "DailyMed：PROGRAF（他克莫司）说明书",
+        url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7f667de1-9dfa-4bd6-8ba0-15ee2d78873b",
+        sections: "第 1 节 Indications and Usage 与第 12.1 节 Mechanism of Action：预防移植排斥、FKBP12、钙调磷酸酶、NFAT 及 IL-2 表达。",
+      },
+    ],
+    sourcesCheckedOn: "2026-11-25",
   },
 ];

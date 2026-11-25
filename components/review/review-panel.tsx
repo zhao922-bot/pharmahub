@@ -57,7 +57,7 @@ const QUALITY_OPTIONS: Array<{
 /**
  * 掌握程度自评面板。
  *
- * 点击后立即调用服务端 action 写入 SQLite，并用返回的下次复习时间
+ * 点击后立即调用服务端 action 保存复习记录，并用返回的下次复习时间
  * 就地给出反馈（不整页刷新），这样连续复习多张卡片时节奏不被打断。
  */
 export function ReviewPanel({ cardId, existing, isDue }: ReviewPanelProps) {

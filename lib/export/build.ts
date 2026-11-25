@@ -4,6 +4,7 @@ import { exportRepository } from "@/lib/data/export";
 import { cardRepository } from "@/lib/data/cards";
 import { getCategoryName } from "@/lib/data/categories";
 import { buildExportFilename } from "@/lib/export/csv";
+import { quizExportDataset } from "@/lib/export/quiz";
 import { datasetToCsv, datasetToJson } from "@/lib/export/serialize";
 import type { ExportColumn, ExportDataset, ExportRecord } from "@/lib/export/serialize";
 import { QUESTION_KIND_LABELS } from "@/lib/quiz/generator";
@@ -151,34 +152,7 @@ async function buildQuizDataset(): Promise<ExportDataset> {
     buildCardLookup(),
   ]);
 
-  const columns: ExportColumn[] = [
-    { key: "answeredAt", header: "答题时刻" },
-    { key: "answeredOn", header: "答题日期" },
-    { key: "questionId", header: "题目ID" },
-    { key: "cardId", header: "卡片ID" },
-    { key: "genericName", header: "通用名" },
-    { key: "categoryName", header: "所属分类" },
-    { key: "kindLabel", header: "题型" },
-    { key: "isCorrectLabel", header: "是否正确" },
-    { key: "isCorrect", header: "是否正确(布尔)" },
-  ];
-
-  const records: ExportRecord[] = attempts.map((row) => {
-    const card = lookup.get(row.cardId);
-    return {
-      answeredAt: row.answeredAt,
-      answeredOn: row.answeredOn,
-      questionId: row.questionId,
-      cardId: row.cardId,
-      genericName: card?.genericName ?? DELETED_CARD,
-      categoryName: card?.categoryName ?? "",
-      kindLabel: kindLabel(row.kind),
-      isCorrectLabel: row.isCorrect ? "是" : "否",
-      isCorrect: row.isCorrect,
-    };
-  });
-
-  return { kind: "quiz", columns, records };
+  return quizExportDataset(attempts, lookup);
 }
 
 /** 错题本 */

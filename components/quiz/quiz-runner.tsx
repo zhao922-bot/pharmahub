@@ -5,9 +5,10 @@ import Link from "next/link";
 import { ArrowRight, Check, CheckCircle2, X, XCircle } from "lucide-react";
 
 import { submitQuizAnswerAction } from "@/app/actions";
+import { SourceList } from "@/components/source-list";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { quiz as quizCopy } from "@/lib/copy";
+import { detail, quiz as quizCopy } from "@/lib/copy";
 import { quizFeaturesCopy } from "@/lib/copy-features";
 import type { QuizQuestion } from "@/lib/quiz/generator";
 import { cn } from "@/lib/utils";
@@ -353,6 +354,12 @@ export function QuizRunner({ questions, mode = "normal", retryHref = "/quiz", co
             <p className="mt-1 whitespace-pre-line text-sm leading-6 text-foreground/85">
               {currentQuestion.explanation}
             </p>
+            {currentQuestion.references && (
+              <div className="mt-3">
+                <h3 className="text-sm font-medium">{detail.sourcesTitle}</h3>
+                <SourceList {...currentQuestion.references} />
+              </div>
+            )}
             <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5">
               <Link
                 href={`/cards/${currentQuestion.cardId}`}
